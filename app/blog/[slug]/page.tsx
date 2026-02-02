@@ -71,7 +71,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             <span className="text-sm text-gray-600">{post.date}</span>
           </div>
 
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             {post.title}
           </h1>
 
@@ -106,15 +106,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <div
             className="prose prose-lg prose-blue max-w-none
               prose-headings:font-bold prose-headings:text-gray-900
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+              prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+              prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
               prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
-              prose-a:text-blue-600 prose-a:no-underline hover:prose-a:text-blue-700
+              prose-a:text-blue-600 prose-a:no-underline hover:prose-a:text-blue-700 prose-a:underline-offset-2
               prose-ul:my-6 prose-ul:space-y-2
-              prose-li:text-gray-700
+              prose-li:text-gray-700 prose-li:leading-relaxed
               prose-strong:text-gray-900 prose-strong:font-semibold
-              prose-img:rounded-xl prose-img:shadow-lg
-              prose-blockquote:border-l-4 prose-blockquote:border-blue-600 prose-blockquote:pl-6 prose-blockquote:italic"
+              prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto
+              prose-blockquote:border-l-4 prose-blockquote:border-blue-600 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:my-6
+              [&_img]:max-w-full [&_img]:h-auto"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>

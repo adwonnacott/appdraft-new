@@ -33,7 +33,7 @@ const platforms = [
   },
   {
     name: 'Agentforce',
-    description: 'Implement AI-powered autonomous agents',
+    description: 'Deploy autonomous AI agents that work 24/7 - the future of customer service and sales',
     link: '/salesforce/agentforce',
     color: 'from-indigo-500 to-indigo-600',
   },
@@ -50,7 +50,7 @@ export default function SalesforceExpertise() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {platforms.map((platform) => (
             <Link
               key={platform.name}

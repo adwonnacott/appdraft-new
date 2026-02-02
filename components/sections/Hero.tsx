@@ -6,28 +6,28 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Experts in Salesforce Implementation{' '}
-              <span className="text-blue-600">For Growing Businesses</span>
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+              Salesforce Experts Who{' '}
+              <span className="text-blue-600">Deliver Results, Not Just Systems</span>
             </h1>
 
-            <p className="text-xl text-gray-600 leading-relaxed">
-              We help teams maximize their Salesforce platform value with expert implementation,
-              support, and custom development services.
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+              We implement, optimize, and support Salesforce for UK growing businesses.
+              From discovery to go-live and beyond, we ensure your team adopts the platform and achieves measurable outcomes.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/contact"
+                href="/services/health-checks"
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg text-center"
               >
-                Get Started
+                Get Your Free Health Check
               </Link>
               <Link
-                href="/services/health-checks"
+                href="/contact"
                 className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all text-center"
               >
-                Free Health Check
+                Discuss Your Project
               </Link>
             </div>
 
@@ -48,15 +48,40 @@ export default function Hero() {
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="relative w-full h-[600px] bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-grid-white/10 bg-grid-pattern"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white text-center space-y-4 p-8">
-                  <svg className="w-32 h-32 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-6">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
+                  <div className="text-4xl font-bold text-blue-600 mb-2">130+</div>
+                  <div className="text-sm text-gray-600">Projects Delivered</div>
+                </div>
+                <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-green-100">
+                  <div className="text-4xl font-bold text-green-600 mb-2">15+</div>
+                  <div className="text-sm text-gray-600">Years Experience</div>
+                </div>
+              </div>
+
+              {/* Certification Badge */}
+              <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-8 rounded-2xl shadow-2xl text-white">
+                <div className="flex items-center gap-4">
+                  <svg className="w-16 h-16 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.5 8.778l-7.5 7.5-3.5-3.5 1.414-1.414 2.086 2.086 6.086-6.086L18.5 8.778z"/>
                   </svg>
-                  <h3 className="text-2xl font-bold">Salesforce Certified Experts</h3>
-                  <p className="text-blue-100">Delivering excellence in every project</p>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1">Salesforce Certified</h3>
+                    <p className="text-blue-100 text-sm">Admin, Developer, Consultant & Architect certified team</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust Badge */}
+              <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-purple-100">
+                <div className="flex items-center gap-3">
+                  <div className="text-3xl">⭐</div>
+                  <div>
+                    <div className="text-2xl font-bold text-gray-900">5.0 Rating</div>
+                    <div className="text-sm text-gray-600">AppExchange Verified Reviews</div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,23 +1,23 @@
 const testimonials = [
   {
-    quote: "Appdraft transformed our Salesforce implementation. Their team's expertise and dedication resulted in a solution that perfectly fits our business needs.",
+    quote: "Appdraft delivered our Salesforce implementation in 8 weeks. Their structured approach meant our team was confident using the system from day one, and we've seen a 35% improvement in pipeline visibility.",
     author: "Sarah Johnson",
     role: "VP of Operations",
-    company: "TechCorp Solutions",
+    company: "UK Professional Services Firm",
     rating: 5,
   },
   {
-    quote: "The support we receive from Appdraft is exceptional. They're always responsive and proactive in helping us maximize our Salesforce investment.",
+    quote: "We switched to Appdraft's retained support model after struggling with our previous provider. They give us quick answers and practical fixes - response times have improved by 60%.",
     author: "Michael Chen",
-    role: "CTO",
-    company: "InnovateLabs",
+    role: "Head of Sales Operations",
+    company: "B2B Technology Company",
     rating: 5,
   },
   {
-    quote: "Working with Appdraft has been a game-changer. They understood our industry-specific needs and delivered a custom solution that exceeded expectations.",
+    quote: "Their team took time to understand our manufacturing business before building anything. The custom app they developed for quality control has reduced our error rate by 40%.",
     author: "Emma Williams",
-    role: "Director of Sales",
-    company: "GlobalTech Industries",
+    role: "Operations Director",
+    company: "Manufacturing Business",
     rating: 5,
   },
 ];
