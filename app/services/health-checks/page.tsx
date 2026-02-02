@@ -81,11 +81,10 @@ export default function HealthChecks() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce Health Checks
+              You've Invested in Salesforce. Let's Make Sure it's Working for You
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Is your Salesforce org running at peak performance? Our comprehensive health checks identify
-              issues, uncover opportunities, and provide clear recommendations to optimize your CRM investment.
+              Over time, implementations drift. Salesforce orgs that once worked well can become cluttered, slow, or misaligned with how your team actually works. Our health checks are a diagnostic service for organizations that suspect their setup isn't quite right anymore.
             </p>
             <Link
               href="/contact"

@@ -108,12 +108,10 @@ export default function CustomDevelopment() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Custom Salesforce Development
+              Use Salesforce to Run More of Your Business
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              When standard Salesforce functionality is not enough, we build custom solutions that precisely
-              match your unique business requirements. From complex integrations to bespoke applications,
-              we extend Salesforce to work exactly how you need it to.
+              Salesforce is more than just a sales tool. It can manage projects, track operations, handle customer service, and automate workflows across your entire organization. When the standard features don't quite fit, we build custom solutions that extend Salesforce to work exactly how your business needs it to.
             </p>
             <Link
               href="/contact"

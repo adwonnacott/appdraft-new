@@ -12,10 +12,10 @@ export default function Support() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce Support That Evolves With You
+              Help When You Need it. Guidance When it Counts.
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Fix issues, make improvements, and keep moving forward with flexible support that fits your needs.
+              As your business evolves, your Salesforce setup should evolve with it. Our support services help you fix issues, make improvements, and keep moving forward, whether you need help now and then or ongoing assistance each month.
             </p>
             <Link
               href="/contact"
