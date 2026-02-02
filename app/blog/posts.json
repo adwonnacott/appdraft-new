@@ -1,0 +1,277 @@
+[
+  {
+    "title": "The Death of a Spreadsheet",
+    "excerpt": "You wouldn't use a calculator to do a job for a spreadsheet (or vice versa, assuming you have a calculator to hand). By extension, with the wealth of technology solutions available to business today, why do we continue to rely so heavily on spreadsheets?",
+    "date": "January 11, 2019",
+    "slug": "death-of-a-spreadsheet",
+    "category": "Digital Transformation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Training Issue + User Error = Bad System Design",
+    "excerpt": "Whilst it might be idealistic to say that the right system can design-out all propensity for error, it's certainly true that systems can be used to minimise it.",
+    "date": "March 19, 2019",
+    "slug": "training-issue-user-error-bad-system-design",
+    "category": "System Design",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Why Your Sales Team Doesn't Use CRM",
+    "excerpt": "Salespeople are a tricky bunch. The great ones have their idiosyncrasies and sales managers will often be inclined to overlook them as long as the team delivers new business. But how do we achieve the holy grail of a good team using a system that enables them to work even more effectively?",
+    "date": "February 19, 2019",
+    "slug": "why-your-sales-team-doesnt-use-crm",
+    "category": "CRM Strategy",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "White Paper: Achieving Digital Transformations with Low Code Development",
+    "excerpt": "This paper is intended to set out how organisations can (and are) leveraging Low Code development on Platform as a Service ('PaaS') infrastructure to help expedite their digital transformation by delivering connected, intelligent business applications in a secure environment.",
+    "date": "April 20, 2019",
+    "slug": "white-paper-achieving-digital-transformations-with-low-code-development",
+    "category": "Digital Transformation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "The Salesforce Sales Cloud Top Five",
+    "excerpt": "Top tips for making the most of Salesforce Sales Cloud; including leveraging automation, mobile experience and integrations. The things no Salesforce Sales Cloud instance should be without!",
+    "date": "October 27, 2021",
+    "slug": "salesforce-sales-cloud-top-five-features",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Predictive Analytics: The Credit Manager's Crystal Ball",
+    "excerpt": "Wouldn't it be great if we could accurately identify which customers or prospects are going to default? We would be able to refuse or restrict credit terms and prevent the businesses we represented from being stung by insolvency; we would be nothing short of psychic credit superheroes! But is it possible?",
+    "date": "August 15, 2019",
+    "slug": "predictive-analytics-the-credit-managers-crystal-ball",
+    "category": "Innovation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "87% of credit managers admit systems automation would increase efficiency",
+    "excerpt": "87% of respondents in a recent D&B / CICM survey believe automation will improve the efficiency of their team in the next three years; but most have made little progress towards their digital transformation goals.",
+    "date": "August 22, 2019",
+    "slug": "study-finds-87-of-credit-managers-admit-systems-automation-would-increase-efficiency",
+    "category": "Industry Insights",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "The many reasons spreadsheets are not your friends",
+    "excerpt": "People love spreadsheets. They're a comforting way to push data around and track changes. BUT, there are many reasons why spreadsheets don't work beyond the most basic of use cases. Here's why we shouldn't be afraid to shake off the limitations of spreadsheets and move towards a database structure.",
+    "date": "October 1, 2019",
+    "slug": "whats-wrong-with-a-spreadsheet",
+    "category": "Digital Transformation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "One less thing to worry about: A robot apocalypse",
+    "excerpt": "Should you be worried about robots stealing your job? 'Robots' are an emotive epithet; is this just a continuation of a theme of efficiency driven by technology?",
+    "date": "October 15, 2021",
+    "slug": "one-less-thing-to-worry-about-a-robot-apocalypse",
+    "category": "Innovation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Email Integration in Salesforce",
+    "excerpt": "Brief explainer of the options available in Salesforce for integrating email",
+    "date": "November 21, 2021",
+    "slug": "email-integration-salesforce",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Salesforce Showcase: Salesforce + Xero Integration",
+    "excerpt": "Xero is one of the most popular accounting apps for SME's. Salesforce Sales Cloud is the world's number one CRM. What happens when you combine the two?",
+    "date": "January 12, 2022",
+    "slug": "salesforce-showcase-salesforce-xero-integration",
+    "category": "Integration",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "An Exact Science: Forecasts in Salesforce",
+    "excerpt": "Sales Forecasts help businesses understand how they're tracking against revenue expectations. The Forecast and Quota tools in Salesforce Sales Cloud are some of the most under-used but effective tools in the Sales Cloud suite.",
+    "date": "February 1, 2022",
+    "slug": "an-exact-science-forecasts-in-salesforce",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Getting It Right First Time: The Value of Salesforce Consulting Partners",
+    "excerpt": "Based on several studies over the past 20 years, around 50-70% of CRM projects fail. Getting it right isn't easy; which is why Salesforce Consulting Partners like Appdraft exist.",
+    "date": "March 5, 2022",
+    "slug": "getting-it-right-first-time-the-value-of-salesforce-consulting-partners",
+    "category": "Consulting",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "From Poacher to Gamekeeper: Building a Career in Salesforce",
+    "excerpt": "Having just achieved my 10th Salesforce Certification, Application Architect, I wanted to share a little about why I chose Salesforce consulting as a career change and what I learned in the process.",
+    "date": "April 19, 2022",
+    "slug": "from-poacher-to-gamekeeper-building-a-career-in-salesforce",
+    "category": "Career",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Go with the Flow - A Guide to Salesforce Flows",
+    "excerpt": "A comprehensive guide to understanding and implementing Salesforce Flows to automate your business processes.",
+    "date": "February 12, 2024",
+    "slug": "go-with-the-flow-a-guide-to-salesforce-flows",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Understanding Salesforce Forecasts",
+    "excerpt": "The article discusses the importance of forecasting in Salesforce. It explores several key features and tools available in Salesforce for forecasting and how they can benefit organisations.",
+    "date": "April 28, 2024",
+    "slug": "understanding-salesforce-forecasts",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Seamless Prospecting with Salesforce & LinkedIn",
+    "excerpt": "Discover how to streamline your prospecting process by integrating Salesforce with LinkedIn for more effective lead generation.",
+    "date": "September 19, 2024",
+    "slug": "seamless-prospecting-with-salesforce-linkedin",
+    "category": "Integration",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "What is a Salesforce Health Check and What Can It Do For Users?",
+    "excerpt": "A Salesforce Health Check is essential for businesses that have been using Salesforce but feel it's no longer aligned with their evolving needs. Whether it's restoring confidence in the platform, optimising efficiency with automation, or enhancing forecasting and reporting, a Health Check ensures your Salesforce instance adapts as your business grows.",
+    "date": "October 26, 2024",
+    "slug": "what-is-a-salesforce-health-check-and-what-can-it-do-for-users",
+    "category": "Consulting",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Streamlining Sales with Salesforce: The Ultimate Guide to Lead Management",
+    "excerpt": "Lead management is the backbone of any sales-driven business, and with Salesforce, you can transform the way your team handles inquiries. From automating lead capture to leveraging AI tools that predict conversion potential, Salesforce enables you to optimise every step of the process.",
+    "date": "October 27, 2024",
+    "slug": "streamlining-sales-with-salesforce-the-ultimate-guide-to-lead-management",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Transform Customer Interactions with AgentForce",
+    "excerpt": "Explore how AgentForce is revolutionizing customer service and support with AI-powered automation.",
+    "date": "November 20, 2024",
+    "slug": "transform-customer-interactions-with-agentforce",
+    "category": "Innovation",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "SFX: Seamless Integration for Salesforce + Xero",
+    "excerpt": "Learn how SFX provides a seamless connection between Salesforce and Xero for streamlined financial operations.",
+    "date": "November 25, 2024",
+    "slug": "sfx-seamless-integration-for-salesforce-xero",
+    "category": "Integration",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Einstein Trust Layer: How Salesforce Protects Data in the Age of Generative AI",
+    "excerpt": "Understanding how Salesforce's Einstein Trust Layer ensures data privacy and security when using AI capabilities.",
+    "date": "December 1, 2024",
+    "slug": "salesforce-einstein-trust-layer",
+    "category": "Security",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "The Importance of Diversity in Consultancy: Unleashing New Perspectives for IT Projects",
+    "excerpt": "Diversity in consultancy is more than just a buzzword, it's a strategic advantage, particularly in the fast-paced world of IT projects. A diverse team brings a wide array of perspectives, fostering creativity, innovation, and better problem-solving.",
+    "date": "August 23, 2024",
+    "slug": "the-importance-of-diversity-in-consultancy-unleashing-new-perspectives-for-it-projects",
+    "category": "Thought Leadership",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "Sustainability in Consultancy: Guiding Change from Within",
+    "excerpt": "As sustainability becomes a key driver of business strategy, consulting firms are uniquely positioned to lead change; both by improving their internal practices and guiding clients towards greener solutions.",
+    "date": "August 2, 2024",
+    "slug": "sustainability-in-consultancy-guiding-change-from-within",
+    "category": "Thought Leadership",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  },
+  {
+    "title": "How Salesforce Sales Engagement Supercharges Your Outbound Sales",
+    "excerpt": "Struggling with inconsistent lead follow-ups and wasted sales opportunities? Salesforce Sales Engagement transforms outbound sales by automating cadences, prioritising leads with intelligent scoring, and streamlining daily tasks with a work queue.",
+    "date": "March 11, 2025",
+    "slug": "salesforce-sales-engagement-automate-outbound-sales",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder & Lead Consultant"
+    }
+  }
+]
