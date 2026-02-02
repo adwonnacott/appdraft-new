@@ -18,8 +18,8 @@ How 'low code' development and Platform as a Service infrastructure is helping b
 </p>
 <!-- /wp:paragraph -->
 
-<!-- wp:file {"id":1196,"href":"https://appdraft.com/wp-content/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf"} -->
-<div class="wp-block-file"><a href="https://appdraft.com/wp-content/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf">Digital Transformation with Low Code</a><a href="https://appdraft.com/wp-content/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf" class="wp-block-file__button" download>Download</a></div>
+<!-- wp:file {"id":1196,"href":"/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf"} -->
+<div class="wp-block-file"><a href="/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf">Digital Transformation with Low Code</a><a href="/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf" class="wp-block-file__button" download>Download</a></div>
 <!-- /wp:file -->`;
 
   return (

@@ -47,7 +47,7 @@ export default function BlogPost() {
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":1918,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full"><img src="https://appdraft.com/wp-content/uploads/2021/11/salesforcetopfive.png" alt="" class="wp-image-1918"/></figure>
+<figure class="wp-block-image size-full"><img src="/uploads/2021/11/salesforcetopfive.png" alt="" class="wp-image-1918"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->

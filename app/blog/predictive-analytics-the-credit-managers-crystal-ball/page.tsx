@@ -67,7 +67,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:media-text {"mediaId":1909,"mediaLink":"https://www.appdraft.com/blog/2019/08/15/predictive-analytics-the-credit-managers-crystal-ball/einsteinsmall/","mediaType":"image","mediaWidth":17,"mediaSizeSlug":"medium"} -->
-<div class="wp-block-media-text alignwide is-stacked-on-mobile" style="grid-template-columns:17% auto"><figure class="wp-block-media-text__media"><img src="https://appdraft.com/wp-content/uploads/2019/08/einsteinsmall-300x300.png" alt="" class="wp-image-1909 size-medium"/></figure><div class="wp-block-media-text__content"><!-- wp:paragraph {"placeholder":"Content…","fontSize":"large"} -->
+<div class="wp-block-media-text alignwide is-stacked-on-mobile" style="grid-template-columns:17% auto"><figure class="wp-block-media-text__media"><img src="/uploads/2019/08/einsteinsmall-300x300.png" alt="" class="wp-image-1909 size-medium"/></figure><div class="wp-block-media-text__content"><!-- wp:paragraph {"placeholder":"Content…","fontSize":"large"} -->
 <p class="has-large-font-size"><meta charset="utf-8">Using <a href="https://youtu.be/wo9IUWQb6oU">Salesforce Einstein</a> Prediction Builder, users can very quickly build data models that can assign a probability score for late payment and critical default. Once data is housed on the platform, building predictions is simple. Prediction indicator fields can then be used to produce alerts or help prioritise accounts for credit control calls or credit limit reviews. </p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:media-text -->

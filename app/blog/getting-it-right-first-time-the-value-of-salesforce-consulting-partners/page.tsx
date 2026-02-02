@@ -31,7 +31,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":2089,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://appdraft.com/wp-content/uploads/2022/02/processmap2-1024x427.png" alt="" class="wp-image-2089"/></figure>
+<figure class="wp-block-image size-large"><img src="/uploads/2022/02/processmap2-1024x427.png" alt="" class="wp-image-2089"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -51,7 +51,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":2090,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://appdraft.com/wp-content/uploads/2022/02/datatransfer-1024x427.png" alt="" class="wp-image-2090"/></figure>
+<figure class="wp-block-image size-large"><img src="/uploads/2022/02/datatransfer-1024x427.png" alt="" class="wp-image-2090"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -71,7 +71,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":2092,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://appdraft.com/wp-content/uploads/2022/02/Untitled-design-27-1024x427.png" alt="" class="wp-image-2092"/></figure>
+<figure class="wp-block-image size-large"><img src="/uploads/2022/02/Untitled-design-27-1024x427.png" alt="" class="wp-image-2092"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
@@ -91,7 +91,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":2093,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://appdraft.com/wp-content/uploads/2022/02/payback-1024x427.png" alt="" class="wp-image-2093"/></figure>
+<figure class="wp-block-image size-large"><img src="/uploads/2022/02/payback-1024x427.png" alt="" class="wp-image-2093"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->

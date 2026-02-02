@@ -115,7 +115,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               prose-strong:text-gray-900 prose-strong:font-semibold
               prose-img:rounded-xl prose-img:shadow-lg
               prose-blockquote:border-l-4 prose-blockquote:border-blue-600 prose-blockquote:pl-6 prose-blockquote:italic"
-            dangerouslySetInnerHTML={{ __html: '<p>Content will be loaded here from WordPress HTML.</p>' }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
       </article>

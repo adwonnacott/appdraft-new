@@ -57,7 +57,7 @@ export default function BlogPost() {
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":2065,"width":1025,"height":291,"sizeSlug":"large","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://appdraft.com/wp-content/uploads/2022/01/143066e1291173b4907b9d6b7a55ec6e_forecasting-configuring-types-4-1024x291.jpeg" alt="" class="wp-image-2065" style="width:1025px;height:291px"/><figcaption class="wp-element-caption">forecast view in Salesforce</figcaption></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="/uploads/2022/01/143066e1291173b4907b9d6b7a55ec6e_forecasting-configuring-types-4-1024x291.jpeg" alt="" class="wp-image-2065" style="width:1025px;height:291px"/><figcaption class="wp-element-caption">forecast view in Salesforce</figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:heading -->
@@ -89,7 +89,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":2064,"width":999,"height":473,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full is-resized"><img src="https://appdraft.com/wp-content/uploads/2022/01/fce99ac7ac9deab1d81a7971f99ca08b.png" alt="" class="wp-image-2064" style="width:999px;height:473px"/><figcaption class="wp-element-caption">new tracked changes to forecasts </figcaption></figure>
+<figure class="wp-block-image size-full is-resized"><img src="/uploads/2022/01/fce99ac7ac9deab1d81a7971f99ca08b.png" alt="" class="wp-image-2064" style="width:999px;height:473px"/><figcaption class="wp-element-caption">new tracked changes to forecasts </figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->

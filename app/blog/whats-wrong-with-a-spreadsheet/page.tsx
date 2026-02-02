@@ -15,7 +15,7 @@ export default function BlogPost() {
 <!-- /wp:heading -->
 
 <!-- wp:image {"id":1901,"sizeSlug":"large","linkDestination":"none","style":{"color":{}}} -->
-<figure class="wp-block-image size-large"><img src="https://appdraft.com/wp-content/uploads/2021/11/Wordpress-Post-Featured-Image-1-1-1024x536.png" alt="" class="wp-image-1901"/></figure>
+<figure class="wp-block-image size-large"><img src="/uploads/2021/11/Wordpress-Post-Featured-Image-1-1-1024x536.png" alt="" class="wp-image-1901"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph -->
