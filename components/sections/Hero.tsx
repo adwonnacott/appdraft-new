@@ -8,7 +8,7 @@ export default function Hero() {
           <div className="space-y-8">
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
               Salesforce Experts Who{' '}
-              <span className="text-blue-600">Deliver Results, Not Just Systems</span>
+              <span className="text-appdraft-primary">Deliver Results, Not Just Systems</span>
             </h1>
 
             <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
@@ -19,13 +19,13 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/services/health-checks"
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg text-center"
+                className="bg-appdraft-accent text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#d94d46] transition-all hover:shadow-lg text-center"
               >
                 Get Your Free Health Check
               </Link>
               <Link
                 href="/contact"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all text-center"
+                className="border-2 border-appdraft-primary text-appdraft-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all text-center"
               >
                 Discuss Your Project
               </Link>
@@ -33,15 +33,15 @@ export default function Hero() {
 
             <div className="flex items-center gap-8 pt-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600">130+</div>
+                <div className="text-4xl font-bold text-appdraft-primary">130+</div>
                 <div className="text-gray-600 text-sm">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600">100%</div>
+                <div className="text-4xl font-bold text-appdraft-primary">100%</div>
                 <div className="text-gray-600 text-sm">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-600">15+</div>
+                <div className="text-4xl font-bold text-appdraft-primary">15+</div>
                 <div className="text-gray-600 text-sm">Years Experience</div>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function Hero() {
               {/* Stats Cards */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-100">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">130+</div>
+                  <div className="text-4xl font-bold text-appdraft-primary mb-2">130+</div>
                   <div className="text-sm text-gray-600">Projects Delivered</div>
                 </div>
                 <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-green-100">
