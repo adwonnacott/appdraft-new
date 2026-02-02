@@ -7,13 +7,13 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-              Salesforce Experts Who{' '}
-              <span className="text-appdraft-primary">Deliver Results, Not Just Systems</span>
+              Experts in Salesforce Implementation{' '}
+              <span className="text-appdraft-primary">For Growing Businesses</span>
             </h1>
 
             <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
-              We implement, optimize, and support Salesforce for UK growing businesses.
-              From discovery to go-live and beyond, we ensure your team adopts the platform and achieves measurable outcomes.
+              We help sales and operations teams get more from Salesforce fast. With 130+ projects delivered,
+              we blend technical expertise with practical business understanding.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -37,12 +37,12 @@ export default function Hero() {
                 <div className="text-gray-600 text-sm">Projects Delivered</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-appdraft-primary">100%</div>
-                <div className="text-gray-600 text-sm">Client Satisfaction</div>
+                <div className="text-4xl font-bold text-appdraft-primary">20</div>
+                <div className="text-gray-600 text-sm">Years of Support</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-appdraft-primary">15+</div>
-                <div className="text-gray-600 text-sm">Years Experience</div>
+                <div className="text-4xl font-bold text-appdraft-primary">5.0</div>
+                <div className="text-gray-600 text-sm">AppExchange Rating</div>
               </div>
             </div>
           </div>
