@@ -1,0 +1,19 @@
+name = "appdraft-contact-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Route for custom domain
+[[routes]]
+pattern = "appdraft.com/api/*"
+zone_name = "appdraft.com"
+
+[vars]
+ALLOWED_ORIGIN = "https://appdraft.com"
+
+# Salesforce credentials - set these as secrets via wrangler
+# Uses JWT Bearer Flow (same as psa-copilot-api)
+# wrangler secret put SF_CLIENT_ID
+# wrangler secret put SF_CLIENT_SECRET
+# wrangler secret put SF_USERNAME
+# wrangler secret put SF_INSTANCE_URL
+# wrangler secret put SF_PRIVATE_KEY

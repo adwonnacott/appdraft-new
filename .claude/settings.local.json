@@ -26,7 +26,12 @@
       "Bash(sudo rm:*)",
       "WebFetch(domain:unsplash.com)",
       "Bash(node:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "WebFetch(domain:developer.salesforce.com)",
+      "Bash(npx --yes sharp-cli:*)",
+      "Bash(git rm:*)",
+      "Bash(npm run deploy:*)",
+      "Bash(echo:*)"
     ]
   }
 }

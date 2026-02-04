@@ -3,7 +3,7 @@ import ContentSection from '@/components/sections/ContentSection';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlowCard from '@/components/ui/GlowCard';
-import MultiStepForm from '@/components/ui/MultiStepForm';
+import ContactForm from '@/components/ui/ContactForm';
 
 export const metadata = {
   title: 'Contact Us',
@@ -102,12 +102,12 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center max-w-3xl mx-auto">
-              <span className="inline-block px-4 py-2 bg-[#3cd6bf]/10 text-[#3cd6bf] rounded-full text-sm font-medium mb-6">
+              <span className="inline-block px-4 py-2 bg-[#19779b]/10 text-[#19779b] rounded-full text-sm font-medium mb-6">
                 Get in Touch
               </span>
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Let&apos;s Talk About Your{' '}
-                <span className="text-[#3cd6bf]">Salesforce Project</span>
+                <span className="text-[#19779b]">Salesforce Project</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Tell us about your business and requirements, and we&apos;ll get back to you within 24 hours with tailored recommendations.
@@ -123,13 +123,13 @@ export default function Contact() {
           <div className="flex flex-wrap justify-center gap-8 lg:gap-16">
             {contactMethods.map((method, index) => (
               <div key={index} className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#3cd6bf] rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-[#19779b] rounded-lg flex items-center justify-center flex-shrink-0">
                   {method.icon}
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wide">{method.title}</p>
                   {method.href ? (
-                    <a href={method.href} className="text-gray-900 font-medium hover:text-[#3cd6bf] transition-colors">
+                    <a href={method.href} className="text-gray-900 font-medium hover:text-[#19779b] transition-colors">
                       {method.content}
                     </a>
                   ) : (
@@ -142,11 +142,13 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Multi-Step Form */}
+      {/* Contact Form */}
       <ContentSection background="gray">
-        <ScrollReveal>
-          <MultiStepForm />
-        </ScrollReveal>
+        <div className="max-w-xl mx-auto">
+          <ScrollReveal>
+            <ContactForm />
+          </ScrollReveal>
+        </div>
       </ContentSection>
 
       {/* Quick Links */}
@@ -161,10 +163,10 @@ export default function Contact() {
               <Link href={link.href}>
                 <GlowCard className="h-full rounded-2xl" glowColor="rgba(25, 119, 155, 0.1)">
                   <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover transition-all duration-300 h-full group">
-                    <div className="w-14 h-14 bg-[#3cd6bf]/10 text-[#3cd6bf] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#3cd6bf] group-hover:text-white transition-all duration-300">
+                    <div className="w-14 h-14 bg-[#19779b]/10 text-[#19779b] rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#19779b] group-hover:text-white transition-all duration-300">
                       {link.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#3cd6bf] transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#19779b] transition-colors">
                       {link.title}
                     </h3>
                     <p className="text-gray-600">
@@ -178,44 +180,7 @@ export default function Contact() {
         </div>
       </ContentSection>
 
-      {/* Map Section */}
       <ContentSection background="gray">
-        <ScrollReveal>
-          <div className="bg-white rounded-2xl shadow-card overflow-hidden">
-            <div className="w-full h-80">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.890589322!2d-0.08868892346!3d51.527534871814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b4f3e4e3e3f%3A0x1234567890abcdef!2s128%20City%20Rd%2C%20London%20EC1V%202NX!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Appdraft Office Location"
-              />
-            </div>
-
-            <div className="p-6 bg-white border-t border-gray-100">
-              <div className="grid md:grid-cols-3 gap-6 text-center md:text-left">
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Address</h3>
-                  <p className="text-gray-600">128 City Road, London EC1V 2NX</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Nearest Tube</h3>
-                  <p className="text-gray-600">Old Street Station (Northern Line)</p>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Parking</h3>
-                  <p className="text-gray-600">Limited street parking, public car parks nearby</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </ContentSection>
-
-      <ContentSection background="white">
         <CTABanner
           title="Prefer to Talk First?"
           description="Call us on 020 3858 0040 or email info@appdraft.com"
