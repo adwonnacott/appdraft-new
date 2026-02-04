@@ -1,278 +1,145 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import Accordion from '@/components/ui/Accordion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce for Financial Services | Appdraft',
-  description: 'Expert Salesforce Financial Services Cloud implementation. Manage client relationships, ensure compliance, deliver personalized wealth management, and drive growth.',
+  title: 'Salesforce for Financial Services & Banking',
+  description: 'Salesforce solutions for financial services. Streamline client management, track opportunities, and maintain compliance with Financial Services Cloud.',
+  keywords: ['Salesforce financial services', 'Financial Services Cloud', 'banking CRM', 'wealth management Salesforce', 'compliance CRM'],
+  openGraph: {
+    title: 'Salesforce for Financial Services | Appdraft',
+    description: 'Salesforce solutions for financial services organisations.',
+    url: 'https://appdraft.com/industries/financial-services',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/industries/financial-services',
+  },
 };
 
+// Contextual icons for Financial Services features
+const icons = {
+  portfolio: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+  ),
+  opportunity: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  ),
+  application: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  ),
+  document: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+    </svg>
+  ),
+  compliance: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  reporting: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+};
+
+const challenges = [
+  {
+    title: 'Client data is spread across emails, files and spreadsheets',
+    content: 'We bring your client portfolio into Salesforce so you can see all interactions, documents and deal stages in one place.',
+  },
+  {
+    title: 'Opportunities need a process that matches real-world deal flow',
+    content: "We design opportunity stages that reflect how your business operates. For many brokers, an opportunity represents the process of securing a new client. Once the client is on board, a custom application tracking process can capture actual revenue figures based on commission amounts or other agreed terms.",
+  },
+  {
+    title: 'Lender applications are hard to track',
+    content: "Tracking which lenders have been sent applications, which applications have been made and the status of each is often manual and inconsistent. We've built custom solutions in Salesforce to track applications, their progress and their financial outcomes.",
+  },
+  {
+    title: 'Document handling is manual and inconsistent',
+    content: 'We configure document generation and e-signature processes in Salesforce, making it easy for clients to receive, complete and return documents quickly.',
+  },
+  {
+    title: 'Compliance and audit readiness is difficult',
+    content: 'We create a clear audit trail of client communications and document versions to support FCA compliance and internal audits.',
+  },
+];
+
+const roadmapFeatures = [
+  { icon: icons.portfolio, title: 'Client portfolio management', description: 'Keep all contact details, history and related records in one system.' },
+  { icon: icons.opportunity, title: 'Tailored opportunity processes', description: 'Match Salesforce stages to your specific client onboarding journey.' },
+  { icon: icons.application, title: 'Application tracking', description: 'Capture application details, track progress and calculate actual revenue.' },
+  { icon: icons.document, title: 'Document generation and e-signature', description: 'Produce and send documents for signing without leaving Salesforce.' },
+  { icon: icons.compliance, title: 'Compliance recordkeeping', description: 'Retain a clear audit trail for all communications and approvals.' },
+  { icon: icons.reporting, title: 'Reporting and dashboards', description: 'Create real-time views of pipeline, applications in progress and business performance.' },
+];
+
 export default function FinancialServices() {
-  const challenges = [
-    {
-      title: 'Regulatory Compliance',
-      description: 'Complex and evolving regulations requiring strict data governance, audit trails, and reporting capabilities',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      ),
-    },
-    {
-      title: 'Client Relationship Management',
-      description: 'Difficulty managing complex household relationships, financial goals, and multi-generational wealth planning',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Data Fragmentation',
-      description: 'Client information scattered across legacy systems, spreadsheets, and departments hindering holistic view',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-      ),
-    },
-    {
-      title: 'Lead Management',
-      description: 'Inefficient lead distribution, tracking, and nurturing resulting in missed opportunities and poor conversion',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      ),
-    },
-    {
-      title: 'Advisor Productivity',
-      description: 'Advisors spending too much time on administrative tasks instead of building client relationships',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      ),
-    },
-    {
-      title: 'Personalization at Scale',
-      description: 'Inability to deliver personalized experiences and advice to growing client base efficiently',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-      ),
-    },
-  ];
-
-  const solutions = [
-    {
-      title: 'Financial Services Cloud',
-      description: 'Implement purpose-built financial services capabilities including household management, financial accounts, and relationship groups.',
-    },
-    {
-      title: 'Compliance & Security',
-      description: 'Configure robust security controls, audit logging, data encryption, and compliance reporting to meet FCA and industry standards.',
-    },
-    {
-      title: 'Client Portal',
-      description: 'Build secure client portals with Experience Cloud for document sharing, account access, and personalized financial insights.',
-    },
-    {
-      title: 'Advisor Workspace',
-      description: 'Create unified workspaces with Einstein Activity Capture, next-best-action recommendations, and integrated communication tools.',
-    },
-    {
-      title: 'Marketing Automation',
-      description: 'Deliver targeted, compliant marketing campaigns with Salesforce Marketing Cloud and journey-based client engagement.',
-    },
-    {
-      title: 'Analytics & Reporting',
-      description: 'Build comprehensive dashboards for AUM tracking, client segmentation, advisor performance, and compliance monitoring.',
-    },
-  ];
-
-  const benefits = [
-    'Achieve 360-degree view of client households and financial relationships',
-    'Reduce compliance risk with automated audit trails and approval workflows',
-    'Increase advisor productivity by 25% with streamlined workflows and automation',
-    'Improve client satisfaction through personalized service and proactive engagement',
-    'Accelerate revenue growth with better lead management and cross-selling',
-    'Ensure data security and privacy with enterprise-grade encryption and controls',
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Financial Services
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce for Financial Services
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              From wealth management and private banking to insurance and financial advisory, we help financial
-              services firms deliver exceptional client experiences while maintaining the highest standards of compliance and security.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Get Started Today
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Financial Services"
+        title="Salesforce For Firms Managing"
+        highlight="Clients In Regulated Settings"
+        description="We help financial services organisations streamline client management, track opportunities from enquiry to completion, and maintain a clear compliance trail."
+        image="/images/industries/financial-services.jpg"
+        imageAlt="Financial services Salesforce dashboard"
+        buttons={[
+          { label: 'Book A Call', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Challenges Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Common Challenges in Financial Services
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We understand the unique regulatory and operational pressures facing financial services firms
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {challenges.map((challenge) => (
-              <div
-                key={challenge.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {challenge.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {challenge.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {challenge.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Helps Financial Services Firms
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Specialized Salesforce solutions designed for the unique needs of financial services organizations
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-blue-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Key Benefits for Financial Services
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Our financial services clients see measurable improvements in client satisfaction and operational efficiency
-              </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start">
-                    <svg className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Case Study</h3>
-              <p className="text-blue-100 mb-6">
-                A wealth management firm implemented Salesforce Financial Services Cloud with Appdraft and achieved:
-              </p>
-              <div className="space-y-4">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">45%</div>
-                  <div className="text-blue-100">Increase in advisor productivity</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">30%</div>
-                  <div className="text-blue-100">Improvement in client retention rates</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">60%</div>
-                  <div className="text-blue-100">Reduction in compliance reporting time</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Approach */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              FCA-Compliant Implementation
-            </h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              We've implemented Salesforce for financial services firms across the UK,
-              with deep expertise in regulatory compliance, data security, and industry best practices.
-            </p>
-            <Link
-              href="/services/implementation"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Learn About Our Process
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Financial Services Firm?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how Salesforce Financial Services Cloud can help you deliver exceptional client experiences while ensuring compliance
+      <ContentSection
+        title="Managing complex financial workflows"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <p className="max-w-4xl text-lg text-gray-700 leading-relaxed">
+            Whether you're advising clients, brokering finance or managing assets, Salesforce provides a single place to manage your pipeline, documentation and approvals.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/health-checks"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Get a Free Health Check
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="Common challenges in financial services"
+        background="gray"
+      >
+        <Accordion items={challenges} />
+      </ContentSection>
+
+      <ContentSection
+        title="A roadmap that grows with you"
+        subtitle="We usually start by mapping how enquiries become opportunities and how those opportunities progress through to completion. From there, Salesforce can support:"
+        background="white"
+      >
+        <FeatureGrid features={roadmapFeatures} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+            Every build is shaped around your service model and compliance requirements, so your team can work efficiently while meeting regulatory obligations.
+          </p>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Let's talk Salesforce"
+          description="Whether you're advising clients, brokering finance or managing assets, we can help you design Salesforce to track every opportunity, application and approval."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

@@ -1,234 +1,181 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import Accordion from '@/components/ui/Accordion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Health Check Services | Appdraft',
-  description: 'Comprehensive Salesforce health checks to identify issues, optimize performance, and ensure your CRM is working for you. Expert audit and recommendations.',
+  title: 'Salesforce Health Check',
+  description: "Free Salesforce health check to review your setup. Get prioritised recommendations, budget estimates, and a clear improvement roadmap.",
+  keywords: ['Salesforce health check', 'Salesforce audit', 'CRM review', 'Salesforce assessment', 'free Salesforce review'],
+  openGraph: {
+    title: 'Salesforce Health Check | Appdraft',
+    description: "Free Salesforce health check to review your setup. Get prioritised recommendations and a clear improvement roadmap.",
+    url: 'https://appdraft.com/services/health-checks',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/services/health-checks',
+  },
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Salesforce Health Check',
+  description: 'Comprehensive Salesforce health check including system review, prioritised recommendations, budget estimates, and improvement roadmap.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Appdraft',
+    url: 'https://appdraft.com',
+  },
+  serviceType: 'CRM Audit',
+  areaServed: {
+    '@type': 'Country',
+    name: 'United Kingdom',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'GBP',
+    description: 'Free initial assessment',
+  },
+};
+
+// Contextual icons for Health Check deliverables
+const icons = {
+  prioritised: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </svg>
+  ),
+  budget: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  recommendations: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+    </svg>
+  ),
+  assessment: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+    </svg>
+  ),
+};
+
+const deliverables = [
+  { icon: icons.prioritised, title: 'Prioritised Changes', description: 'A clear list of useful changes, ranked by impact and effort.' },
+  { icon: icons.budget, title: 'Budget Estimates', description: 'Realistic estimates to help you plan and prioritise work.' },
+  { icon: icons.recommendations, title: 'Recommendations', description: 'Advice on what to address now and what can wait.' },
+  { icon: icons.assessment, title: 'Honest Assessment', description: "A realistic view of what's working and where the gaps are." },
+];
+
+const whenItHelps = [
+  { title: "Users aren't engaged with the system", content: "When your team avoids using Salesforce or finds workarounds, there's usually a reason. We'll identify what's getting in the way." },
+  { title: 'Reporting is limited and key KPIs are hard to access', content: "If you can't easily see the numbers that matter, your setup may need adjusting. We'll show you how to get better visibility." },
+  { title: "You're deferring to spreadsheets to manage processes", content: "Spreadsheets outside Salesforce often signal gaps in your CRM setup. We'll help you understand why and how to fix it." },
+  { title: "The business has changed, but Salesforce hasn't", content: "As your business evolves, your CRM should evolve with it. We'll identify where things have drifted out of sync." },
+  { title: 'You want to start with confidence before making bigger changes', content: "A Health Check gives you clarity before you commit to major work. You'll know exactly where you stand." },
+];
+
 export default function HealthChecks() {
-  const benefits = [
-    {
-      title: 'Identify Hidden Issues',
-      description: 'Uncover configuration problems, security gaps, and performance bottlenecks before they impact your business',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Optimize Performance',
-      description: 'Get actionable recommendations to improve system speed, data quality, and user adoption',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Security and Compliance',
-      description: 'Ensure your Salesforce org meets security best practices and compliance requirements',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Maximize ROI',
-      description: 'Discover underutilized features and opportunities to get more value from your Salesforce investment',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Clear Roadmap',
-      description: 'Receive prioritized recommendations with clear next steps for improving your Salesforce org',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Expert Insights',
-      description: 'Benefit from our experience across 130+ Salesforce implementations and years of best practice',
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      ),
-    },
-  ];
-
-  const areas = [
-    'User permissions and security settings',
-    'Data quality and duplicate management',
-    'Automation and workflow efficiency',
-    'Integration health and API usage',
-    'Storage limits and capacity planning',
-    'Customization complexity and technical debt',
-    'User adoption and system usage patterns',
-    'Report and dashboard effectiveness',
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              You've Invested in Salesforce. Let's Make Sure it's Working for You
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Over time, implementations drift. Salesforce orgs that once worked well can become cluttered, slow, or misaligned with how your team actually works. Our health checks are a diagnostic service for organizations that suspect their setup isn't quite right anymore.
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <PageHero
+        badge="Health Checks"
+        title="You've Invested in Salesforce."
+        highlight="Let's Make Sure it's Working"
+        description="If Salesforce isn't delivering, there's usually a reason. In our experience, some organisations start with an implementation that never quite fits how the business operates. For others, what was originally a good match has drifted out of sync as the business has evolved."
+        image="/images/services/health-checks.jpg"
+        imageAlt="Salesforce health check analysis"
+        buttons={[
+          { label: 'Book A Health Check', href: '/contact', primary: true },
+        ]}
+      />
+
+      <ContentSection
+        title="What a Health Check covers"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              We review whether your Salesforce setup still supports your business. That includes how the data is structured, how users interact with it, and whether you're getting the visibility you need.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Request a Health Check
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Key Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Get a Health Check?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Regular health checks ensure your Salesforce org stays healthy, secure, and aligned with your business goals
+            <p>
+              We focus on what adds value. That might mean quick wins, activating features that haven't been used, or simplifying what's already there. If parts of your workflow have drifted into spreadsheets or inboxes, we'll help you understand why and how to bring them back into Salesforce.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What We Review */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                What We Review
-              </h2>
-              <p className="text-xl text-gray-600">
-                Our comprehensive health check covers all critical areas of your Salesforce org
-              </p>
-            </div>
-
-            <div className="bg-white p-10 rounded-2xl shadow-lg">
-              <div className="grid md:grid-cols-2 gap-6">
-                {areas.map((area, index) => (
-                  <div key={index} className="flex items-start">
-                    <svg className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-gray-700">{area}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Health Check Process
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A systematic approach to evaluating your Salesforce org and delivering actionable insights
+            <p>
+              A Health Check helps you understand the challenges, including the ones you've already noticed and the ones you haven't. It gives you clear, practical options. There's no pressure to act on the recommendations straight away.
             </p>
           </div>
+        </ScrollReveal>
+      </ContentSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Discovery Call</h3>
-              <p className="text-gray-600">
-                We discuss your concerns, business goals, and specific areas you want us to focus on
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Comprehensive Audit</h3>
-              <p className="text-gray-600">
-                We analyze your org configuration, security, data quality, and usage patterns
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Detailed Report</h3>
-              <p className="text-gray-600">
-                Receive a prioritized list of findings with clear recommendations and next steps
-              </p>
-            </div>
+      <ContentSection
+        title="How it works"
+        background="gray"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              We start with a short call to understand your business. What you offer, how your team operates, and where the pain points are.
+            </p>
+            <p>
+              Then we review your Salesforce system in detail, using that context to guide the analysis. We're looking not just at how the system is configured, but at how well it supports your processes and helps people do their jobs.
+            </p>
           </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Optimize Your Salesforce?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Get a comprehensive health check and discover how to maximize your Salesforce investment
+      <ContentSection
+        title="What you get out of it"
+        subtitle="You'll receive a clear, structured report that includes:"
+        background="white"
+      >
+        <FeatureGrid features={deliverables} columns={4} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center">
+            It's a practical way to get clarity and unlock more value from the platform.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule Your Health Check
-            </Link>
-            <Link
-              href="/services/support"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Explore Support Options
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="When a Health Check helps"
+        background="gray"
+      >
+        <Accordion items={whenItHelps} />
+
+        <ScrollReveal className="mt-10">
+          <blockquote className="border-l-4 border-[#3cd6bf] pl-6 italic text-gray-700 max-w-2xl mx-auto">
+            <p className="text-lg mb-2">
+              "The Health Check gave us real clarity. We knew where we stood, what to tackle first, and what could wait."
+            </p>
+            <footer className="text-gray-600 not-italic">
+              - Operations Lead, Professional Services Client
+            </footer>
+          </blockquote>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Want to make Salesforce work harder for your business?"
+          description="Book a Health Check and we'll help you identify the problems, spot the opportunities, and decide what to do next."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

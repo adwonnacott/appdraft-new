@@ -1,218 +1,160 @@
 import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Sales Cloud Implementation | Appdraft',
-  description: 'Expert Sales Cloud implementation services to streamline your sales process, improve pipeline visibility, and accelerate revenue growth.',
+  title: 'Salesforce Sales Cloud Implementation',
+  description: "Sales Cloud implementation by certified experts. Lead management, opportunity tracking, forecasting, and automation to transform your sales process.",
+  keywords: ['Sales Cloud', 'Salesforce Sales Cloud', 'CRM implementation', 'sales automation', 'lead management'],
+  openGraph: {
+    title: 'Salesforce Sales Cloud Implementation | Appdraft',
+    description: "Sales Cloud implementation by certified experts. Transform your sales process with the world's #1 CRM.",
+    url: 'https://appdraft.com/salesforce/sales-cloud',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/salesforce/sales-cloud',
+  },
 };
 
+// Contextual icons for Sales Cloud features
+const icons = {
+  leads: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+  ),
+  activity: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  quote: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  ),
+  forecast: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  ),
+  dashboard: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+  mobile: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+    </svg>
+  ),
+  implementation: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+  ),
+  realignment: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+    </svg>
+  ),
+  integration: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+};
+
+const salesCloudFeatures = [
+  { icon: icons.leads, title: 'Lead & Opportunity Management', description: 'Manage leads, accounts, contacts and opportunities in one place.' },
+  { icon: icons.activity, title: 'Activity Tracking', description: 'Task tracking, activity history, calendar and email integration with Outlook or Gmail.' },
+  { icon: icons.quote, title: 'Quote Generation', description: 'Create and manage quotes directly from opportunities.' },
+  { icon: icons.forecast, title: 'Forecasting', description: 'Forecasts and quota attainment to track revenue goals.' },
+  { icon: icons.dashboard, title: 'Dashboards & Reports', description: 'User-friendly analytics and dashboards for insights.' },
+  { icon: icons.mobile, title: 'Mobile Access', description: 'Mobile access for teams in the field.' },
+];
+
+const howWeHelp = [
+  { icon: icons.implementation, title: 'Implementation', description: 'End-to-end implementation and onboarding.' },
+  { icon: icons.realignment, title: 'Realignment', description: 'Reviewing and realigning Sales Cloud when it no longer fits your sales process.' },
+  { icon: icons.integration, title: 'Integration', description: 'Integrating with Marketing Cloud, Service Cloud, or third-party tools.' },
+];
+
 export default function SalesCloud() {
-  const benefits = [
-    {
-      title: 'Complete Pipeline Visibility',
-      description: 'Track every opportunity from lead to close with real-time dashboards and forecasting tools that give you confidence in your numbers.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      ),
-    },
-    {
-      title: 'Automated Sales Workflows',
-      description: 'Eliminate repetitive tasks with intelligent automation. From lead assignment to follow-up reminders, keep your team focused on selling.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      ),
-    },
-    {
-      title: 'Mobile Sales Enablement',
-      description: 'Empower your team to work from anywhere with full mobile access to customer data, notes, and collaboration tools.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Intelligent Lead Management',
-      description: 'Capture leads from multiple sources, score them automatically, and route to the right rep at the right time.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Sales Analytics & AI',
-      description: 'Leverage Einstein AI for predictive lead scoring, opportunity insights, and recommendations that help your team close more deals.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      ),
-    },
-    {
-      title: 'Email & Calendar Integration',
-      description: 'Seamlessly integrate with Outlook or Gmail to log emails, track opens, and sync calendar events without leaving your inbox.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      ),
-    },
-  ];
-
-  const howWeHelp = [
-    {
-      title: 'Sales Process Design',
-      description: 'We map your unique sales stages, qualification criteria, and handoff points to create a system that mirrors how you actually sell.',
-    },
-    {
-      title: 'Custom Objects & Fields',
-      description: 'Configure Sales Cloud to capture the specific information your business needs without over-complicating the interface.',
-    },
-    {
-      title: 'Pipeline Reporting',
-      description: 'Build dashboards and reports that give you real-time visibility into sales performance, forecast accuracy, and rep productivity.',
-    },
-    {
-      title: 'Email & CPQ Integration',
-      description: 'Connect Sales Cloud with your existing tools like email, quoting systems, DocuSign, and marketing platforms for a unified workflow.',
-    },
-    {
-      title: 'Team Training',
-      description: 'Comprehensive onboarding and training programs to ensure your sales team adopts the new system quickly and enthusiastically.',
-    },
-    {
-      title: 'Data Migration',
-      description: 'Safe, accurate migration of your existing customer and opportunity data from spreadsheets, legacy CRMs, or other systems.',
-    },
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Salesforce Sales Cloud
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Transform Your Sales Process with Sales Cloud
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Sales Cloud is the world's leading CRM platform for managing leads, opportunities, and customer relationships.
-              Close deals faster, improve forecast accuracy, and give your sales team the tools they need to succeed.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Get Started with Sales Cloud
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Sales Cloud"
+        title="The World's Number One"
+        highlight="CRM"
+        description="Salesforce is the backbone of modern sales teams. Sales Cloud brings structure, visibility and consistency to your sales process. It replaces spreadsheets and scattered tools with a single platform to manage leads, opportunities, quotes, tasks, emails and performance."
+        image="/images/salesforce/sales-cloud.jpg"
+        imageAlt="Sales Cloud CRM dashboard"
+        buttons={[
+          { label: 'Get Started', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Key Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Sales Cloud?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything your sales team needs to build relationships, track opportunities, and close deals faster
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
+      <ContentSection
+        title="Why Salesforce Sales Cloud?"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              Salesforce has been ranked the{' '}
+              <Link
+                href="https://www.salesforce.com/news/stories/idc-crm-market-share-ranking-2025/"
+                target="_blank"
+                className="text-[#3cd6bf] hover:underline font-semibold"
               >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {benefit.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How Appdraft Can Help */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Can Help
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've implemented Sales Cloud for over 130 UK businesses. Here's how we'll make it work for you.
+                number one CRM provider by IDC for 12 consecutive years
+              </Link>{' '}
+              based on global market share and revenue.
+            </p>
+            <p>
+              It leads similarly across North America, Western Europe, Latin America and Asia-Pacific.
+            </p>
+            <p>
+              Salesforce earns its position by consistently innovating, integrating across ecosystems and scaling effortlessly with growing businesses.
             </p>
           </div>
+        </ScrollReveal>
+      </ContentSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {howWeHelp.map((item, index) => (
-              <div
-                key={item.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-blue-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-blue-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Our Implementation Approach
-            </h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              We follow a proven six-step process from discovery to go-live, ensuring your Sales Cloud implementation
-              delivers results from day one.
-            </p>
-            <Link
-              href="/services/implementation"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Learn About Our Process
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Sales Process?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how Sales Cloud can help your team close more deals and grow revenue
+      <ContentSection
+        title="What is Sales Cloud?"
+        subtitle="Sales Cloud manages your entire sales lifecycle, from lead capture through to deal close. It includes:"
+        background="gray"
+      >
+        <FeatureGrid features={salesCloudFeatures} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center">
+            Powered by built-in AI from Agentforce.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/support"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Explore Support Options
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="How we help"
+        subtitle="With over 130 Salesforce projects under our belt, we make sure Sales Cloud works for you."
+        background="white"
+      >
+        <FeatureGrid features={howWeHelp} columns={3} variant="card" />
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Thinking about Sales Cloud?"
+          description="Whether you're building a new CRM or improving your current setup, we ensure Sales Cloud delivers real impact. Book a call and speak to a consultant who understands how to make it work for growth."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

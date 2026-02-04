@@ -1,303 +1,158 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce for Healthcare | Appdraft',
-  description: 'Expert Salesforce solutions for healthcare organizations. Manage patient engagement, care coordination, provider relationships, and compliance with Health Cloud.',
+  title: 'Salesforce for Healthcare & Life Sciences',
+  description: 'Salesforce Health Cloud for patient care, medical device suppliers, and pharmaceutical companies. Compliant patient data management and care coordination.',
+  keywords: ['Salesforce healthcare', 'Health Cloud', 'patient management', 'life sciences CRM', 'medical device CRM', 'pharmaceutical Salesforce'],
+  openGraph: {
+    title: 'Salesforce for Healthcare | Appdraft',
+    description: 'Salesforce solutions for healthcare and life sciences organisations.',
+    url: 'https://appdraft.com/industries/healthcare',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/industries/healthcare',
+  },
 };
 
+// Contextual icons for Healthcare features
+const icons = {
+  patientData: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    </svg>
+  ),
+  appointment: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  medicalHistory: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  ),
+  patientFile: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+    </svg>
+  ),
+  prescription: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+    </svg>
+  ),
+  permissions: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+    </svg>
+  ),
+  deviceTracking: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  handlers: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  pharmaceutical: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>
+  ),
+  service: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  portal: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+    </svg>
+  ),
+  accounting: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+    </svg>
+  ),
+};
+
+const patientCareFeatures = [
+  { icon: icons.patientData, title: 'Patient Data Capture', description: 'Capture the right patient data at the right time with user-specific page layouts and field-level controls.' },
+  { icon: icons.appointment, title: 'Appointment Booking', description: 'Enable online and face-to-face appointment booking using Salesforce Scheduler and other integrated tools.' },
+  { icon: icons.medicalHistory, title: 'Medical History & Consent', description: 'Manage onboarding forms to collect medical history and consent.' },
+  { icon: icons.patientFile, title: 'Patient Files', description: 'Create patient files that bring together clinical notes, diagnostics, treatment steps and communications.' },
+  { icon: icons.prescription, title: 'Prescription Management', description: 'Use standard Salesforce approval processes to ensure the right clinical sign-off is captured.' },
+  { icon: icons.permissions, title: 'User Permissions', description: 'Set up secure user-level permissions for clinical and support teams.' },
+];
+
+const medicalDeviceFeatures = [
+  { icon: icons.deviceTracking, title: 'Device Tracking', description: 'Track where devices are, who uses them and what they need, including install locations, usage records and warranty eligibility.' },
+  { icon: icons.handlers, title: 'Authorised Handlers', description: 'Ensure that only authorised clinicians or technicians are recorded as handlers for regulated-use devices.' },
+  { icon: icons.pharmaceutical, title: 'Pharmaceutical Orders', description: 'Handle licensed pharmaceutical orders with authorisation tracking at the account or contact level.' },
+  { icon: icons.service, title: 'Service Management', description: 'Log support requests, plan preventative maintenance and manage service contracts using Service Cloud.' },
+  { icon: icons.portal, title: 'Distributor Portals', description: 'Build portals using Experience Cloud that allow distributors to submit leads, track opportunities and view pricing.' },
+  { icon: icons.accounting, title: 'Accounting Integration', description: 'Integrate with accounting platforms to surface billing history or key commercial data in Salesforce.' },
+];
+
 export default function Healthcare() {
-  const challenges = [
-    {
-      title: 'Patient Engagement',
-      description: 'Difficulty maintaining consistent communication with patients across their care journey and multiple touchpoints',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      ),
-    },
-    {
-      title: 'Care Coordination',
-      description: 'Managing care teams, referrals, and handoffs across multiple providers and care settings',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Regulatory Compliance',
-      description: 'Ensuring HIPAA compliance, data security, and proper audit trails for all patient interactions',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      ),
-    },
-    {
-      title: 'Provider Relationships',
-      description: 'Managing complex networks of referring physicians, specialists, and care partners',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Population Health',
-      description: 'Identifying high-risk patients, managing chronic conditions, and coordinating preventive care programs',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      ),
-    },
-    {
-      title: 'Revenue Cycle',
-      description: 'Managing patient billing, insurance verification, claims, and payment collections efficiently',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      ),
-    },
-  ];
-
-  const solutions = [
-    {
-      title: 'Patient 360 View',
-      description: 'Unified view of patient demographics, care history, medications, appointments, and communications powered by Health Cloud.',
-    },
-    {
-      title: 'Care Management',
-      description: 'Create and track care plans, coordinate care teams, manage chronic conditions, and monitor patient progress against goals.',
-    },
-    {
-      title: 'Provider Network Management',
-      description: 'Manage referring physicians, specialists, and care partners with relationship tracking, referral management, and collaboration tools.',
-    },
-    {
-      title: 'Patient Engagement',
-      description: 'Automated appointment reminders, personalized health education, secure messaging, and patient portals for self-service.',
-    },
-    {
-      title: 'Population Health Analytics',
-      description: 'Identify high-risk patients, stratify populations, track quality metrics, and manage preventive care programs at scale.',
-    },
-    {
-      title: 'HIPAA-Compliant Platform',
-      description: 'Built on Salesforce Shield with encryption, audit trails, field-level security, and compliance controls for protected health information.',
-    },
-  ];
-
-  const benefits = [
-    'Improve patient satisfaction scores through better communication and engagement',
-    'Reduce readmission rates with proactive care management and follow-up',
-    'Increase provider referrals through better relationship management',
-    'Enhance care coordination across your provider network',
-    'Streamline administrative workflows to focus more time on patient care',
-    'Meet regulatory requirements with built-in compliance controls',
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Healthcare
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce Health Cloud for Healthcare Organizations
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              From hospitals and clinics to health systems and payers, we help healthcare organizations
-              deliver coordinated, patient-centered care with Salesforce Health Cloud.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Get Started Today
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Healthcare & Life Sciences"
+        title="Salesforce For Firms Delivering"
+        highlight="Care or Supplying Medical Products"
+        description="We help organisations across the healthcare and life sciences sector, from those delivering direct patient care to those supplying regulated equipment and pharmaceutical products."
+        image="/images/industries/healthcare.jpg"
+        imageAlt="Healthcare Salesforce dashboard"
+        buttons={[
+          { label: 'Book A Call', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Challenges Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Healthcare Challenges We Address
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Modern healthcare demands modern solutions for patient engagement and care coordination
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {challenges.map((challenge) => (
-              <div
-                key={challenge.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {challenge.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {challenge.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {challenge.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Helps Healthcare Organizations
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Purpose-built Salesforce Health Cloud solutions designed for the complexity of healthcare
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-blue-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Deliver Better Patient Outcomes
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Healthcare organizations using Health Cloud with Appdraft see meaningful improvements in patient care
-              </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start">
-                    <svg className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Success Story</h3>
-              <p className="text-blue-100 mb-6">
-                A regional healthcare system implemented Health Cloud with Appdraft and achieved:
-              </p>
-              <div className="space-y-4">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">28%</div>
-                  <div className="text-blue-100">Reduction in hospital readmissions</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">40%</div>
-                  <div className="text-blue-100">Increase in patient engagement scores</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">35%</div>
-                  <div className="text-blue-100">Improvement in care coordination efficiency</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Healthcare Specializations */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Expertise Across Healthcare Sectors
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Health Systems</h3>
-              <p className="text-gray-600 text-sm">Care coordination, population health, provider networks</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Medical Groups</h3>
-              <p className="text-gray-600 text-sm">Patient engagement, referral management, practice operations</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Specialty Clinics</h3>
-              <p className="text-gray-600 text-sm">Chronic disease management, treatment protocols, outcomes tracking</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Health Plans</h3>
-              <p className="text-gray-600 text-sm">Member management, care management, utilization management</p>
-            </div>
-          </div>
-
-          <div className="mt-16 bg-blue-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              HIPAA-Compliant Implementation
-            </h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              We follow healthcare industry best practices and implement Salesforce Shield to ensure
-              your Health Cloud implementation meets all regulatory requirements.
-            </p>
-            <Link
-              href="/services/implementation"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Learn About Our Process
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Patient Care?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how Health Cloud can help you improve patient outcomes and care coordination
+      <ContentSection
+        title="Adapting Salesforce to healthcare needs"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <p className="max-w-4xl text-lg text-gray-700 leading-relaxed">
+            Our work ranges from supporting providers in managing appointments, patient records and consent to helping suppliers track orders, warranties and compliance requirements. Whether you are a healthcare team seeking to improve the patient journey or a distributor managing complex supply chains, we adapt Salesforce to fit your needs.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/health-checks"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Get a Free Health Check
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="If you work with patients, diagnostics or treatments"
+        subtitle="You need a platform that supports secure, end-to-end patient management. Salesforce Health Cloud can be the right starting point for some organisations, or we can deliver custom builds for simpler needs. We've helped organisations:"
+        background="gray"
+      >
+        <FeatureGrid features={patientCareFeatures} columns={3} variant="card" />
+      </ContentSection>
+
+      <ContentSection
+        title="If you manage medical devices or pharmaceutical supply"
+        subtitle="For companies that supply clinical equipment or pharmaceuticals, visibility after the point of sale is critical. Salesforce helps you manage what happens beyond the sale. We've helped customers:"
+        background="white"
+      >
+        <FeatureGrid features={medicalDeviceFeatures} columns={3} variant="card" />
+      </ContentSection>
+
+      <ContentSection background="gray">
+        <CTABanner
+          title="Let's talk healthcare or life sciences Salesforce"
+          description="Whether you're delivering care, distributing clinical equipment or building your go-to-market for regulated medical products, we can help you tailor Salesforce to fit the way you work."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

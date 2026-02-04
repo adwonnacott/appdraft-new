@@ -1,197 +1,163 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import StepList from '@/components/sections/StepList';
+import CTABanner from '@/components/sections/CTABanner';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Implementation Services | Appdraft',
-  description: 'Expert Salesforce implementation services for growing businesses. Six-step process from discovery to go-live with ongoing support.',
+  title: 'Salesforce Implementation Services',
+  description: 'Expert Salesforce implementation that fits your business today and scales tomorrow. 130+ projects delivered. Discovery, design, build, and go-live support.',
+  keywords: ['Salesforce implementation', 'CRM implementation', 'Salesforce setup', 'Salesforce deployment', 'Salesforce consulting UK'],
+  openGraph: {
+    title: 'Salesforce Implementation Services | Appdraft',
+    description: 'Expert Salesforce implementation that fits your business today and scales tomorrow. 130+ projects delivered.',
+    url: 'https://appdraft.com/services/implementation',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/services/implementation',
+  },
 };
 
-export default function Implementation() {
-  const steps = [
-    {
-      number: '01',
-      title: 'Discovery and Process Review',
-      description: 'Assessment of current sales and service operations, identifying gaps and challenging assumptions',
-    },
-    {
-      number: '02',
-      title: 'Design Documentation',
-      description: 'Clear mapping documents capturing requirements and ensuring alignment before building begins',
-    },
-    {
-      number: '03',
-      title: 'Sandbox Build',
-      description: 'Safe test environment using sample data for exploration and system familiarity',
-    },
-    {
-      number: '04',
-      title: 'Show and Tell',
-      description: 'Walkthrough explaining design decisions and system functionality',
-    },
-    {
-      number: '05',
-      title: 'Testing and Snagging',
-      description: 'Client-led testing phase with feedback collection and refinement',
-    },
-    {
-      number: '06',
-      title: 'Go Live',
-      description: 'Migration to production with data import, user setup, and final configuration',
-    },
-  ];
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Salesforce Implementation',
+  description: 'End-to-end Salesforce implementation services including discovery, design, sandbox build, testing, and go-live support.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Appdraft',
+    url: 'https://appdraft.com',
+  },
+  serviceType: 'CRM Implementation',
+  areaServed: {
+    '@type': 'Country',
+    name: 'United Kingdom',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Salesforce Implementation Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Discovery & Process Review' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design Documentation' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sandbox Build' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Go-Live Support' } },
+    ],
+  },
+};
 
+const implementationSteps = [
+  {
+    title: 'Discovery And Process Review',
+    description: "We start by getting to know how your business works. We look at your current sales and service process and test it. If there are gaps or baked-in assumptions, we'll challenge them. Our experience of managing sales and operations means we can strengthen your process before building anything around it.",
+  },
+  {
+    title: 'Design Documentation',
+    description: "We produce clear documents that map out what we're going to build. They capture what matters to you and reflect back the conversations we've had. It's a chance to make sure we're on the same page before we move into the build.",
+  },
+  {
+    title: 'Sandbox Build',
+    description: 'We build in a sandbox environment so you can try things out using test data. It gives you a safe space to explore the system and get a feel for how it behaves.',
+  },
+  {
+    title: 'Show And Tell',
+    description: "Once the sandbox is ready, we walk you through how the system works. We explain the design, talk through decisions and make sure nothing has been missed.",
+  },
+  {
+    title: 'Testing And Snagging',
+    description: "After the walkthrough, the system is over to you for testing. You can explore it in your own time, raise questions and flag anything that needs adjustment. We'll handle refinements based on your feedback.",
+  },
+  {
+    title: 'Go Live',
+    description: "When you're happy with everything, we move the build into your live environment. We'll handle data import, user setup and any final steps. Once you're live, we offer flexible support as and when you need it.",
+  },
+];
+
+export default function Implementation() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Getting Started With Salesforce
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              We help you implement Salesforce in a way that fits your business today and scales
-              with you tomorrow, keeping it simple where it should be and powerful where it counts.
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <PageHero
+        badge="Implementation"
+        title="Getting Started With"
+        highlight="Salesforce"
+        description="We help you implement Salesforce in a way that fits your business today and scales with you tomorrow, keeping it simple where it should be and powerful where it counts."
+        image="/images/services/implementation.jpg"
+        imageAlt="Team collaborating on Salesforce implementation"
+        buttons={[
+          { label: 'Book A Call', href: '/contact', primary: true },
+          { label: 'Free Health Check', href: '/services/health-checks' },
+        ]}
+      />
+
+      <ContentSection
+        title="How we run implementation projects"
+        background="white"
+        centered={false}
+      >
+        <StepList steps={implementationSteps} variant="timeline" />
+      </ContentSection>
+
+      <ContentSection
+        title="A proportionate approach"
+        background="gray"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              Some clients come to us with simple requirements. Others just want to get started with the basics and grow from there. That's fine. We work with clients at all stages.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Start Your Implementation
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Process */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Six-Step Implementation Process
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A structured approach that ensures your Salesforce implementation meets your needs
-              and sets you up for long-term success
+            <p>
+              If your needs are more complex, we're comfortable with that too. We've handled everything from multi-cloud rollouts to custom process automation and deep integrations.
+            </p>
+            <p>
+              We always encourage phasing work in a way that delivers value early on. We'll help you focus on what matters now and build from there at your pace.
             </p>
           </div>
+        </ScrollReveal>
+      </ContentSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {steps.map((step) => (
-              <div
-                key={step.number}
-                className="relative p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="text-6xl font-bold text-blue-600 opacity-20 absolute top-4 right-4">
-                  {step.number}
-                </div>
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ContentSection
+        title="Why Appdraft?"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              We've delivered more than 130 Salesforce projects for growing UK businesses. We understand the pressure to get things working quickly without cutting corners.
+            </p>
+            <p>
+              We're not here to overcomplicate things or stretch projects out for the sake of it. We focus on giving you what you actually need, without unnecessary extras.
+            </p>
+            <p>
+              Our builds are proportionate, structured and built to support your team from day one. We care about long-term relationships built on trust.
+            </p>
 
-      {/* Why Choose Appdraft */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why Choose Appdraft
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Over 130 Projects Delivered
-              </h3>
-              <p className="text-gray-600">
-                Extensive experience implementing Salesforce for UK-based growing businesses across various industries
+            <blockquote className="mt-8 border-l-4 border-[#3cd6bf] pl-6 italic text-gray-700">
+              <p className="text-lg mb-2">
+                "The Health Check gave us real clarity. We knew where we stood, what to tackle first, and what could wait."
               </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Proportionate Solutions
-              </h3>
-              <p className="text-gray-600">
-                We avoid unnecessary complexity, delivering solutions that are right-sized for your business needs
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Long-Term Partnership
-              </h3>
-              <p className="text-gray-600">
-                We build lasting relationships based on trust and ongoing support for your Salesforce journey
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Structured Builds
-              </h3>
-              <p className="text-gray-600">
-                Our methodology supports team adoption from day one with clear documentation and training
-              </p>
-            </div>
+              <footer className="text-gray-600 not-italic">
+                - Operations Lead, Professional Services Client
+              </footer>
+            </blockquote>
           </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss your Salesforce implementation needs and create a plan that works for your business
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/health-checks"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Get a Free Health Check
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ContentSection background="white">
+        <CTABanner
+          title="Book a call"
+          description="If you have a brief, an RFP or just a rough list of requirements, we'll help you shape it into a clear plan."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          secondaryButton={{ label: 'Free Health Check', href: '/services/health-checks' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

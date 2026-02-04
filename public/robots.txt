@@ -1,0 +1,15 @@
+# Robots.txt for appdraft.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://appdraft.com/sitemap.xml
+
+# Disallow demo/showcase pages from indexing
+Disallow: /animation-demo
+Disallow: /fonts-showcase
+Disallow: /showcase
+Disallow: /case-study-demo
+Disallow: /comparison-demo
+Disallow: /contact-demo

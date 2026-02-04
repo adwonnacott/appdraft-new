@@ -1,26 +1,738 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f9fb;
+  --foreground: #1f2d3d;
+  --light: #ffffff;
+  --light-secondary: #f7f9fb;
+  --light-tertiary: #f1f5f9;
+  --light-card: #ffffff;
+  --primary: #3cd6bf;
+  --primary-hover: #2bc4ad;
+  --accent: #f25c54;
+  --text-muted: #6b778c;
+  --border-subtle: #dce3ea;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Appdraft brand colors */
+  --color-appdraft-primary: #3cd6bf;
+  --color-appdraft-primary-hover: #2bc4ad;
+  --color-appdraft-accent: #f25c54;
+  --color-appdraft-background: #f7f9fb;
+  --color-appdraft-border: #dce3ea;
+  --color-appdraft-text: #1f2d3d;
+  --color-appdraft-text-muted: #6b778c;
+  --color-appdraft-logo: #0b3d52;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light theme glass cards */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card styles for light theme */
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+/* Gradient border effect */
+.gradient-border {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(25, 119, 155, 0.5), rgba(20, 105, 140, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Glow effects - subtle for light theme */
+.glow-accent {
+  box-shadow: 0 0 30px rgba(25, 119, 155, 0.15);
+}
+
+.glow-accent-hover:hover {
+  box-shadow: 0 0 40px rgba(25, 119, 155, 0.2);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #3cd6bf, #2bc4ad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom scrollbar - light theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(25, 119, 155, 0.2);
+  color: #1f2d3d;
+}
+
+/* Animated gradient orbs - softer colors for light theme */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes float-slower {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 20px) scale(1.1);
+  }
+  66% {
+    transform: translate(30px, -40px) scale(0.9);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: float-slower 25s ease-in-out infinite;
+}
+
+/* Page transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Smooth hover lift effect */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.03) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse ring animation for CTAs */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  animation: pulse-ring 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ========================================
+   Blog Content Styles
+   ======================================== */
+
+.blog-content {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #4a5568;
+}
+
+/* First paragraph styling - larger intro text */
+.blog-content > p:first-of-type {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #374151;
+  font-weight: 400;
+}
+
+/* Paragraph spacing */
+.blog-content p {
+  margin-bottom: 1.75rem;
+}
+
+/* Headings with visual separation */
+.blog-content h2 {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f3f4f6;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+.blog-content h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Lists with custom bullets */
+.blog-content ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 2rem 0 !important;
+}
+
+.blog-content ul li {
+  position: relative !important;
+  padding-left: 2rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.8 !important;
+}
+
+.blog-content ul li::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.65rem !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #3cd6bf !important;
+  border-radius: 50% !important;
+}
+
+/* Ordered lists */
+.blog-content ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+  counter-reset: item;
+}
+
+.blog-content ol li {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  counter-increment: item;
+}
+
+.blog-content ol li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(135deg, #3cd6bf, #2bc4ad);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(25, 119, 155, 0.08), rgba(25, 119, 155, 0.02));
+  border-left: 4px solid #3cd6bf;
+  border-radius: 0 1rem 1rem 0;
+  font-style: normal;
+}
+
+.blog-content blockquote p {
+  font-size: 1.125rem;
+  color: #374151;
+  margin-bottom: 0;
+}
+
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+.blog-content a {
+  color: #3cd6bf;
+  text-decoration: underline;
+  text-decoration-color: rgba(25, 119, 155, 0.3);
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.blog-content a:hover {
+  color: #2bc4ad;
+  text-decoration-color: #2bc4ad;
+}
+
+/* Images */
+.blog-content img {
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin: 2.5rem auto;
+  display: block;
+}
+
+.blog-content figure {
+  margin: 2.5rem 0;
+}
+
+.blog-content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 1rem;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.blog-content th {
+  background: #f9fafb;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.blog-content td {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.blog-content tr:hover td {
+  background: #f9fafb;
+}
+
+/* Code blocks */
+.blog-content code {
+  background: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, monospace;
+}
+
+.blog-content pre {
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.blog-content pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* Horizontal rules */
+.blog-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+  margin: 3rem 0;
+}
+
+/* WordPress specific blocks */
+.blog-content .wp-block-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(25, 119, 155, 0.1), rgba(25, 119, 155, 0.05));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(25, 119, 155, 0.2);
+  margin: 2rem 0;
+}
+
+.blog-content .wp-block-file a:first-child {
+  font-weight: 600;
+  color: #3cd6bf;
+}
+
+.blog-content .wp-block-file__button {
+  background: #3cd6bf;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.blog-content .wp-block-file__button:hover {
+  background: #2bc4ad;
+  text-decoration: none;
+}
+
+/* Media text blocks */
+.blog-content .wp-block-media-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .blog-content .wp-block-media-text {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-content .wp-block-media-text__media img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.blog-content .wp-block-media-text__content {
+  padding: 2rem;
+}
+
+/* Video embeds - responsive 16:9 aspect ratio */
+.blog-content .video-embed,
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  background: #f1f5f9;
+}
+
+.blog-content .video-embed iframe,
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 1rem;
+}
+
+/* ========================================
+   Accessibility & Focus States
+   ======================================== */
+
+/* Focus visible states for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #3cd6bf;
+  outline-offset: 2px;
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure interactive elements are clearly focusable */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #3cd6bf;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #3cd6bf;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ========================================
+   Reduced Motion Support
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-fade-in-up,
+  .animate-shimmer {
+    animation: none !important;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   Mobile Optimizations
+   ======================================== */
+
+/* Base mobile typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Better touch feedback */
+  a,
+  button,
+  [role="button"] {
+    -webkit-tap-highlight-color: rgba(60, 214, 191, 0.2);
+  }
+
+  /* Prevent iOS zoom on form inputs */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Minimum touch target sizes */
+  a,
+  button,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+  }
+
+  /* Remove hover effects that don't work on touch */
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  /* Active states for touch feedback */
+  a:active,
+  button:active,
+  [role="button"]:active {
+    opacity: 0.8;
+  }
+}
+
+/* Mobile blog content adjustments */
+@media (max-width: 640px) {
+  .blog-content {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .blog-content > p:first-of-type {
+    font-size: 1.125rem;
+  }
+
+  .blog-content h2 {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  .blog-content h3 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .blog-content ul li,
+  .blog-content ol li {
+    padding-left: 1.5rem !important;
+  }
+
+  .blog-content ol li {
+    padding-left: 2.5rem;
+  }
+
+  .blog-content blockquote {
+    padding: 1rem 1rem 1rem 1.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline-width: 3px;
+  }
+
+  a,
+  button {
+    text-decoration: underline;
+  }
 }

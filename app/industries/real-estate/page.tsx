@@ -1,278 +1,135 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import Accordion from '@/components/ui/Accordion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce for Real Estate | Appdraft',
-  description: 'Expert Salesforce implementation for real estate firms. Manage properties, track leads, automate marketing, and deliver exceptional client experiences.',
+  title: 'Salesforce for Real Estate & Property',
+  description: 'Salesforce for real estate agencies and property developers. Track deals, manage relationships, and automate marketing for property sales.',
+  keywords: ['Salesforce real estate', 'property CRM', 'real estate CRM', 'property developer Salesforce', 'estate agent CRM'],
+  openGraph: {
+    title: 'Salesforce for Real Estate | Appdraft',
+    description: 'Salesforce solutions for real estate and property businesses.',
+    url: 'https://appdraft.com/industries/real-estate',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/industries/real-estate',
+  },
 };
 
+// Contextual icons for Real Estate features
+const icons = {
+  property: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+    </svg>
+  ),
+  search: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  ),
+  viewing: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  offer: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+    </svg>
+  ),
+  marketing: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+    </svg>
+  ),
+  portal: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+    </svg>
+  ),
+  reporting: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+};
+
+const challenges = [
+  {
+    title: 'Property, buyer and seller data is scattered',
+    content: 'When property details, buyer preferences and seller updates live in different places, it is easy to miss connections. We help you maintain clear, linked records of properties, buyers and sellers so you always know who is interested in what.',
+  },
+  {
+    title: 'Viewings and offers are not consistently tracked',
+    content: 'Missed follow-ups after viewings can cost you deals. We build viewing tracking into Salesforce so every appointment, note and next step is recorded and visible.',
+  },
+  {
+    title: 'Offers and shortlisted purchases are hard to manage',
+    content: 'Managing multiple interested buyers on the same property can be complex. We set up opportunity processes that record shortlisted purchases and track their status, whether they have been vetted, viewed the property or made an offer, so you can move each one forward efficiently.',
+  },
+  {
+    title: 'Integration with market tools is missing',
+    content: 'Because Salesforce is API-first, it can connect with modern listing portals, valuation platforms and marketing tools to reduce manual data entry and keep your records up to date.',
+  },
+];
+
+const roadmapFeatures = [
+  { icon: icons.property, title: 'Property records', description: 'Create dedicated Property objects to capture details such as location, type, size, pricing, status and key dates.' },
+  { icon: icons.search, title: 'Property search and filtering', description: 'Give internal users the ability to filter properties by type, location, status and other criteria to quickly find matching options.' },
+  { icon: icons.viewing, title: 'Viewing management', description: 'Log appointments, feedback and follow-ups in one place.' },
+  { icon: icons.offer, title: 'Offer and shortlist tracking', description: 'Record shortlisted purchases, track their status (vetted, viewed, offer made) and maintain a full history linked to the property.' },
+  { icon: icons.marketing, title: 'Marketing activity', description: 'Track campaigns and enquiries from listing portals and digital ads.' },
+  { icon: icons.portal, title: 'Property and client portals', description: 'Give sellers visibility on marketing activity, offers and feedback.' },
+  { icon: icons.reporting, title: 'Reporting', description: 'See your full sales and lettings pipeline, viewing-to-offer conversion and time-to-close metrics.' },
+];
+
 export default function RealEstate() {
-  const challenges = [
-    {
-      title: 'Lead Management',
-      description: 'Difficulty tracking prospects across multiple properties, viewings, and communication channels leading to lost opportunities',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Property Information',
-      description: 'Fragmented property data across spreadsheets, portals, and systems creating inefficiencies and errors',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      ),
-    },
-    {
-      title: 'Client Communication',
-      description: 'Manual follow-ups and communication leading to delayed responses and inconsistent client experiences',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Marketing Effectiveness',
-      description: 'Limited insight into which marketing channels drive quality leads and conversions',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      ),
-    },
-    {
-      title: 'Transaction Management',
-      description: 'Complex sales processes with multiple stakeholders making it difficult to track progress and deadlines',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-      ),
-    },
-    {
-      title: 'Agent Collaboration',
-      description: 'Poor visibility into team activities, property assignments, and commission tracking causing conflicts',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      ),
-    },
-  ];
-
-  const solutions = [
-    {
-      title: 'Property Management',
-      description: 'Create custom objects for properties with rich details, photos, documents, and automated updates from property portals.',
-    },
-    {
-      title: 'Lead Tracking & Nurturing',
-      description: 'Capture leads from websites, portals, and referrals, then nurture them with automated follow-ups and personalized communication.',
-    },
-    {
-      title: 'Viewing & Offer Management',
-      description: 'Schedule viewings, track feedback, manage offers, and coordinate the entire transaction process in one place.',
-    },
-    {
-      title: 'Marketing Automation',
-      description: 'Send targeted property alerts, market reports, and personalized content based on client preferences and behavior.',
-    },
-    {
-      title: 'Client Portal',
-      description: 'Provide clients with secure access to their property searches, viewing history, and transaction status through Experience Cloud.',
-    },
-    {
-      title: 'Analytics & Reporting',
-      description: 'Track key metrics like conversion rates, time on market, agent performance, and marketing ROI with custom dashboards.',
-    },
-  ];
-
-  const benefits = [
-    'Increase lead conversion rates by 40% with better follow-up and nurturing',
-    'Reduce time spent on administrative tasks through automation',
-    'Improve client satisfaction with timely communication and transparency',
-    'Gain visibility into property inventory and market trends',
-    'Optimize marketing spend by tracking campaign performance',
-    'Enhance team collaboration with shared property and client information',
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Real Estate
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce for Real Estate Firms
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Whether you're in residential sales, commercial property, or property management, we help real estate
-              firms manage properties, convert leads, and deliver exceptional experiences to buyers, sellers, and tenants.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Get Started Today
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Real Estate"
+        title="Salesforce For Firms Managing"
+        highlight="Properties, Buyers & Sellers"
+        description="Whether you are selling, leasing or developing property, success depends on staying on top of every viewing, offer and client conversation. From tracking marketing activity to managing negotiations, we help real estate businesses use Salesforce to keep deals moving and relationships strong."
+        image="/images/industries/real-estate.jpg"
+        imageAlt="Real estate Salesforce dashboard"
+        buttons={[
+          { label: 'Book A Call', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Challenges Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Common Challenges in Real Estate
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We understand the fast-paced and competitive nature of the real estate industry
-            </p>
-          </div>
+      <ContentSection
+        title="Common challenges in real estate"
+        background="gray"
+      >
+        <Accordion items={challenges} />
+      </ContentSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {challenges.map((challenge) => (
-              <div
-                key={challenge.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {challenge.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {challenge.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {challenge.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Helps Real Estate Firms
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Tailored Salesforce solutions designed for the unique needs of real estate businesses
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-blue-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Key Benefits for Real Estate
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Our real estate clients see measurable improvements in lead conversion and operational efficiency
-              </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start">
-                    <svg className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Case Study</h3>
-              <p className="text-blue-100 mb-6">
-                A residential property agency implemented Salesforce with Appdraft and achieved:
-              </p>
-              <div className="space-y-4">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">42%</div>
-                  <div className="text-blue-100">Increase in lead conversion rate</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">50%</div>
-                  <div className="text-blue-100">Reduction in admin time</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">65%</div>
-                  <div className="text-blue-100">Faster response to new enquiries</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Approach */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Real Estate-Focused Implementation
-            </h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              We've implemented Salesforce for estate agents, property developers, and letting agencies
-              across the UK, with proven methodologies for the property sector.
-            </p>
-            <Link
-              href="/services/implementation"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Learn About Our Process
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Real Estate Business?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how Salesforce can help you manage properties, convert more leads, and deliver exceptional client experiences
+      <ContentSection
+        title="A roadmap that grows with you"
+        subtitle="We usually start with the essentials: properties, buyers, sellers and offers. From there, your Salesforce system can support:"
+        background="white"
+      >
+        <FeatureGrid features={roadmapFeatures} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+            Every solution is tailored to your property operations, with a clear path to future growth.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/health-checks"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Get a Free Health Check
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Need a better way to manage properties, buyers and offers?"
+          description="Book a call to explore how Salesforce can support your business."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

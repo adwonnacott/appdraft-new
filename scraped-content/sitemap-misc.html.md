@@ -1,0 +1,1 @@
+https://appdraft.com/2025-10-05T21:03:09+00:00daily1.0https://appdraft.com/sitemap.html2025-12-06T11:35:34+00:00monthly0.5

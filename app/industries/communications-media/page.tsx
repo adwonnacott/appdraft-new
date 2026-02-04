@@ -1,287 +1,139 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import Accordion from '@/components/ui/Accordion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce for Communications & Media | Appdraft',
-  description: 'Expert Salesforce solutions for communications and media companies. Manage advertising sales, content distribution, audience engagement, and subscriber relationships.',
+  title: 'Salesforce for Communications & Media',
+  description: 'Salesforce for telecom, media, and entertainment. Unify sales, service, and subscription management with Communications Cloud.',
+  keywords: ['Salesforce communications', 'Communications Cloud', 'telecom CRM', 'media CRM', 'subscription management', 'entertainment industry'],
+  openGraph: {
+    title: 'Salesforce for Communications & Media | Appdraft',
+    description: 'Salesforce solutions for communications and media companies.',
+    url: 'https://appdraft.com/industries/communications-media',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/industries/communications-media',
+  },
 };
 
+// Contextual icons for Communications & Media features
+const icons = {
+  renewal: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+    </svg>
+  ),
+  quoting: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+    </svg>
+  ),
+  subscription: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  churn: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+  ),
+  reporting: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+  ),
+};
+
+const challenges = [
+  {
+    title: 'Forecasting overlooks renewal opportunities',
+    content: "Without structured renewal tracking, it's easy to miss conversations that should already be in motion. We build pipelines and automations that raise timely renewal prompts and connect forecasts to contract terms.",
+  },
+  {
+    title: 'Support cases are missing from the commercial view',
+    content: "When teams can't see complaint history, product issues or recent interactions, upsell conversations fall flat. We surface support records and customer care insights directly in Salesforce to inform renewals and upgrades.",
+  },
+  {
+    title: 'Upgrades and follow-on sales are hard to coordinate',
+    content: 'Customers often need to expand or modify services, but tracking who has what and where the opportunities lie is difficult. We give sales teams better tools to identify and act on potential.',
+  },
+  {
+    title: "Tariffs and bundles don't fit standard quoting tools",
+    content: "We've worked with firms offering tiered services, complex pricing structures and bundled products. Our team builds custom product selectors and quoting tools inside Salesforce to reflect actual sales logic.",
+  },
+  {
+    title: 'Subscriptions live outside Salesforce',
+    content: "If you're using third-party platforms to manage subscriptions, we integrate them. We push customer data out and pull back usage, billing or service status into one clear view.",
+  },
+];
+
+const roadmapFeatures = [
+  { icon: icons.renewal, title: 'Renewal opportunity automation', description: 'Triggering follow-ups based on contract end dates, usage or service history.' },
+  { icon: icons.quoting, title: 'Custom quoting tools', description: 'Handling bundled products, tariffs and upgrade paths within Salesforce.' },
+  { icon: icons.subscription, title: 'Third-party subscription integration', description: 'Connecting Salesforce to platforms that manage contracts, usage or billing.' },
+  { icon: icons.churn, title: 'Churn reduction workflows', description: 'Using support data and account activity to flag at-risk customers.' },
+  { icon: icons.reporting, title: 'Unified reporting', description: 'Bringing sales, service and usage data into a single set of dashboards.' },
+];
+
 export default function CommunicationsMedia() {
-  const challenges = [
-    {
-      title: 'Audience Fragmentation',
-      description: 'Reaching audiences across multiple platforms and channels while maintaining consistent messaging',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Ad Sales Complexity',
-      description: 'Managing complex advertising packages across digital, print, and broadcast with varying rates and schedules',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      ),
-    },
-    {
-      title: 'Subscription Management',
-      description: 'Tracking subscriber lifecycles, renewals, upgrades, and churn across multiple products and tiers',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-      ),
-    },
-    {
-      title: 'Content Performance',
-      description: 'Limited visibility into which content resonates with audiences and drives engagement or conversions',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      ),
-    },
-    {
-      title: 'Advertiser Relationships',
-      description: 'Managing complex relationships with agencies, direct advertisers, and programmatic partners',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Revenue Attribution',
-      description: 'Difficulty attributing revenue to specific campaigns, channels, or content pieces for ROI analysis',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      ),
-    },
-  ];
-
-  const solutions = [
-    {
-      title: 'Unified Customer View',
-      description: 'Consolidate subscriber, advertiser, and audience data into a single platform for complete visibility across all touchpoints.',
-    },
-    {
-      title: 'Advertising Sales Management',
-      description: 'Manage complex ad campaigns, inventory, pricing, and billing with custom objects and automated workflows.',
-    },
-    {
-      title: 'Subscription Lifecycle',
-      description: 'Track subscriber journeys from acquisition through renewal with automated communications and churn prevention workflows.',
-    },
-    {
-      title: 'Campaign Management',
-      description: 'Plan, execute, and measure marketing campaigns across channels with Marketing Cloud integration and attribution reporting.',
-    },
-    {
-      title: 'Audience Segmentation',
-      description: 'Create sophisticated audience segments based on behavior, demographics, and engagement for targeted content and advertising.',
-    },
-    {
-      title: 'Performance Analytics',
-      description: 'Real-time dashboards showing ad revenue, subscription metrics, content performance, and audience engagement across all properties.',
-    },
-  ];
-
-  const benefits = [
-    'Increase advertising revenue with better inventory management and rate optimization',
-    'Reduce subscriber churn through proactive engagement and retention campaigns',
-    'Improve content strategy with data-driven insights into audience preferences',
-    'Streamline sales processes for faster deal closing and campaign execution',
-    'Enhance advertiser satisfaction with transparency and performance reporting',
-    'Scale operations efficiently as you add new channels and products',
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Communications & Media
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Salesforce for Communications & Media Companies
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              From publishers and broadcasters to digital media and advertising agencies, we help media companies
-              manage advertising sales, subscriber relationships, and audience engagement with Salesforce.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg"
-            >
-              Get Started Today
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Communications & Media"
+        title="Salesforce For Firms Who Grow Through"
+        highlight="Elevated Service & Recurring Revenue"
+        description="Whether you're in telecom, broadband, digital media or a related service business, your growth depends on recurring revenue, strong customer care and visibility across accounts. From selling plans and managing upgrades to handling support and renewals, your teams need a clear view of customer activity to drive satisfaction and retention."
+        image="/images/industries/communications-media.jpg"
+        imageAlt="Communications and media Salesforce dashboard"
+        buttons={[
+          { label: 'Book A Call', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Challenges Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Challenges Facing Media Companies
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The media landscape is evolving rapidly. We understand your unique challenges.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {challenges.map((challenge) => (
-              <div
-                key={challenge.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {challenge.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {challenge.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {challenge.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Helps Media Companies
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Specialized Salesforce solutions for the unique needs of media and communications
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={solution.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-blue-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Drive Growth in a Competitive Market
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Media companies using Salesforce with Appdraft see significant improvements across key metrics
-              </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start">
-                    <svg className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Success Story</h3>
-              <p className="text-blue-100 mb-6">
-                A regional publisher implemented Salesforce with Appdraft and achieved:
-              </p>
-              <div className="space-y-4">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">40%</div>
-                  <div className="text-blue-100">Increase in digital advertising revenue</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">25%</div>
-                  <div className="text-blue-100">Reduction in subscriber churn</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold mb-1">60%</div>
-                  <div className="text-blue-100">Faster campaign setup and execution</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industry-Specific Solutions */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Tailored for Your Media Type
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Publishing</h3>
-              <p className="text-gray-600 text-sm">Subscription management, content analytics, reader engagement</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Broadcasting</h3>
-              <p className="text-gray-600 text-sm">Ad inventory management, programming insights, viewer analytics</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Digital Media</h3>
-              <p className="text-gray-600 text-sm">Programmatic advertising, audience segmentation, multi-channel campaigns</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Agencies</h3>
-              <p className="text-gray-600 text-sm">Client management, campaign tracking, performance reporting</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Media Business?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how Salesforce can help you grow revenue and engage audiences more effectively
+      <ContentSection
+        title="Aligning sales, service and subscriptions"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <p className="max-w-4xl text-lg text-gray-700 leading-relaxed">
+            We help firms bring structure to their commercial and operational processes in Salesforce, aligning sales, service, product and subscription data in one place.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/implementation"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
-            >
-              Learn About Our Process
-            </Link>
-          </div>
-        </div>
-      </section>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="Common challenges in communications and media"
+        background="gray"
+      >
+        <Accordion items={challenges} />
+      </ContentSection>
+
+      <ContentSection
+        title="A roadmap that grows with you"
+        subtitle="We typically start with the essentials: sales pipelines, customer support and renewal tracking. From there, we can expand your system to support:"
+        background="white"
+      >
+        <FeatureGrid features={roadmapFeatures} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+            Every solution is shaped around your customer model and technical stack, with room to adapt as your operations grow.
+          </p>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Need a better way to manage customer lifecycles and recurring services?"
+          description="Book a call to explore how Salesforce can support your business."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

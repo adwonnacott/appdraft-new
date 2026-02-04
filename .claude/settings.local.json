@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__docs-scraper__list_docs",
+      "mcp__docs-scraper__docs_stats",
+      "mcp__docs-scraper__scrape_docs",
+      "Bash(tree:*)",
+      "WebFetch(domain:www.unaric.com)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:stripe.com)",
+      "Bash(lsof:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(grep:*)",
+      "WebFetch(domain:www.apollo.io)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(find:*)",
+      "Bash(sudo rm:*)",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(node:*)",
+      "Bash(chmod:*)"
+    ]
+  }
+}

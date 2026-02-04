@@ -1,0 +1,475 @@
+{
+  "domain": "www-appdraft-com",
+  "sourceUrl": "https://www.appdraft.com",
+  "scrapedAt": "2026-02-02T21:51:46.237Z",
+  "pageCount": 66,
+  "totalWordCount": 36024,
+  "pages": [
+    {
+      "path": "2021_11_21_email-integration-salesforce.md",
+      "sourceUrl": "https://appdraft.com/2021/11/21/email-integration-salesforce/",
+      "title": "Email Integration with Salesforce | Streamline Your Workflow",
+      "description": "There are several different options available for sending email via Salesforce.",
+      "wordCount": 591
+    },
+    {
+      "path": "2019_08_15_predictive-analytics-the-credit-managers-crystal-ball.md",
+      "sourceUrl": "https://appdraft.com/2019/08/15/predictive-analytics-the-credit-managers-crystal-ball/",
+      "title": "Predictive Analytics in Credit | The Manager’s Crystal Ball",
+      "description": "Wouldn’t it be great if we could accurately identify which customers or prospects are going to default? We would be able to refuse or restrict credit terms and prevent the businesses we represented...",
+      "wordCount": 750
+    },
+    {
+      "path": "why-app-draft.md",
+      "sourceUrl": "https://appdraft.com/why-app-draft/",
+      "title": "Why App Draft - Appdraft",
+      "description": "We are official Salesforce Consulting Partners with hands‑on experience across Sales, Service, Marketing and Operations.",
+      "wordCount": 382
+    },
+    {
+      "path": "2019_02_19_why-your-sales-team-doesnt-use-crm.md",
+      "sourceUrl": "https://appdraft.com/2019/02/19/why-your-sales-team-doesnt-use-crm/",
+      "title": "Why Sales Teams Avoid CRM | Uncover the Barriers & Solutions",
+      "description": "‘I’m too busy’. ‘I’m not great with computers’. ‘I’ve got my",
+      "wordCount": 672
+    },
+    {
+      "path": "sitemap-misc.html.md",
+      "sourceUrl": "https://appdraft.com/sitemap-misc.html",
+      "title": "Untitled",
+      "description": "https://appdraft.com/2025-10-05T21:03:09+00:00daily1.0https://appdraft.com/sitemap.html2025-12-06T11:35:34+00:00monthly0.5",
+      "wordCount": 1
+    },
+    {
+      "path": "know-how.md",
+      "sourceUrl": "https://appdraft.com/know-how/",
+      "title": "Know How - Appdraft",
+      "description": "Call: 020 3858 0040 info@appdraft.com",
+      "wordCount": 39
+    },
+    {
+      "path": "index.md",
+      "sourceUrl": "https://www.appdraft.com",
+      "title": "Home - Appdraft",
+      "description": "We help sales and operations teams get more from Salesforce fast. With 130+ projects delivered, we blend technical expertise with practical business understanding.",
+      "wordCount": 957
+    },
+    {
+      "path": "2024_10_27_streamlining-sales-with-salesforce-the-ultimate-guide-to-lead-management.md",
+      "sourceUrl": "https://appdraft.com/2024/10/27/streamlining-sales-with-salesforce-the-ultimate-guide-to-lead-management/",
+      "title": "Understanding Salesforce Forecasts | Boost Accuracy & Sales",
+      "description": "Lead management is at the heart of any successful sales operation, and in Salesforce, getting it right can supercharge your team’s efficiency. By refining your lead process, you’ll not only streaml...",
+      "wordCount": 859
+    },
+    {
+      "path": "2024_11_25_sfx-seamless-integration-for-salesforce-xero.md",
+      "sourceUrl": "https://appdraft.com/2024/11/25/sfx-seamless-integration-for-salesforce-xero/",
+      "title": "SFX: Seamless Integration for Salesforce + Xero",
+      "description": "Discover how SFX transforms the way you manage financial data by connecting Salesforce with Xero! In this demo, we explore: Why you should integrate Salesforce with Xero",
+      "wordCount": 204
+    },
+    {
+      "path": "post-sitemap.html.md",
+      "sourceUrl": "https://appdraft.com/post-sitemap.html",
+      "title": "Untitled",
+      "description": "https://appdraft.com/2019/01/11/death-of-a-spreadsheet/2019-01-11T08:52:32+00:00monthly0.2https://appdraft.com/2019/02/19/why-your-sales-team-doesnt-use-crm/2019-02-19T11:55:20+00:00monthly0.2https...",
+      "wordCount": 1
+    },
+    {
+      "path": "who-we-help_professional-services.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/professional-services/",
+      "title": "Professional Services - Appdraft",
+      "description": "Professional service firms rely on expertise, reputation, and strong delivery. Whether you provide advice, manage client work, or deliver ongoing services, your business depends on clear handovers,...",
+      "wordCount": 692
+    },
+    {
+      "path": "who-we-help_high-tech.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/high-tech/",
+      "title": "High-Tech - Appdraft",
+      "description": "High-tech companies rely on subscriptions and long-term customer engagement. Whether you're offering a software product or platform, growth depends on more than just new sales. You need visibility ...",
+      "wordCount": 677
+    },
+    {
+      "path": "who-we-help_financial-services.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/financial-services/",
+      "title": "Financial Services - Appdraft",
+      "description": "We help financial services organisations streamline client management, track opportunities from enquiry to completion, and maintain a clear compliance trail.",
+      "wordCount": 653
+    },
+    {
+      "path": "know-how_field-service.md",
+      "sourceUrl": "https://appdraft.com/know-how/field-service/",
+      "title": "Field Service - Appdraft",
+      "description": "Salesforce Field Service helps businesses plan, deliver and track work carried out in the field. Whether you manage installations, maintenance, inspections or repairs, Field Service brings scheduli...",
+      "wordCount": 492
+    },
+    {
+      "path": "2024_11_20_transform-customer-interactions-with-agentforce.md",
+      "sourceUrl": "https://appdraft.com/2024/11/20/transform-customer-interactions-with-agentforce/",
+      "title": "Seamless Prospecting with Salesforce and LinkedIn Integration",
+      "description": "Discover how AgentForce by Salesforce is reshaping the way businesses engage with customers in our latest demo video. Using the fictional Coral Cloud Resorts as an example, we dive into the transfo...",
+      "wordCount": 235
+    },
+    {
+      "path": "2019_08_22_study-finds-87-of-credit-managers-admit-systems-automation-would-increase-efficiency.md",
+      "sourceUrl": "https://appdraft.com/2019/08/22/study-finds-87-of-credit-managers-admit-systems-automation-would-increase-efficiency/",
+      "title": "Automation in Credit Management | Boost Efficiency by 87%",
+      "description": "A multinational study by the Chartered Institute of Credit Management and Dun & Bradstreet has found that 87% of respondents believe automation will improve the efficiency of their team in the next...",
+      "wordCount": 889
+    },
+    {
+      "path": "sitemap.html.md",
+      "sourceUrl": "https://appdraft.com/sitemap.html",
+      "title": "XML Sitemap",
+      "description": "This XML sitemap is used by search engines which follow the XML sitemap standard. This file contains links to sub-sitemaps, follow them to see the actual sitemap content.",
+      "wordCount": 79
+    },
+    {
+      "path": "2024_08_02_sustainability-in-consultancy-guiding-change-from-within.md",
+      "sourceUrl": "https://appdraft.com/2024/08/02/sustainability-in-consultancy-guiding-change-from-within/",
+      "title": "Einstein Trust Layer: How Salesforce Protects Data the Age of Generative AI",
+      "description": "As sustainability becomes a core element of business strategy, consulting firms are uniquely positioned to lead the way. They have the dual responsibility of improving their internal practices whil...",
+      "wordCount": 459
+    },
+    {
+      "path": "2019_03_19_training-issue-user-error-bad-system-design.md",
+      "sourceUrl": "https://appdraft.com/2019/03/19/training-issue-user-error-bad-system-design/",
+      "title": "Training vs. System Design | Reducing User Error Effectively",
+      "description": "‘It’s a training issue’. ‘I’m",
+      "wordCount": 871
+    },
+    {
+      "path": "2022_01_12_salesforce-showcase-salesforce-xero-integration.md",
+      "sourceUrl": "https://appdraft.com/2022/01/12/salesforce-showcase-salesforce-xero-integration/",
+      "title": "Salesforce & Xero Integration | Streamline Your Finances",
+      "description": "Xero is one of the most popular accounting apps for SME’s. Salesforce Sales Cloud is the world’s number one CRM. What happens when you combine the two? At the very least, you can expect the Sales t...",
+      "wordCount": 172
+    },
+    {
+      "path": "what-we-do.md",
+      "sourceUrl": "https://appdraft.com/what-we-do/",
+      "title": "What We Do - Appdraft",
+      "description": "Call: 020 3858 0040 info@appdraft.com",
+      "wordCount": 45
+    },
+    {
+      "path": "2024_04_28_understanding-salesforce-forecasts.md",
+      "sourceUrl": "https://appdraft.com/2024/04/28/understanding-salesforce-forecasts/",
+      "title": "Understanding Salesforce Forecasts | Boost Accuracy & Sales",
+      "description": "Customers typically purchase Salesforce with the objective of either improving the sales process and the way the business tracks data or getting better at tracking the value of pipeline. These two ...",
+      "wordCount": 805
+    },
+    {
+      "path": "what-we-do_health-checks.md",
+      "sourceUrl": "https://appdraft.com/what-we-do/health-checks/",
+      "title": "Health Checks - Appdraft",
+      "description": "If Salesforce isn’t delivering, there’s usually a reason. In our experience, some organisations start with an implementation that never quite fits how the business operates. For others, what was or...",
+      "wordCount": 462
+    },
+    {
+      "path": "what-we-do_support.md",
+      "sourceUrl": "https://appdraft.com/what-we-do/support/",
+      "title": "Support - Appdraft",
+      "description": "As your business evolves, your Salesforce setup should evolve with it. Our support services help you fix issues, make improvements, and keep moving forward, whether you need help now and then or on...",
+      "wordCount": 356
+    },
+    {
+      "path": "2019_01_11_death-of-a-spreadsheet.md",
+      "sourceUrl": "https://appdraft.com/2019/01/11/death-of-a-spreadsheet/",
+      "title": "Death of the Spreadsheet | Modernize with Salesforce Tools",
+      "description": "As every good tradesman will tell you, there’s a tool for",
+      "wordCount": 662
+    },
+    {
+      "path": "2021_10_15_one-less-thing-to-worry-about-a-robot-apocalypse.md",
+      "sourceUrl": "https://appdraft.com/2021/10/15/one-less-thing-to-worry-about-a-robot-apocalypse/",
+      "title": "Robot Apocalypse Myths | Focus on Real Business Automation",
+      "description": "It’s a scary concept, made more so by the use of unhelpful terminology. But what’s the reality and how worried should we really be?",
+      "wordCount": 846
+    },
+    {
+      "path": "what-we-do_implementation.md",
+      "sourceUrl": "https://appdraft.com/what-we-do/implementation/",
+      "title": "Implementation - Appdraft",
+      "description": "We help you implement Salesforce in a way that fits your business today and scales with you tomorrow, keeping it simple where it should be and powerful where it counts.",
+      "wordCount": 625
+    },
+    {
+      "path": "retained-support__page_source_https%3A%2F%2Fappdraft.com%2Fretained-support%2F.md",
+      "sourceUrl": "https://appdraft.com/retained-support/?page_source=https%3A%2F%2Fappdraft.com%2Fretained-support%2F",
+      "title": "retained-support - Appdraft",
+      "description": "Always-on monitoring • Continuous improvement • Hours never expire • From £875/month\\",
+      "wordCount": 1023
+    },
+    {
+      "path": "know-how_marketing-cloud.md",
+      "sourceUrl": "https://appdraft.com/know-how/marketing-cloud/",
+      "title": "Marketing Cloud - Appdraft",
+      "description": "Salesforce Marketing Cloud helps businesses turn marketing activity into real pipeline. Whether you're running lead nurture programmes, personalising outreach at scale, or fixing handover gaps betw...",
+      "wordCount": 404
+    },
+    {
+      "path": "who-we-help.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/",
+      "title": "Who We Help - Appdraft",
+      "description": "Call: 020 3858 0040 info@appdraft.com",
+      "wordCount": 45
+    },
+    {
+      "path": "2022_03_05_getting-it-right-first-time-the-value-of-salesforce-consulting-partners.md",
+      "sourceUrl": "https://appdraft.com/2022/03/05/getting-it-right-first-time-the-value-of-salesforce-consulting-partners/",
+      "title": "The Value of Salesforce Consulting | Get It Right First Time",
+      "description": "Salesforce Consulting Partners are independent, authorised experts that help customers make the most of Salesforce.",
+      "wordCount": 726
+    },
+    {
+      "path": "who-we-help_real-estate.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/real-estate/",
+      "title": "Real Estate - Appdraft",
+      "description": "Whether you are selling, leasing or developing property, success depends on staying on top of every viewing, offer and client conversation. From tracking marketing activity to managing negotiations...",
+      "wordCount": 663
+    },
+    {
+      "path": "2019_10_01_whats-wrong-with-a-spreadsheet.md",
+      "sourceUrl": "https://appdraft.com/2019/10/01/whats-wrong-with-a-spreadsheet/",
+      "title": "What's Wrong with Spreadsheets? | Modernize with Salesforce",
+      "description": "Industry is rife with supposition about the way technology will change how we work. AI, robots, machine-learning; it all sounds a little far-fetched, especially when you look at the day-to-day real...",
+      "wordCount": 1209
+    },
+    {
+      "path": "events-accelerator__page_source_https%3A%2F%2Fappdraft.com%2Fevents-accelerator%2F.md",
+      "sourceUrl": "https://appdraft.com/events-accelerator/?page_source=https%3A%2F%2Fappdraft.com%2Fevents-accelerator%2F",
+      "title": "events-accelerator - Appdraft",
+      "description": "Purpose-built for Events • Built on Salesforce • Complete flexibility",
+      "wordCount": 1078
+    },
+    {
+      "path": "wp-content_uploads_2019_04_DigitalTransformationswithLowCodeDevelopment-75-1.pdf.md",
+      "sourceUrl": "https://appdraft.com/wp-content/uploads/2019/04/DigitalTransformationswithLowCodeDevelopment-75-1.pdf",
+      "title": "DigitalTransformationswithLowCodeDevelopmentV1.pdf",
+      "description": "How 'low code' developm ent and Platform as a Ser vice infrastructure is helping businesses deliver connected, agile softw are applications",
+      "wordCount": 2273
+    },
+    {
+      "path": "2025_03_11_salesforce-sales-engagement-automate-outbound-sales.md",
+      "sourceUrl": "https://appdraft.com/2025/03/11/salesforce-sales-engagement-automate-outbound-sales/",
+      "title": "Salesforce Sales Engagement: Automate & Optimise Your Outbound Sales Strategy",
+      "description": "Struggling with inconsistent lead follow-ups and inefficient sales processes? In this video, we explore Salesforce Sales Engagement, a powerful tool designed to automate and standardise your outbou...",
+      "wordCount": 237
+    },
+    {
+      "path": "2024_10_26_what-is-a-salesforce-health-check-and-what-can-it-do-for-users.md",
+      "sourceUrl": "https://appdraft.com/2024/10/26/what-is-a-salesforce-health-check-and-what-can-it-do-for-users/",
+      "title": "Understanding Salesforce Forecasts | Boost Accuracy & Sales",
+      "description": "A Salesforce Health Check is often recommended for businesses that have been using Salesforce for a while but find it no longer as effective or aligned with their evolving needs. The system may no ...",
+      "wordCount": 1125
+    },
+    {
+      "path": "page-sitemap.html.md",
+      "sourceUrl": "https://appdraft.com/page-sitemap.html",
+      "title": "Untitled",
+      "description": "https://appdraft.com/privacy-policy/2025-12-06T11:22:55+00:00weekly0.6https://appdraft.com/know-how/2025-08-04T10:55:28+00:00weekly0.6https://appdraft.com/who-we-help/2025-07-09T12:36:07+00:00weekl...",
+      "wordCount": 1
+    },
+    {
+      "path": "know-how_experience-cloud.md",
+      "sourceUrl": "https://appdraft.com/know-how/experience-cloud/",
+      "title": "Experience Cloud - Appdraft",
+      "description": "Experience Cloud lets you create secure portals, help centres and branded digital spaces that connect directly to your Salesforce data.",
+      "wordCount": 533
+    },
+    {
+      "path": "know-how_sales-cloud.md",
+      "sourceUrl": "https://appdraft.com/know-how/sales-cloud/",
+      "title": "Sales Cloud - Appdraft",
+      "description": "Salesforce is the backbone of modern sales teams. Sales Cloud brings structure, visibility and consistency to your sales process. It replaces spreadsheets and scattered tools with a single platform...",
+      "wordCount": 344
+    },
+    {
+      "path": "2024_02_12_go-with-the-flow-a-guide-to-salesforce-flows.md",
+      "sourceUrl": "https://appdraft.com/2024/02/12/go-with-the-flow-a-guide-to-salesforce-flows/",
+      "title": "Guide to Salesforce Flows | Simplify Automation Processes",
+      "description": "Salesforce has continued its investment in the development of Flows in recent years. Flows replaced Workflow Rules and are an intuitive, canvas-based method of designing automations. But what are t...",
+      "wordCount": 975
+    },
+    {
+      "path": "who-we-help_manufacturing.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/manufacturing/",
+      "title": "Manufacturing - Appdraft",
+      "description": "Manufacturers don’t just sell. They quote, sample, negotiate, deliver and support. Whether you go to market through distributors, partners or direct sales, you need a structured way to handle produ...",
+      "wordCount": 682
+    },
+    {
+      "path": "2021_10_27_salesforce-sales-cloud-top-five-features.md",
+      "sourceUrl": "https://appdraft.com/2021/10/27/salesforce-sales-cloud-top-five-features/",
+      "title": "Top 5 Salesforce Sales Cloud Features | Maximize Sales Success",
+      "description": "We’re setting out the top five areas of focus when getting value from Salesforce Sales Cloud. Whether you’re new to Salesforce or you’ve had it in place for a while, this is your guide to make sure...",
+      "wordCount": 1252
+    },
+    {
+      "path": "oppsgriddemo__page_source_https%3A%2F%2Fappdraft.com%2Foppsgriddemo%2F.md",
+      "sourceUrl": "https://appdraft.com/oppsgriddemo/?page_source=https%3A%2F%2Fappdraft.com%2Foppsgriddemo%2F",
+      "title": "Opps Grid Demo - Appdraft",
+      "description": "Using Salesforce Lightning Web Components (LWC) to give your sales team the familiar spreadsheet experience they love, with all the security and reliability of Salesforce",
+      "wordCount": 795
+    },
+    {
+      "path": "insights_page_2.md",
+      "sourceUrl": "https://appdraft.com/insights/page/2/",
+      "title": "Insights - Page 2 of 3 - Appdraft",
+      "description": "Explore articles, demos and videos that show what is possible with Salesforce. We share practical tips, product overviews and examples from real projects to help you get more from your platform.",
+      "wordCount": 499
+    },
+    {
+      "path": "page-sitemap.xml.md",
+      "sourceUrl": "https://appdraft.com/page-sitemap.xml",
+      "title": "Untitled",
+      "description": "https://appdraft.com/2025-10-05T21:03:09+00:00https://appdraft.com/privacy-policy/2025-12-06T11:22:55+00:00https://appdraft.com/know-how/2025-08-04T10:55:28+00:00https://appdraft.com/who-we-help/20...",
+      "wordCount": 1
+    },
+    {
+      "path": "post-sitemap.xml.md",
+      "sourceUrl": "https://appdraft.com/post-sitemap.xml",
+      "title": "Untitled",
+      "description": "https://appdraft.com/insights/2025-03-11T19:43:04+00:00https://appdraft.com/2019/01/11/death-of-a-spreadsheet/2019-01-11T08:52:32+00:00https://appdraft.com/wp-content/uploads/2024/06/Death-of-a-Spr...",
+      "wordCount": 1
+    },
+    {
+      "path": "insights.md",
+      "sourceUrl": "https://appdraft.com/insights/",
+      "title": "Insights - Appdraft",
+      "description": "Explore articles, demos and videos that show what is possible with Salesforce. We share practical tips, product overviews and examples from real projects to help you get more from your platform.",
+      "wordCount": 538
+    },
+    {
+      "path": "who-we-help_transportation.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/transportation/",
+      "title": "Transportation - Appdraft",
+      "description": "In transportation and logistics, every job matters. From the moment a customer makes a request to the final confirmation of delivery, success depends on visibility, coordination and clear communica...",
+      "wordCount": 721
+    },
+    {
+      "path": "what-we-do_custom-development.md",
+      "sourceUrl": "https://appdraft.com/what-we-do/custom-development/",
+      "title": "Custom Development - Appdraft",
+      "description": "Salesforce is often seen as just a sales tool. But it’s a flexible platform that can support far more, including finance, operations, and specialist processes.",
+      "wordCount": 419
+    },
+    {
+      "path": "insights_page_3.md",
+      "sourceUrl": "https://appdraft.com/insights/page/3/",
+      "title": "Insights - Page 3 of 3 - Appdraft",
+      "description": "Explore articles, demos and videos that show what is possible with Salesforce. We share practical tips, product overviews and examples from real projects to help you get more from your platform.",
+      "wordCount": 436
+    },
+    {
+      "path": "sitemap-misc.xml.md",
+      "sourceUrl": "https://appdraft.com/sitemap-misc.xml",
+      "title": "Untitled",
+      "description": "https://appdraft.com/2025-10-05T21:03:09+00:00daily1.0https://appdraft.com/sitemap.html2025-12-06T11:35:34+00:00monthly0.5",
+      "wordCount": 1
+    },
+    {
+      "path": "ai-assistant-policy.md",
+      "sourceUrl": "https://appdraft.com/ai-assistant-policy/",
+      "title": "AI Assistant Policy - Appdraft",
+      "description": "Appdraft Limited provides an AI-powered assistant (“AI Assistant”) on this website to help visitors find information, ask questions and navigate our services. The AI Assistant is offered as a conve...",
+      "wordCount": 450
+    },
+    {
+      "path": "sitemap.xml.md",
+      "sourceUrl": "https://appdraft.com/sitemap.xml",
+      "title": "Untitled",
+      "description": "https://appdraft.com/sitemap-misc.xml2025-12-06T11:35:34+00:00https://appdraft.com/post-sitemap.xml2025-03-11T19:43:04+00:00https://appdraft.com/page-sitemap.xml2025-12-06T11:35:34+00:00",
+      "wordCount": 1
+    },
+    {
+      "path": "2024_08_23_the-importance-of-diversity-in-consultancy-unleashing-new-perspectives-for-it-projects.md",
+      "sourceUrl": "https://appdraft.com/2024/08/23/the-importance-of-diversity-in-consultancy-unleashing-new-perspectives-for-it-projects/",
+      "title": "Einstein Trust Layer: How Salesforce Protects Data the Age of Generative AI",
+      "description": "In the world of consultancy, especially in IT projects, success is often determined by the ability to solve complex problems, innovate, and anticipate the needs of clients. While technical expertis...",
+      "wordCount": 903
+    },
+    {
+      "path": "2022_02_01_an-exact-science-forecasts-in-salesforce.md",
+      "sourceUrl": "https://appdraft.com/2022/02/01/an-exact-science-forecasts-in-salesforce/",
+      "title": "Forecasting in Salesforce | Master the Exact Science",
+      "description": "Forecasts are something of an afterthought for most Salesforce implementations. The focus for new CRM users tends to be on giving users a tool to ‘manage’ the Sales process. Reporting and tracking ...",
+      "wordCount": 735
+    },
+    {
+      "path": "2024_09_19_seamless-prospecting-with-salesforce-linkedin.md",
+      "sourceUrl": "https://appdraft.com/2024/09/19/seamless-prospecting-with-salesforce-linkedin/",
+      "title": "Seamless Prospecting with Salesforce and LinkedIn Integration",
+      "description": "Tired of juggling LinkedIn and Salesforce like you’re trying to master a circus act? Don’t worry, we’ve got you covered! In this video, we’ll show you how to stop losing track of your leads and fin...",
+      "wordCount": 209
+    },
+    {
+      "path": "know-how_agentforce.md",
+      "sourceUrl": "https://appdraft.com/know-how/agentforce/",
+      "title": "Agentforce - Appdraft",
+      "description": "Salesforce Agentforce helps your teams move faster and your customers get what they need. It works directly on the data you already hold in Salesforce, guiding internal users through their day-to-d...",
+      "wordCount": 550
+    },
+    {
+      "path": "2022_04_19_from-poacher-to-gamekeeper-building-a-career-in-salesforce.md",
+      "sourceUrl": "https://appdraft.com/2022/04/19/from-poacher-to-gamekeeper-building-a-career-in-salesforce/",
+      "title": "Building a Career in Salesforce | From Poacher to Gamekeeper",
+      "description": "Having just achieved my 10th Salesforce Certification, Application Architect, I wanted to share a little about why I chose Salesforce consulting as a career change and what I learned in the process...",
+      "wordCount": 783
+    },
+    {
+      "path": "2019_04_20_white-paper-achieving-digital-transformations-with-low-code-development.md",
+      "sourceUrl": "https://appdraft.com/2019/04/20/white-paper-achieving-digital-transformations-with-low-code-development/",
+      "title": "Achieve Digital Transformation | Low-Code Development Guide",
+      "description": "How ‘low code’ development and Platform as a Service infrastructure is helping businesses deliver connected, agile software applications",
+      "wordCount": 121
+    },
+    {
+      "path": "privacy-policy.md",
+      "sourceUrl": "https://appdraft.com/privacy-policy/",
+      "title": "Privacy Policy - Appdraft",
+      "description": "This Privacy Policy sets out how Appdraft Limited (“Appdraft”, “we”, “us”, or “our”) collects and uses personal information when you use our website at appdraft.com and its subdomains (the “Website”).",
+      "wordCount": 314
+    },
+    {
+      "path": "know-how_service-cloud.md",
+      "sourceUrl": "https://appdraft.com/know-how/service-cloud/",
+      "title": "Service Cloud - Appdraft",
+      "description": "Salesforce Service Cloud gives you a proper system for managing customer service.",
+      "wordCount": 387
+    },
+    {
+      "path": "who-we-help_communications-and-media.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/communications-and-media/",
+      "title": "Communications and Media - Appdraft",
+      "description": "Whether you're in telecom, broadband, digital media or a related service business, your growth depends on recurring revenue, strong customer care and visibility across accounts. From selling plans ...",
+      "wordCount": 678
+    },
+    {
+      "path": "2024_12_01_salesforce-einstein-trust-layer.md",
+      "sourceUrl": "https://appdraft.com/2024/12/01/salesforce-einstein-trust-layer/",
+      "title": "Einstein Trust Layer: How Salesforce Protects Data the Age of Generative AI",
+      "description": "Are you using Chat GPT in a business context? Ever thought about what happens to the information you feed it? If you’re feeding it customer data or sensitive business information, the answer might ...",
+      "wordCount": 605
+    },
+    {
+      "path": "who-we-help_healthcare-life-sciences.md",
+      "sourceUrl": "https://appdraft.com/who-we-help/healthcare-life-sciences/",
+      "title": "Healthcare & Life Sciences - Appdraft",
+      "description": "We help organisations across the healthcare and life sciences sector, from those delivering direct patient care to those supplying regulated equipment and pharmaceutical products.",
+      "wordCount": 702
+    },
+    {
+      "path": "arrange-callback__page_source_https%3A%2F%2Fappdraft.com%2Farrange-callback%2F.md",
+      "sourceUrl": "https://appdraft.com/arrange-callback/?page_source=https%3A%2F%2Fappdraft.com%2Farrange-callback%2F",
+      "title": "Arrange Callback - Appdraft",
+      "description": "We'd love to hear from you. Let's talk about your project.",
+      "wordCount": 129
+    }
+  ],
+  "version": 2,
+  "scrapeOptions": {
+    "limit": 200
+  }
+}

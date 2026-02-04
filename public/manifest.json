@@ -1,0 +1,21 @@
+{
+  "name": "Appdraft - Salesforce Implementation Experts",
+  "short_name": "Appdraft",
+  "description": "Expert Salesforce implementation, support, and custom development for growing businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#3cd6bf",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

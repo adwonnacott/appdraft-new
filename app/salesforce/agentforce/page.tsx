@@ -1,303 +1,214 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import Accordion from '@/components/ui/Accordion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import GlowCard from '@/components/ui/GlowCard';
 
 export const metadata = {
-  title: 'Salesforce Agentforce Implementation | Appdraft',
-  description: 'Deploy autonomous AI agents that work alongside your team to resolve customer issues, qualify leads, and automate complex workflows.',
+  title: 'Salesforce Agentforce AI Implementation',
+  description: 'Deploy Salesforce Agentforce AI to accelerate your teams and serve customers faster. AI-powered case summaries, email drafting, and intelligent automation inside your CRM.',
+  keywords: ['Agentforce', 'Salesforce AI', 'Einstein AI', 'AI automation', 'CRM AI', 'intelligent automation', 'AI customer service'],
+  openGraph: {
+    title: 'Salesforce Agentforce AI | Appdraft',
+    description: 'Deploy Salesforce Agentforce AI to accelerate your teams and serve customers faster.',
+    url: 'https://appdraft.com/salesforce/agentforce',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/salesforce/agentforce',
+  },
 };
 
+// Contextual icons for Agentforce features
+const icons = {
+  caseReview: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  ),
+  summaries: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </svg>
+  ),
+  emailDraft: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  ),
+  dataQuality: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  ),
+  guidedWorkflow: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+    </svg>
+  ),
+  agentDefinition: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  ),
+  actionDesign: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  knowledgeConnection: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+    </svg>
+  ),
+  testing: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+    </svg>
+  ),
+  training: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  ),
+};
+
+const agentforceCapabilities = [
+  { icon: icons.caseReview, title: 'Case Review', description: 'Review a case and highlight key points from email history.' },
+  { icon: icons.summaries, title: 'Activity Summaries', description: 'Summarise long activity logs into clear status updates.' },
+  { icon: icons.emailDraft, title: 'Email Drafting', description: 'Draft tailored emails based on records or recent interactions.' },
+  { icon: icons.dataQuality, title: 'Data Quality', description: 'Spot missing data or inconsistencies in key fields.' },
+  { icon: icons.guidedWorkflow, title: 'Guided Workflows', description: 'Guide users through quoting, triage or onboarding steps.' },
+];
+
+const howWeHelp = [
+  { icon: icons.agentDefinition, title: 'Agent Definition', description: 'Define what the agent should read, understand and act on.' },
+  { icon: icons.actionDesign, title: 'Action Design', description: 'Design actions that run inside Flow, Apex or Lightning pages.' },
+  { icon: icons.knowledgeConnection, title: 'Knowledge Connection', description: 'Connect to your knowledge base, documents or website content.' },
+  { icon: icons.testing, title: 'Testing', description: 'Test responses to ensure accuracy and value.' },
+  { icon: icons.training, title: 'Training', description: 'Train your team to use it effectively.' },
+];
+
+const whenMakesSense = [
+  { title: 'You want to help customers get faster answers', content: 'Deploy AI-powered support that can answer common questions instantly using your existing knowledge base.' },
+  { title: 'You want to reduce time spent reviewing long records or case history', content: 'Let AI summarise complex case histories and highlight the key information your team needs.' },
+  { title: 'You want the system to suggest updates or next steps based on data', content: 'Get intelligent recommendations for actions based on patterns in your CRM data.' },
+  { title: 'You want to cut down repetitive manual tasks', content: 'Automate routine tasks like data entry, email drafting, and status updates.' },
+  { title: 'You want AI to fit the way your business already works', content: 'Agentforce integrates with your existing Salesforce setup, flows, and business logic.' },
+];
+
 export default function Agentforce() {
-  const benefits = [
-    {
-      title: 'Autonomous Service Agents',
-      description: 'AI agents that resolve customer inquiries 24/7, escalating to humans only when necessary. Handle routine cases automatically with natural conversation.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      ),
-    },
-    {
-      title: 'Sales Development Representatives',
-      description: 'AI-powered SDRs that qualify leads, answer product questions, schedule meetings, and nurture prospects through intelligent conversations.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      ),
-    },
-    {
-      title: 'Built on Trusted Data',
-      description: 'Agents ground their responses in your Salesforce data, knowledge articles, and business rules. No hallucinations, just accurate information.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      ),
-    },
-    {
-      title: 'Natural Language Actions',
-      description: 'Agents can take actions in Salesforce using natural language. Update records, create cases, send emails, all through conversational interface.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      ),
-    },
-    {
-      title: 'Seamless Handoff to Humans',
-      description: 'When agents need help or customers request it, seamless handoff to human agents with complete context and conversation history.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-      ),
-    },
-    {
-      title: 'Custom Agent Creation',
-      description: 'Build specialized agents for your unique business processes using Agent Builder. Define goals, instructions, and available actions.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      ),
-    },
-  ];
-
-  const howWeHelp = [
-    {
-      title: 'Use Case Discovery',
-      description: 'Identify high-value opportunities for AI agents in your customer service, sales, and operations workflows.',
-    },
-    {
-      title: 'Agent Design & Configuration',
-      description: 'Define agent personas, conversation flows, escalation criteria, and integration with your existing Salesforce setup.',
-    },
-    {
-      title: 'Knowledge Base Preparation',
-      description: 'Organize and optimize your knowledge articles, FAQs, and documentation so agents have accurate information to work with.',
-    },
-    {
-      title: 'Testing & Refinement',
-      description: 'Rigorous testing with real scenarios, edge cases, and feedback loops to ensure agents perform reliably before launch.',
-    },
-    {
-      title: 'Deployment & Monitoring',
-      description: 'Deploy agents across channels (web, mobile, messaging) with dashboards to monitor performance and customer satisfaction.',
-    },
-    {
-      title: 'Continuous Improvement',
-      description: 'Ongoing optimization based on conversation analytics, success metrics, and evolving business requirements.',
-    },
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-indigo-50 via-white to-violet-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Salesforce Agentforce
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Deploy Autonomous AI Agents That Work Alongside Your Team
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Agentforce is Salesforce's groundbreaking platform for building and deploying autonomous AI agents that can
-              reason, plan, and take action across your business. Unlike basic chatbots, Agentforce agents understand context,
-              follow business rules, and seamlessly collaborate with humans.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all hover:shadow-lg"
-            >
-              Get Started with Agentforce
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Agentforce"
+        title="AI Where it Counts,"
+        highlight="Inside Your CRM"
+        description="Salesforce Agentforce helps your teams move faster and your customers get what they need. It works directly on the data you already hold in Salesforce, guiding internal users through their day-to-day work or supporting customers with instant answers and next steps."
+        image="/images/salesforce/agentforce.jpg"
+        imageAlt="Agentforce AI assistant"
+        buttons={[
+          { label: 'Get Started', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Key Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Agentforce?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Move beyond simple chatbots to autonomous agents that can understand, decide, and act on your behalf
+      <ContentSection
+        title="Why Agentforce?"
+        background="white"
+        centered={false}
+      >
+        <ScrollReveal>
+          <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              There are plenty of AI tools on the market. But if they don't have access to your data, and they can't do anything with it, what's the point?
+            </p>
+            <p>
+              Agentforce is different. It runs inside Salesforce and works with the data already in your system: your customer records, cases, emails, activities and product data. That means it can take meaningful action, help users make decisions, and spot things a human might miss.
+            </p>
+            <p>
+              Rather than floating in a chat window or sitting outside your workflow, Agentforce is designed to be useful right where the work happens.
             </p>
           </div>
+        </ScrollReveal>
+      </ContentSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {benefit.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How Appdraft Can Help */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Can Help
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Agentforce is new and transformative. We help you implement AI agents responsibly and effectively.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {howWeHelp.map((item, index) => (
-              <div
-                key={item.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-indigo-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-indigo-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Common Agentforce Use Cases
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 mt-8 text-left">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <h4 className="text-xl font-bold text-white mb-2">Customer Service</h4>
-                <p className="text-indigo-100">
-                  Resolve order inquiries, track shipments, process returns, answer FAQs, and escalate complex issues
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <h4 className="text-xl font-bold text-white mb-2">Sales Qualification</h4>
-                <p className="text-indigo-100">
-                  Engage website visitors, qualify leads, answer product questions, and schedule sales meetings
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <h4 className="text-xl font-bold text-white mb-2">Employee Support</h4>
-                <p className="text-indigo-100">
-                  Help employees with HR questions, IT issues, policy lookups, and internal process guidance
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What Makes Agentforce Different */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              What Makes Agentforce Different?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Agentforce represents a fundamental shift from reactive chatbots to proactive AI agents
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-red-50 border-2 border-red-200 p-8 rounded-xl">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Traditional Chatbots</h3>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Follow pre-programmed scripts and decision trees
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Break easily when conversations go off-script
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Cannot reason about complex scenarios
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
-                  Limited to answering questions, not taking action
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-indigo-50 border-2 border-indigo-200 p-8 rounded-xl">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Agentforce Agents</h3>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-indigo-600 mr-2">•</span>
-                  Understand intent and reason through problems dynamically
-                </li>
-                <li className="flex items-start">
-                  <span className="text-indigo-600 mr-2">•</span>
-                  Adapt conversations based on context and data
-                </li>
-                <li className="flex items-start">
-                  <span className="text-indigo-600 mr-2">•</span>
-                  Make decisions using business rules and guardrails
-                </li>
-                <li className="flex items-start">
-                  <span className="text-indigo-600 mr-2">•</span>
-                  Take autonomous actions in Salesforce and connected systems
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-indigo-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Deploy Autonomous AI Agents?
-          </h2>
-          <p className="text-xl text-indigo-100 mb-8">
-            Let's explore how Agentforce can augment your team and transform your customer experience
+      <ContentSection
+        title="What Agentforce can do"
+        subtitle="Agentforce helps with the kinds of jobs that usually slow people down."
+        background="gray"
+      >
+        <FeatureGrid features={agentforceCapabilities} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center">
+            Everything runs inside Salesforce, using your existing flows, objects and business logic.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/implementation"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all"
-            >
-              Learn About Implementation
-            </Link>
-          </div>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="Get started faster with Salesforce-built Agents"
+        subtitle="Salesforce offers a growing library of ready-to-use Agentforce templates."
+        background="white"
+      >
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <ScrollReveal>
+            <GlowCard className="h-full rounded-2xl" glowColor="rgba(25, 119, 155, 0.1)">
+              <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-card h-full">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Service Agent</h3>
+                <p className="text-gray-700">
+                  Supports customers across multiple channels, answers questions using your knowledge base, and creates cases when needed.
+                </p>
+              </div>
+            </GlowCard>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <GlowCard className="h-full rounded-2xl" glowColor="rgba(25, 119, 155, 0.1)">
+              <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-card h-full">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Sales Development Agent</h3>
+                <p className="text-gray-700">
+                  Sends outbound emails, answers inbound queries, and engages leads using your live data.
+                </p>
+              </div>
+            </GlowCard>
+          </ScrollReveal>
         </div>
-      </section>
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center">
+            These can be tailored to fit your specific process and business rules.
+          </p>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="How we make it work for you"
+        subtitle="We help shape Agentforce into something your business can use with confidence."
+        background="gray"
+      >
+        <FeatureGrid features={howWeHelp} columns={3} variant="card" />
+        <ScrollReveal className="mt-8">
+          <p className="text-lg text-gray-700 text-center">
+            We focus on solving real problems, not just ticking the AI box.
+          </p>
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection
+        title="When Agentforce makes sense"
+        background="white"
+      >
+        <Accordion items={whenMakesSense} />
+      </ContentSection>
+
+      <ContentSection background="white">
+        <CTABanner
+          title="Already using Salesforce? Make your data work harder"
+          description="Agentforce helps your team move faster, act smarter and get more from the data you already have. Book a call and we'll help you build something that makes a real difference."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }

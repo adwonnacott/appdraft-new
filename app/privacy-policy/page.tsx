@@ -61,7 +61,7 @@ export default function PrivacyPolicy() {
             <li>Deliver our Salesforce consulting services</li>
             <li>Send you marketing communications (with your consent)</li>
             <li>Improve our website and services</li>
-            <li>Analyze usage patterns and trends</li>
+            <li>Analyse usage patterns and trends</li>
             <li>Comply with legal obligations</li>
             <li>Protect against fraudulent or illegal activity</li>
           </ul>
@@ -130,7 +130,7 @@ export default function PrivacyPolicy() {
             London EC1V 2NX<br />
             United Kingdom<br />
             <br />
-            Email: hello@appdraft.com<br />
+            Email: info@appdraft.com<br />
             Phone: 020 3858 0040
           </p>
         </div>

@@ -1,223 +1,131 @@
-import Link from 'next/link';
+import PageHero from '@/components/sections/PageHero';
+import ContentSection from '@/components/sections/ContentSection';
+import FeatureGrid from '@/components/sections/FeatureGrid';
+import CTABanner from '@/components/sections/CTABanner';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Field Service Implementation | Appdraft',
-  description: 'Optimize field operations with intelligent scheduling, mobile workforce management, and real-time visibility into field service delivery.',
+  title: 'Salesforce Field Service Implementation',
+  description: 'Plan, schedule, and track field work with Salesforce Field Service. Optimise resources, reduce missed appointments, and connect field teams to your CRM.',
+  keywords: ['Field Service', 'Salesforce FSL', 'field service management', 'mobile workforce', 'scheduling software', 'work order management', 'service dispatch'],
+  openGraph: {
+    title: 'Salesforce Field Service | Appdraft',
+    description: 'Plan, schedule, and track field work with Salesforce Field Service.',
+    url: 'https://appdraft.com/salesforce/field-service',
+  },
+  alternates: {
+    canonical: 'https://appdraft.com/salesforce/field-service',
+  },
 };
 
+// Contextual icons for Field Service features
+const icons = {
+  scheduling: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  communication: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+  ),
+  appointments: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+    </svg>
+  ),
+  connected: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+    </svg>
+  ),
+  mobile: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+    </svg>
+  ),
+  installation: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  maintenance: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+    </svg>
+  ),
+  inspections: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+    </svg>
+  ),
+  repairs: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
+    </svg>
+  ),
+  surveys: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  ),
+};
+
+const fieldServiceBenefits = [
+  { icon: icons.scheduling, title: 'Smarter Scheduling', description: 'Optimise resources by assigning the right person, with the right skills, at the right time. Account for location, travel time, skills and availability.' },
+  { icon: icons.communication, title: 'Better Communication', description: 'Field staff see all job details, location, assets and customer history. Updates flow back to the office in real time.' },
+  { icon: icons.appointments, title: 'Fewer Missed Appointments', description: 'Appointment reminders and status updates keep customers informed and reduce no-shows.' },
+  { icon: icons.connected, title: 'Connected Operations', description: 'Link with Service Cloud so cases, work orders and appointments are part of the same process.' },
+  { icon: icons.mobile, title: 'Mobile-Friendly Working', description: 'Field teams access and update jobs via mobile app including checklists, photos, signatures and time logging.' },
+];
+
+const typicalUses = [
+  { icon: icons.installation, title: 'Installation', description: 'Installation and commissioning of equipment.' },
+  { icon: icons.maintenance, title: 'Maintenance', description: 'Planned maintenance and servicing.' },
+  { icon: icons.inspections, title: 'Inspections', description: 'Safety inspections and compliance checks.' },
+  { icon: icons.repairs, title: 'Repairs', description: 'Reactive repairs and fault resolution.' },
+  { icon: icons.surveys, title: 'Surveys', description: 'Survey work prior to quotes or project planning.' },
+];
+
 export default function FieldService() {
-  const benefits = [
-    {
-      title: 'Intelligent Scheduling',
-      description: 'AI-powered scheduling engine optimizes technician assignments based on skills, location, availability, and customer priority.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Mobile Workforce App',
-      description: 'Empower field technicians with a powerful mobile app for job details, customer history, parts inventory, and real-time updates.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      ),
-    },
-    {
-      title: 'Dispatch Console',
-      description: 'Drag-and-drop Gantt chart interface for dispatchers to visualize schedules, manage changes, and optimize routes in real-time.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-      ),
-    },
-    {
-      title: 'Asset Management',
-      description: 'Track customer assets, maintenance history, warranty information, and service contracts for proactive maintenance planning.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      ),
-    },
-    {
-      title: 'Inventory Management',
-      description: 'Track parts inventory across vans, warehouses, and locations. Ensure technicians have the right parts for every job.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-      ),
-    },
-    {
-      title: 'Customer Communication',
-      description: 'Automated appointment confirmations, technician arrival notifications, and real-time ETAs keep customers informed.',
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      ),
-    },
-  ];
-
-  const howWeHelp = [
-    {
-      title: 'Service Process Design',
-      description: 'Map your field service workflows, job types, service territories, and business rules to create an optimized system.',
-    },
-    {
-      title: 'Scheduling Configuration',
-      description: 'Configure scheduling policies, work rules, skills matrix, and optimization parameters for your specific operations.',
-    },
-    {
-      title: 'Mobile App Setup',
-      description: 'Customize the mobile app with your branding, required fields, offline access, and integration with existing tools.',
-    },
-    {
-      title: 'Territory Management',
-      description: 'Define service territories, operating hours, and resource assignments to optimize coverage and response times.',
-    },
-    {
-      title: 'Integration & Migration',
-      description: 'Connect with ERP, accounting, inventory systems, and telematics. Migrate existing asset and customer data.',
-    },
-    {
-      title: 'Team Training',
-      description: 'Comprehensive training for dispatchers, mobile workers, and managers on using Field Service effectively.',
-    },
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-orange-50 via-white to-amber-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Salesforce Field Service
-            </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Transform Field Operations with Intelligent Scheduling
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Field Service is the complete mobile workforce management solution for scheduling, dispatching, and
-              managing field technicians. Increase first-time fix rates, improve resource utilization, and deliver
-              exceptional on-site service experiences.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-700 transition-all hover:shadow-lg"
-            >
-              Get Started with Field Service
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        badge="Field Service"
+        title="Plan and Deliver Work"
+        highlight="in the Field"
+        description="Salesforce Field Service helps businesses plan, deliver and track work carried out in the field. Whether you manage installations, maintenance, inspections or repairs, Field Service brings scheduling, job information, and field updates into a single platform."
+        image="/images/salesforce/field-service.jpg"
+        imageAlt="Field service technician"
+        buttons={[
+          { label: 'Get Started', href: '/contact', primary: true },
+        ]}
+      />
 
-      {/* Key Benefits */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Field Service?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to manage a mobile workforce, from intelligent scheduling to real-time visibility
-            </p>
-          </div>
+      <ContentSection
+        title="Why choose Salesforce Field Service?"
+        background="white"
+      >
+        <FeatureGrid features={fieldServiceBenefits} columns={3} variant="card" />
+      </ContentSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-8 bg-gradient-to-br from-gray-50 to-orange-50 rounded-xl hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {benefit.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ContentSection
+        title="Typical uses for Field Service"
+        background="gray"
+      >
+        <FeatureGrid features={typicalUses} columns={3} variant="card" />
+      </ContentSection>
 
-      {/* How Appdraft Can Help */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How Appdraft Can Help
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've implemented Field Service for HVAC, electrical, plumbing, telecommunications, and equipment maintenance companies.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {howWeHelp.map((item, index) => (
-              <div
-                key={item.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="text-4xl font-bold text-orange-600 opacity-20 mb-4">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-orange-600 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Typical Results
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl font-bold text-white mb-2">25%</div>
-                <p className="text-orange-100">Increase in jobs completed per day</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl font-bold text-white mb-2">30%</div>
-                <p className="text-orange-100">Reduction in travel time and costs</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl font-bold text-white mb-2">40%</div>
-                <p className="text-orange-100">Improvement in first-time fix rate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-orange-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Optimize Your Field Operations?
-          </h2>
-          <p className="text-xl text-orange-100 mb-8">
-            Let's discuss how Field Service can help you schedule smarter, work faster, and deliver better service
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all"
-            >
-              Schedule a Consultation
-            </Link>
-            <Link
-              href="/services/implementation"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-700 transition-all"
-            >
-              Learn About Implementation
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ContentSection background="white">
+        <CTABanner
+          title="Need a better way to manage work in the field?"
+          description="Book a call to see how Salesforce Field Service can improve scheduling, visibility and customer satisfaction."
+          primaryButton={{ label: 'Book A Call', href: '/contact' }}
+          variant="gradient"
+        />
+      </ContentSection>
     </>
   );
 }
