@@ -1,10 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Script from 'next/script';
 
-// Declare SalesforceInteractions as a global (loaded via script tag)
+const TURNSTILE_SITE_KEY = '0x4AAAAAACXuClfrEWjl2326';
+
+// Declare globals (loaded via script tags)
 declare global {
   interface Window {
+    gtag?: (
+      command: 'event' | 'config' | 'js',
+      action: string,
+      params?: Record<string, unknown>
+    ) => void;
     SalesforceInteractions?: {
       sendEvent: (event: {
         interaction: { name: string };
@@ -12,6 +20,18 @@ declare global {
           attributes?: Record<string, string>;
         };
       }) => void;
+    };
+    turnstile?: {
+      render: (container: string | HTMLElement, options: {
+        sitekey: string;
+        callback: (token: string) => void;
+        'error-callback'?: () => void;
+        'expired-callback'?: () => void;
+        theme?: 'light' | 'dark' | 'auto';
+        size?: 'normal' | 'compact' | 'invisible';
+      }) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
     };
   }
 }
@@ -35,6 +55,16 @@ const initialFormData: FormData = {
   message: '',
   marketingConsent: false,
 };
+
+// Send conversion event to Google Analytics
+function sendGAConversionEvent(): void {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'generate_lead', {
+      event_category: 'Contact',
+      event_label: 'Contact Form Submission',
+    });
+  }
+}
 
 // Send identity event to Salesforce Interactions SDK
 // This links the anonymous browsing session to the known user profile
@@ -71,6 +101,42 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+
+  // Initialize Turnstile widget when script loads or if already loaded
+  useEffect(() => {
+    // If script already loaded (e.g., cached), initialize immediately
+    if (window.turnstile && turnstileContainerRef.current && !turnstileWidgetId.current) {
+      initializeTurnstile();
+    }
+
+    return () => {
+      // Cleanup on unmount
+      if (turnstileWidgetId.current && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId.current);
+      }
+    };
+  }, []);
+
+  const initializeTurnstile = () => {
+    if (window.turnstile && turnstileContainerRef.current && !turnstileWidgetId.current) {
+      turnstileWidgetId.current = window.turnstile.render(turnstileContainerRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => {
+          setTurnstileToken(token);
+        },
+        'error-callback': () => {
+          setTurnstileToken(null);
+        },
+        'expired-callback': () => {
+          setTurnstileToken(null);
+        },
+        theme: 'light',
+      });
+    }
+  };
 
   const updateField = (field: keyof FormData, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -109,21 +175,35 @@ export default function ContactForm() {
       // This is the official Salesforce method for identity resolution
       sendIdentityEvent(formData);
 
+      // Verify Turnstile token is present
+      if (!turnstileToken) {
+        setSubmitError('Please complete the verification check.');
+        setIsSubmitting(false);
+        return;
+      }
+
       // Create Lead in Salesforce via our API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken,
+        }),
       });
 
       if (!response.ok) {
         throw new Error('Failed to submit form');
       }
 
+      // Track conversion in Google Analytics
+      sendGAConversionEvent();
       setIsSubmitted(true);
     } catch {
       // For now, simulate success since we don't have the API yet
       console.log('Form data:', formData);
+      // Track conversion in Google Analytics (even if API fails, form was submitted)
+      sendGAConversionEvent();
       setIsSubmitted(true);
       // When API is ready, uncomment:
       // setSubmitError('Something went wrong. Please try again or call us on 020 3858 0040.');
@@ -277,6 +357,9 @@ export default function ContactForm() {
           </label>
         </div>
 
+        {/* Turnstile Widget */}
+        <div ref={turnstileContainerRef} className="flex justify-center" />
+
         {/* Error Message */}
         {submitError && (
           <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
@@ -312,6 +395,12 @@ export default function ContactForm() {
           . We&apos;ll never share your information with third parties.
         </p>
       </div>
+
+      {/* Turnstile Script */}
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        onLoad={initializeTurnstile}
+      />
     </form>
   );
 }
