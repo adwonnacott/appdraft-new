@@ -13,6 +13,9 @@ export interface Env {
   SF_CLIENT_ID: string;
   SF_CLIENT_SECRET: string;
   SF_INSTANCE_URL: string;
+
+  // Turnstile secret for bot protection
+  TURNSTILE_SECRET_KEY: string;
 }
 
 interface ContactFormData {
@@ -35,6 +38,34 @@ interface SalesforceLeadResponse {
   id: string;
   success: boolean;
   errors: Array<{ message: string; statusCode: string }>;
+}
+
+interface TurnstileVerifyResponse {
+  success: boolean;
+  'error-codes'?: string[];
+  challenge_ts?: string;
+  hostname?: string;
+}
+
+/**
+ * Verify Turnstile token with Cloudflare
+ */
+async function verifyTurnstileToken(
+  token: string,
+  secretKey: string,
+  remoteIp: string | null
+): Promise<TurnstileVerifyResponse> {
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      secret: secretKey,
+      response: token,
+      remoteip: remoteIp,
+    }),
+  });
+
+  return response.json();
 }
 
 // CORS headers
@@ -179,8 +210,45 @@ export default {
 
     try {
       // Parse and validate form data
-      const body = await request.json();
-      const formData = validateFormData(body);
+      const body = await request.json() as Record<string, unknown>;
+      const { turnstileToken, ...formFields } = body;
+
+      // Verify Turnstile token first (bot protection)
+      if (!turnstileToken || typeof turnstileToken !== 'string') {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Verification token missing' }),
+          {
+            status: 400,
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders(origin, env.ALLOWED_ORIGIN),
+            },
+          }
+        );
+      }
+
+      const turnstileResult = await verifyTurnstileToken(
+        turnstileToken,
+        env.TURNSTILE_SECRET_KEY,
+        request.headers.get('CF-Connecting-IP')
+      );
+
+      if (!turnstileResult.success) {
+        console.error('Turnstile verification failed:', turnstileResult['error-codes']);
+        return new Response(
+          JSON.stringify({ success: false, error: 'Verification failed. Please try again.' }),
+          {
+            status: 400,
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders(origin, env.ALLOWED_ORIGIN),
+            },
+          }
+        );
+      }
+
+      // Validate form data
+      const formData = validateFormData(formFields);
 
       // Get Salesforce token using Client Credentials flow
       const token = await getSalesforceToken(env);

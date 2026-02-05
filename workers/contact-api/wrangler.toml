@@ -11,9 +11,10 @@ zone_name = "appdraft.com"
 ALLOWED_ORIGIN = "https://appdraft.com"
 
 # Salesforce credentials - set these as secrets via wrangler
-# Uses JWT Bearer Flow (same as psa-copilot-api)
+# Uses Client Credentials Flow
 # wrangler secret put SF_CLIENT_ID
 # wrangler secret put SF_CLIENT_SECRET
-# wrangler secret put SF_USERNAME
 # wrangler secret put SF_INSTANCE_URL
-# wrangler secret put SF_PRIVATE_KEY
+
+# Turnstile (bot protection) - set as secret via wrangler
+# wrangler secret put TURNSTILE_SECRET_KEY
