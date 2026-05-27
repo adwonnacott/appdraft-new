@@ -75,6 +75,19 @@ const icons = {
   ),
 };
 
+const faqItems = [
+  { title: 'What is the difference between Salesforce configuration and custom development?', content: 'Configuration means using Salesforce\'s built-in tools, including fields, layouts, flows, and reports, to set up the system without writing code. Custom development means writing Apex code or Lightning Web Components to build functionality that does not exist out of the box.' },
+  { title: 'Do you build Salesforce integrations with third-party systems?', content: 'Yes. We integrate Salesforce with accounting software, ERP systems, marketing platforms, telephony, and custom internal tools. We have built our own Salesforce-Xero integration product as well as bespoke client solutions.' },
+  { title: 'Do you work on fixed price or time and materials?', content: 'Time and materials. Most fixed-price quotes will factor in an element of risk of overrun, so they are often inflated, which we think is unfair to the client. With time and materials you only pay for what you actually consume. We give clear estimates upfront and keep you informed throughout.' },
+  { title: 'When does it make sense to build custom versus using an AppExchange app?', content: 'AppExchange apps are faster and lower risk for common requirements. Custom development makes sense when you have a specific workflow no off-the-shelf app covers, when data security prevents third-party access, or when the long-term licensing cost of an app exceeds a one-off build.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
+};
+
 const developmentTypes = [
   {
     title: 'Finance and procurement tools',
@@ -117,6 +130,10 @@ export default function CustomDevelopment() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <PageHero
         badge="Custom Development"
@@ -174,6 +191,10 @@ export default function CustomDevelopment() {
             We don't just plug things in. We help you choose the right tools, set them up properly, and make sure they work alongside what you've already built.
           </p>
         </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="white">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

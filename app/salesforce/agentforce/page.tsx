@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import PageHero from '@/components/sections/PageHero';
 import ContentSection from '@/components/sections/ContentSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
@@ -7,17 +9,31 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlowCard from '@/components/ui/GlowCard';
 
 export const metadata = {
-  title: 'Salesforce Agentforce AI Implementation',
-  description: 'Deploy Salesforce Agentforce AI to accelerate your teams and serve customers faster. AI-powered case summaries, email drafting, and intelligent automation inside your CRM.',
-  keywords: ['Agentforce', 'Salesforce AI', 'Einstein AI', 'AI automation', 'CRM AI', 'intelligent automation', 'AI customer service'],
+  title: 'Salesforce Agentforce Consultants | London, UK',
+  description: 'Salesforce Agentforce consultants helping businesses deploy AI agents that work directly inside their CRM. Case summaries, intelligent automation, and AI-powered customer service.',
+  keywords: ['Salesforce Agentforce consultants', 'Agentforce implementation', 'Agentforce London', 'Salesforce AI', 'AI agents Salesforce', 'intelligent automation'],
   openGraph: {
-    title: 'Salesforce Agentforce AI | Appdraft',
+    title: 'Salesforce Agentforce Consultants | Appdraft',
     description: 'Deploy Salesforce Agentforce AI to accelerate your teams and serve customers faster.',
     url: 'https://appdraft.com/salesforce/agentforce',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/agentforce',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Agentforce?', content: 'Agentforce is Salesforce\'s AI agent platform. It deploys autonomous AI agents that can handle customer queries, summarise cases, draft responses, and take actions directly inside your Salesforce org using your own CRM data.' },
+  { title: 'How is Agentforce different from Einstein Bots?', content: 'Einstein Bots follow pre-defined conversation flows and rules. Agentforce uses large language models to understand intent, respond dynamically, and take real actions such as updating records, creating cases, or sending emails. It is a fundamentally more capable approach.' },
+  { title: 'Have you delivered Agentforce projects?', content: 'Yes. We have delivered Agentforce SDR agents and customer-facing chatbots for clients, so we have real implementation experience rather than theoretical knowledge.' },
+  { title: 'Do I need Data Cloud to use Agentforce?', content: 'Yes. Data Cloud is required to get the most out of Agentforce. It enables Agentforce to draw on your organisation\'s knowledge, including knowledge base articles, policy documents, and other unstructured content, to deliver accurate and trusted responses. Data Cloud also allows you to bring in data from other systems that Agentforce needs access to in order to answer questions, giving your agents a fuller picture of your customers and operations.' },
+  { title: 'How long does an Agentforce implementation take?', content: 'Standard use cases such as an SDR agent can be delivered in two to three weeks. More specific requirements with custom logic or complex integrations will take longer depending on what needs to be accommodated. We scope this clearly once we understand your use case.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Agentforce features
@@ -102,10 +118,13 @@ const whenMakesSense = [
 export default function Agentforce() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Agentforce"
-        title="AI Where it Counts,"
-        highlight="Inside Your CRM"
+        title="Salesforce Agentforce Consultants"
         description="Salesforce Agentforce helps your teams move faster and your customers get what they need. It works directly on the data you already hold in Salesforce, guiding internal users through their day-to-day work or supporting customers with instant answers and next steps."
         image="/images/salesforce/agentforce.jpg"
         imageAlt="Agentforce AI assistant"
@@ -199,6 +218,47 @@ export default function Agentforce() {
         background="white"
       >
         <Accordion items={whenMakesSense} />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
+      </ContentSection>
+
+      <ContentSection title="See it in action" background="white">
+        <ScrollReveal>
+          <Link
+            href="/case-studies/agentforce-sdr-lead-qualification-european-manufacturer"
+            className="group flex flex-col md:flex-row gap-8 bg-white rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden"
+          >
+            <div className="relative md:w-80 h-48 md:h-auto flex-shrink-0">
+              <Image
+                src="https://images.unsplash.com/photo-1662974770404-468fd9660389?w=800&q=80"
+                alt="Agentforce SDR lead qualification case study"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-8 flex flex-col justify-center">
+              <div className="flex flex-wrap gap-2 mb-3">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600">Manufacturing</span>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700">Agentforce</span>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">Sales Cloud</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#19779b] transition-colors leading-snug">
+                How an Agentforce SDR Agent Handles Lead Qualification at Scale for a European Manufacturer
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                A European manufacturer generating high volumes of social media leads built an Agentforce SDR to qualify prospects automatically, handle multi-language outreach, and book meetings with the right local agent.
+              </p>
+              <div className="inline-flex items-center gap-2 bg-[#0b3d52] text-white px-4 py-2 rounded-lg text-sm font-semibold w-fit">
+                <svg className="w-4 h-4 text-[#3cd6bf]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                ~30% of leads qualified out automatically
+              </div>
+            </div>
+          </Link>
+        </ScrollReveal>
       </ContentSection>
 
       <ContentSection background="white">

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__jeeves-library__search_accounts",
+      "mcp__jeeves-library__create_project",
+      "Bash(./server.sh)",
+      "Bash(bun x *)",
+      "Bash(wrangler d1 *)",
+      "Bash(npx supabase *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(npx vite *)",
+      "Edit(~/.claude/skills/dev-browser/**)",
+      "Bash(cp /Users/adamwonnacott/.claude/skills/dev-browser/tmp/appexchange/card1.png /Users/adamwonnacott/Downloads/appdraft-appexchange-1.png)",
+      "Bash(cp /Users/adamwonnacott/.claude/skills/dev-browser/tmp/appexchange/card2.png /Users/adamwonnacott/Downloads/appdraft-appexchange-2.png)",
+      "Bash(cp /Users/adamwonnacott/.claude/skills/dev-browser/tmp/appexchange/card3.png /Users/adamwonnacott/Downloads/appdraft-appexchange-3.png)"
+    ],
+    "additionalDirectories": [
+      "/Users/adamwonnacott/newPSA/psa-copilot-api/src/sync",
+      "/Users/adamwonnacott/newPSA/psa-copilot-api/src/routes/portal",
+      "/Users/adamwonnacott/newPSA/psa-copilot-api",
+      "/Users/adamwonnacott/newPSA/supabase/migrations",
+      "/Users/adamwonnacott/newPSA/psa-admin-portal/src/routes",
+      "/Users/adamwonnacott/newPSA/psa-admin-portal/src"
+    ]
+  }
+}

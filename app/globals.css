@@ -267,6 +267,83 @@ body {
    Blog Content Styles
    ======================================== */
 
+/* Case study content — clean, matches service page design language */
+.case-study-content {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: #374151;
+}
+
+.case-study-content p {
+  margin-bottom: 1.5rem;
+}
+
+.case-study-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2d3d;
+  letter-spacing: -0.02em;
+}
+
+.case-study-content h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.625rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #19779b;
+}
+
+.case-study-content ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 1.5rem 0 !important;
+}
+
+.case-study-content ul li {
+  position: relative !important;
+  padding-left: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.8 !important;
+}
+
+.case-study-content ul li::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.65rem !important;
+  width: 7px !important;
+  height: 7px !important;
+  background-color: #19779b !important;
+  border-radius: 50% !important;
+}
+
+.case-study-content blockquote {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(25, 119, 155, 0.05);
+  border-left: 3px solid #19779b;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.case-study-content blockquote p {
+  color: #374151;
+  margin-bottom: 0;
+}
+
+.case-study-content a {
+  color: #19779b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.case-study-content a:hover {
+  color: #14698c;
+}
+
 .blog-content {
   font-size: 17px;
   line-height: 1.9;

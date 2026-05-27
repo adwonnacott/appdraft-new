@@ -99,7 +99,7 @@ export default function WhyAppdraft() {
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
+          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
             <ScrollReveal delay={0}>
               <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
                 <div className="text-white">
@@ -135,17 +135,48 @@ export default function WhyAppdraft() {
                 </div>
               </div>
             </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+                <div className="text-white">
+                  <p className="text-lg font-medium">Verified on</p>
+                  <p className="text-2xl font-bold">Clutch</p>
+                  <Link
+                    href="https://clutch.co/profile/appdraft"
+                    target="_blank"
+                    className="text-blue-200 hover:text-white underline"
+                  >
+                    View Profile
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
 
           <ScrollReveal className="text-center mt-12">
             <p className="text-xl text-white mb-6">Trusted by UK-based sales, ops and customer service teams</p>
-            <Link
-              href="https://appexchange.salesforce.com/"
-              target="_blank"
-              className="inline-block bg-white text-[#3cd6bf] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all"
-            >
-              See Our AppExchange Profile
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+              <Link
+                href="https://appexchange.salesforce.com/"
+                target="_blank"
+                className="inline-block bg-white text-[#3cd6bf] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all"
+              >
+                See Our AppExchange Profile
+              </Link>
+              <Link
+                href="https://clutch.co/profile/appdraft"
+                target="_blank"
+                className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all"
+              >
+                See Our Clutch Profile
+              </Link>
+              <Link
+                href="/case-studies"
+                className="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all"
+              >
+                Read Case Studies
+              </Link>
+            </div>
           </ScrollReveal>
         </div>
       </section>

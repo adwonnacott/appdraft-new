@@ -66,6 +66,20 @@ const icons = {
   ),
 };
 
+const faqItems = [
+  { title: 'What is a Salesforce health check?', content: 'A health check is a structured review of your existing Salesforce org carried out by a certified consultant. It covers configuration, data quality, security settings, automations, and user adoption, and delivers a written report with an impact assessment and prioritised recommendations you can act on.' },
+  { title: 'What does the report include?', content: 'You receive a written report with clear findings, an honest impact assessment of any issues, and prioritised recommendations for improvement. These are practical takeaways, not a generic list of features you have not enabled.' },
+  { title: 'How long does a health check take?', content: 'We deliver the report within around seven working days of getting access to your org, followed by a call to walk through the findings.' },
+  { title: 'When should I get a health check?', content: 'Common triggers include low user adoption, things not working as expected, a change of Salesforce partner, preparing for a new project phase, or simply not having reviewed the system in over a year.' },
+  { title: 'Is the health check fixed scope?', content: 'Yes. It covers a consistent set of areas across every org, which means the report is comparable and thorough. If there are specific areas of concern you want us to focus on, we can discuss that upfront.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
+};
+
 const deliverables = [
   { icon: icons.prioritised, title: 'Prioritised Changes', description: 'A clear list of useful changes, ranked by impact and effort.' },
   { icon: icons.budget, title: 'Budget Estimates', description: 'Realistic estimates to help you plan and prioritise work.' },
@@ -87,6 +101,10 @@ export default function HealthChecks() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <PageHero
         badge="Health Checks"
@@ -166,6 +184,10 @@ export default function HealthChecks() {
             </footer>
           </blockquote>
         </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="white">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

@@ -3,19 +3,34 @@ import ContentSection from '@/components/sections/ContentSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Accordion from '@/components/ui/Accordion';
 
 export const metadata = {
-  title: 'Salesforce Service Cloud Implementation',
-  description: 'Service Cloud implementation for better customer support. Case management, knowledge base, omni-channel routing, and self-service portals.',
-  keywords: ['Service Cloud', 'Salesforce Service Cloud', 'customer service CRM', 'case management', 'support ticketing'],
+  title: 'Salesforce Service Cloud Consultants | London, UK',
+  description: 'Salesforce Service Cloud consultants helping businesses deliver better customer support. Case management, knowledge base, omni-channel routing, and self-service portals.',
+  keywords: ['Salesforce Service Cloud consultants', 'Service Cloud implementation', 'Service Cloud London', 'customer service CRM', 'case management'],
   openGraph: {
-    title: 'Salesforce Service Cloud Implementation | Appdraft',
+    title: 'Salesforce Service Cloud Consultants | Appdraft',
     description: 'Service Cloud implementation for better customer support. Case management, knowledge base, and omni-channel routing.',
     url: 'https://appdraft.com/salesforce/service-cloud',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/service-cloud',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Service Cloud?', content: 'Service Cloud is Salesforce\'s customer service platform. It gives support teams a structured system for logging, routing, and resolving customer cases across email, phone, web, and chat, with full CRM context on every interaction.' },
+  { title: 'Can Service Cloud replace our existing helpdesk?', content: 'In most cases, yes. Service Cloud handles everything a dedicated helpdesk does, including case management, SLA tracking, a knowledge base, and queues, with the advantage of sitting inside your CRM.' },
+  { title: 'What communication channels does Service Cloud support?', content: 'Email, telephone, live chat, web forms, and social messaging through omni-channel routing. Cases from any channel land in a single queue and can be routed automatically to the right team.' },
+  { title: 'How long does a Service Cloud implementation take?', content: 'A core setup typically takes four to six weeks. Implementations including self-service portals, knowledge bases, or complex routing rules take longer, and we scope this clearly upfront.' },
+  { title: 'What is the difference between Service Cloud and Sales Cloud?', content: 'Sales Cloud manages the sales process, including winning new business. Service Cloud manages what happens after the sale, including support cases, SLAs, and customer communication. They share the same platform and work well together.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Service Cloud features
@@ -91,10 +106,13 @@ const howWeHelp = [
 export default function ServiceCloud() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Service Cloud"
-        title="Support That Scales With"
-        highlight="Your Business"
+        title="Salesforce Service Cloud Consultants"
         description="Salesforce Service Cloud gives you a proper system for managing customer service. It replaces shared inboxes and lightweight tools with a structured platform for logging, assigning and resolving support requests."
         image="/images/salesforce/service-cloud.jpg"
         imageAlt="Service Cloud dashboard"
@@ -142,6 +160,10 @@ export default function ServiceCloud() {
         background="white"
       >
         <FeatureGrid features={howWeHelp} columns={2} variant="card" />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

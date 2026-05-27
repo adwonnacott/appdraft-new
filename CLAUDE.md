@@ -1,5 +1,22 @@
 # Appdraft Website - Design Guidelines
 
+## Content Rules
+
+**Never fabricate content.** All copy, FAQs, pricing, timelines, statistics, and claims must come from Adam or existing site content — not invented. This includes:
+- Pricing figures or ranges
+- Project timelines
+- Service descriptions or scope
+- Any factual claim about Appdraft's services
+
+**Before proposing content changes**, ask the questions needed to write accurately. For FAQs: ask what the real answers are. For pricing: ask if it should be shown and what the figures are. For timelines: ask what's typical. Do not guess or use industry averages as if they are Appdraft's own.
+
+**Validate content with Adam before writing it to any file.** Propose the copy in chat, get approval, then implement.
+
+## Writing Style
+
+- **British English only** — use British spelling throughout (e.g. "prioritised" not "prioritized", "organisation" not "organization", "licence" not "license" as a noun)
+- **No em dashes** — never use — in copy. Use a comma, full stop, or restructure the sentence instead.
+
 ## Brand Colors
 
 Use these exact hex values with Tailwind's arbitrary value syntax `bg-[#hex]`:
@@ -136,6 +153,8 @@ Custom colors defined in `@theme` block may not work reliably. Use arbitrary val
 - `/why-appdraft` - About page
 - `/insights` - Blog listing
 - `/blog/*` - Individual blog posts
+- `/case-studies` - Case study listing
+- `/case-studies/*` - Individual case studies
 - `/contact` - Contact page
 
 ## Blog Posts
@@ -171,6 +190,8 @@ npm run build
 npx wrangler pages deploy out --project-name=appdraft
 ```
 
+4. **Submit to Google Search Console** — request indexing for the new blog post URL and the `/insights` listing page via the URL Inspection tool.
+
 ### Content Format
 - Use HTML in the `content` field
 - H2 for major sections, H3 for subsections
@@ -192,3 +213,68 @@ Examples:
 - `node lib/unsplash-search.js "data analytics"`
 
 The script returns formatted URLs ready to paste into `postImages` objects.
+
+## Case Studies
+
+### Quick Add: New Case Study
+
+1. **Add to `app/case-studies/case-studies.json`:**
+
+```json
+{
+  "slug": "your-case-study-slug",
+  "title": "Full case study title",
+  "excerpt": "1-2 sentence summary for the listing card",
+  "sector": "e.g. Manufacturing, Financial Services, Professional Services",
+  "cloud": ["Agentforce", "Sales Cloud"],
+  "outcome": "One-line measurable result e.g. '30% of leads qualified out automatically'",
+  "image": "https://images.unsplash.com/photo-XXXXX?w=1200&q=80",
+  "date": "2025",
+  "relatedCloud": "/salesforce/agentforce",
+  "relatedCloudLabel": "Salesforce Agentforce Consultants",
+  "content": "<h2>...</h2><p>...</p>"
+}
+```
+
+2. **Add to sitemap** (`public/sitemap.xml`) under the Case Studies block.
+
+3. **Build and deploy:**
+
+```bash
+npm run build
+npx wrangler pages deploy out --project-name=appdraft
+```
+
+4. **Submit to Google Search Console** — always do this after publishing. Use the URL Inspection tool to request indexing for both the new case study URL and the `/case-studies` listing page. Without this, Google may take weeks to find new pages.
+
+### Content Format
+
+- Use HTML in the `content` field
+- **H2** for major sections: The client, The challenge, What we built, The result
+- **H3** for subsections within a section (e.g. individual features built)
+- This hierarchy is critical — H2 and H3 render at different sizes and colours, so using the wrong level breaks the visual structure
+- No em dashes, British English only
+- Wrap paragraphs in `<p>` tags
+
+### Typography
+
+Case studies use the `.case-study-content` CSS class (defined in `app/globals.css`):
+
+- **H2**: large (`1.5rem`), dark (`#1f2d3d`), bold — major section markers
+- **H3**: smaller (`1.0625rem`), teal (`#19779b`), semi-bold — sub-section markers
+- Do not use `blog-content` class on case studies — it has heading underlines that do not match the site design
+
+### Image Guidance
+
+- Use `node lib/unsplash-search.js "search query"` to find images
+- Avoid images with text overlaid
+- Prefer abstract/conceptual images relevant to the work done
+- No generic AI stock imagery
+- Use `?w=1200&q=80` for case study hero, `?w=800&q=80` for listing cards
+
+### Content Rules for Case Studies
+
+- All facts, outcomes, timelines, and client details must come from the PSA project data or from Adam directly
+- Never invent metrics or outcomes
+- Anonymise clients unless Adam explicitly confirms they can be named
+- Always propose the full case study copy in chat and get approval before writing to any file

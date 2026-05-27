@@ -31,7 +31,10 @@
       "Bash(npx --yes sharp-cli:*)",
       "Bash(git rm:*)",
       "Bash(npm run deploy:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:appdraft.com)",
+      "Bash(npx lighthouse:*)"
     ]
   }
 }

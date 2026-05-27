@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Appdraft' }],
   creator: 'Appdraft',
   publisher: 'Appdraft',
+  verification: {
+    google: '_1UXIj5OJd0wYrDBvzvew4IsRIGd7yx9UpVCrC7VOiM',
+  },
   robots: {
     index: true,
     follow: true,

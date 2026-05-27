@@ -3,19 +3,34 @@ import ContentSection from '@/components/sections/ContentSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Accordion from '@/components/ui/Accordion';
 
 export const metadata = {
-  title: 'Salesforce Field Service Implementation',
-  description: 'Plan, schedule, and track field work with Salesforce Field Service. Optimise resources, reduce missed appointments, and connect field teams to your CRM.',
-  keywords: ['Field Service', 'Salesforce FSL', 'field service management', 'mobile workforce', 'scheduling software', 'work order management', 'service dispatch'],
+  title: 'Salesforce Field Service Consultants | London, UK',
+  description: 'Salesforce Field Service consultants helping businesses plan, schedule, and track field work. Optimise resources, reduce missed appointments, and connect field teams to your CRM.',
+  keywords: ['Salesforce Field Service consultants', 'Field Service Lightning', 'FSL implementation', 'field service management London', 'mobile workforce', 'work order management'],
   openGraph: {
-    title: 'Salesforce Field Service | Appdraft',
+    title: 'Salesforce Field Service Consultants | Appdraft',
     description: 'Plan, schedule, and track field work with Salesforce Field Service.',
     url: 'https://appdraft.com/salesforce/field-service',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/field-service',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Field Service?', content: 'Salesforce Field Service is a platform for managing work carried out in the field, including installations, maintenance, inspections, and repairs. It connects scheduling, job information, parts, and real-time updates between field workers and back-office teams.' },
+  { title: 'Do you have experience delivering Salesforce Field Service?', content: 'Yes, we have active delivery experience of Salesforce Field Service across a range of client environments.' },
+  { title: 'How long does a Field Service implementation take?', content: 'A core Field Service setup typically takes around four to six weeks. Implementations involving complex scheduling rules, contractor management, or parts inventory take longer, and we scope this clearly upfront.' },
+  { title: 'Can Field Service integrate with our existing systems?', content: 'Yes. Field Service sits within the Salesforce platform so it connects natively to Sales Cloud and Service Cloud data. We also integrate it with ERP systems, parts management tools, and accounting software.' },
+  { title: 'What can field workers see on the mobile app?', content: 'Field workers use the Salesforce Field Service mobile app to see their schedule, job details, asset history, customer information, parts lists, and forms. They can update job status, log time, capture signatures, and take photos, all synced back to the office in real time.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Field Service features
@@ -92,10 +107,13 @@ const typicalUses = [
 export default function FieldService() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Field Service"
-        title="Plan and Deliver Work"
-        highlight="in the Field"
+        title="Salesforce Field Service Consultants"
         description="Salesforce Field Service helps businesses plan, deliver and track work carried out in the field. Whether you manage installations, maintenance, inspections or repairs, Field Service brings scheduling, job information, and field updates into a single platform."
         image="/images/salesforce/field-service.jpg"
         imageAlt="Field service technician"
@@ -116,6 +134,10 @@ export default function FieldService() {
         background="gray"
       >
         <FeatureGrid features={typicalUses} columns={3} variant="card" />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

@@ -6,17 +6,30 @@ import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Marketing Cloud & Account Engagement',
-  description: 'Turn marketing into pipeline with Salesforce Marketing Cloud. Campaign automation, lead scoring, and connected customer journeys from marketing to sales.',
-  keywords: ['Marketing Cloud', 'Account Engagement', 'Pardot', 'marketing automation', 'lead nurturing', 'email marketing', 'campaign management', 'lead scoring'],
+  title: 'Salesforce Marketing Cloud Consultants | London, UK',
+  description: 'Salesforce Marketing Cloud consultants turning marketing activity into real pipeline. Campaign automation, lead scoring, and connected customer journeys from marketing to sales.',
+  keywords: ['Salesforce Marketing Cloud consultants', 'Marketing Cloud implementation', 'Account Engagement', 'Pardot', 'marketing automation London', 'lead nurturing'],
   openGraph: {
-    title: 'Salesforce Marketing Cloud | Appdraft',
+    title: 'Salesforce Marketing Cloud Consultants | Appdraft',
     description: 'Turn marketing into pipeline with Salesforce Marketing Cloud.',
     url: 'https://appdraft.com/salesforce/marketing-cloud',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/marketing-cloud',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Marketing Cloud?', content: 'Salesforce Marketing Cloud is a marketing automation platform for managing email campaigns, customer journeys, lead nurturing, and cross-channel personalisation. It connects marketing activity to your CRM data so you can tie campaigns directly to pipeline and revenue.' },
+  { title: 'What is the difference between Marketing Cloud and Account Engagement?', content: 'Account Engagement (formerly Pardot) is designed for B2B lead nurturing with longer sales cycles, including forms, landing pages, lead scoring, and CRM sync. Marketing Cloud Engagement is built for higher-volume, multi-channel marketing including email journeys, SMS, and push notifications.' },
+  { title: 'Can Marketing Cloud integrate with Salesforce Sales Cloud?', content: 'Yes, native integration is one of Marketing Cloud\'s key advantages. Lead activity, email engagement, and campaign responses flow directly into Sales Cloud records, giving sales teams full visibility of marketing interactions.' },
+  { title: 'How long does a Marketing Cloud implementation take?', content: 'Account Engagement implementations typically take four to eight weeks. If you have complex customer journeys, large numbers of segments, or complex data points to work with, timelines extend accordingly. We scope this after understanding your campaign structure and data.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Marketing Cloud features
@@ -100,10 +113,13 @@ const whenMakesSense = [
 export default function MarketingCloud() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Marketing Cloud"
-        title="Smarter Campaigns,"
-        highlight="Connected Journeys"
+        title="Salesforce Marketing Cloud Consultants"
         description="Salesforce Marketing Cloud helps businesses turn marketing activity into real pipeline. Whether you're running lead nurture programmes, personalising outreach at scale, or fixing handover gaps between marketing and sales, we help you make it work."
         image="/images/salesforce/marketing-cloud.jpg"
         imageAlt="Marketing Cloud campaigns"
@@ -156,6 +172,10 @@ export default function MarketingCloud() {
         background="gray"
       >
         <Accordion items={whenMakesSense} />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

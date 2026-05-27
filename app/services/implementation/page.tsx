@@ -3,6 +3,7 @@ import ContentSection from '@/components/sections/ContentSection';
 import StepList from '@/components/sections/StepList';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Accordion from '@/components/ui/Accordion';
 
 export const metadata = {
   title: 'Salesforce Implementation Services',
@@ -45,6 +46,20 @@ const serviceSchema = {
   },
 };
 
+const faqItems = [
+  { title: 'How long does a Salesforce implementation take?', content: 'A straightforward implementation or quick start typically takes around four weeks from kickoff to go-live. More complex projects involving multiple clouds, integrations, or large data migrations take longer, and we scope this clearly upfront so you know what to expect.' },
+  { title: 'Do you handle data migration?', content: 'Yes. Data migration is included where needed, with scope agreed during discovery. We confirm which objects need migrating as part of the project plan.' },
+  { title: 'What does your implementation process look like?', content: 'We start with discovery and process review, produce design documentation, then build in a sandbox environment. We use AI to help produce documentation and to take the burden out of User Acceptance Testing (UAT). Everything is tested before it reaches your team. Once you are happy, we handle the go-live and data migration.' },
+  { title: 'Do you work on fixed price or time and materials?', content: 'Time and materials. Most fixed-price quotes will factor in an element of risk of overrun, so they are often inflated, which we think is unfair to the client. With time and materials you only pay for what you actually consume. We give clear estimates upfront and keep you informed throughout.' },
+  { title: 'How do I choose the right Salesforce implementation partner?', content: 'Look for UK-based consultants with verified AppExchange reviews, a clear methodology, and real delivery experience rather than just certifications. Ask to see case studies from businesses similar to yours and make sure you understand what is included before the project starts.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
+};
+
 const implementationSteps = [
   {
     title: 'Discovery And Process Review',
@@ -78,6 +93,10 @@ export default function Implementation() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <PageHero
         badge="Implementation"
@@ -147,6 +166,10 @@ export default function Implementation() {
             </blockquote>
           </div>
         </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

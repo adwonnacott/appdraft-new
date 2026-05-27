@@ -6,17 +6,30 @@ import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Experience Cloud Portals & Communities',
-  description: 'Create secure customer portals, partner communities, and help centres with Salesforce Experience Cloud. Connect users to your CRM data with branded digital experiences.',
-  keywords: ['Experience Cloud', 'Salesforce portal', 'customer portal', 'partner community', 'Salesforce community', 'help centre portal', 'self-service portal'],
+  title: 'Salesforce Experience Cloud Consultants | London, UK',
+  description: 'Salesforce Experience Cloud consultants building secure customer portals, partner communities, and help centres. Connect your users directly to your CRM data.',
+  keywords: ['Salesforce Experience Cloud consultants', 'Experience Cloud implementation', 'Salesforce portal London', 'customer portal', 'partner community', 'self-service portal'],
   openGraph: {
-    title: 'Salesforce Experience Cloud | Appdraft',
+    title: 'Salesforce Experience Cloud Consultants | Appdraft',
     description: 'Create secure customer portals, partner communities, and help centres with Salesforce Experience Cloud.',
     url: 'https://appdraft.com/salesforce/experience-cloud',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/experience-cloud',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Experience Cloud?', content: 'Experience Cloud lets you build branded digital portals connected directly to your Salesforce data. The two most common use cases are sales partner portals, where partners can register leads and track opportunities, and customer portals, where clients can raise cases, access a knowledge base, and manage operational requests.' },
+  { title: 'What can you build with Experience Cloud?', content: 'The main use cases are sales partner portals, giving partners structured access to register leads and track deals in your CRM, and customer service portals, giving clients self-service access to raise cases, search a knowledge base, and manage operational requests.' },
+  { title: 'How long does an Experience Cloud implementation take?', content: 'A basic portal typically takes around four weeks. More complex functionality takes longer depending on what is in scope. The main factor is which features the customer needs, so we scope timelines during discovery once we understand the requirements.' },
+  { title: 'Does Experience Cloud work with Sales Cloud and Service Cloud?', content: 'Yes. Experience Cloud sits within the Salesforce platform and connects natively to your existing Sales Cloud and Service Cloud data, so portal users always see up-to-date information from your CRM.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Experience Cloud features
@@ -113,10 +126,13 @@ const whenMakesSense = [
 export default function ExperienceCloud() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Experience Cloud"
-        title="Extend Salesforce to Your"
-        highlight="Customers and Partners"
+        title="Salesforce Experience Cloud Consultants"
         description="Experience Cloud lets you create secure portals, help centres and branded digital spaces that connect directly to your Salesforce data. Whether you need to enable partner collaboration, customer self-service or internal sharing, it helps you give people access to the information that matters."
         image="/images/salesforce/experience-cloud.jpg"
         imageAlt="Experience Cloud portal"
@@ -176,6 +192,10 @@ export default function ExperienceCloud() {
         background="gray"
       >
         <Accordion items={whenMakesSense} />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

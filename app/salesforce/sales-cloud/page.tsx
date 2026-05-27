@@ -4,19 +4,34 @@ import ContentSection from '@/components/sections/ContentSection';
 import FeatureGrid from '@/components/sections/FeatureGrid';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import Accordion from '@/components/ui/Accordion';
 
 export const metadata = {
-  title: 'Salesforce Sales Cloud Implementation',
-  description: "Sales Cloud implementation by certified experts. Lead management, opportunity tracking, forecasting, and automation to transform your sales process.",
-  keywords: ['Sales Cloud', 'Salesforce Sales Cloud', 'CRM implementation', 'sales automation', 'lead management'],
+  title: 'Salesforce Sales Cloud Consultants | London, UK',
+  description: "Salesforce Sales Cloud consultants with 130+ implementations delivered. Lead management, opportunity tracking, forecasting, and automation — implemented by certified experts.",
+  keywords: ['Salesforce Sales Cloud consultants', 'Sales Cloud implementation', 'Sales Cloud London', 'CRM implementation', 'sales automation', 'lead management'],
   openGraph: {
-    title: 'Salesforce Sales Cloud Implementation | Appdraft',
+    title: 'Salesforce Sales Cloud Consultants | Appdraft',
     description: "Sales Cloud implementation by certified experts. Transform your sales process with the world's #1 CRM.",
     url: 'https://appdraft.com/salesforce/sales-cloud',
   },
   alternates: {
     canonical: 'https://appdraft.com/salesforce/sales-cloud',
   },
+};
+
+const faqItems = [
+  { title: 'What is Salesforce Sales Cloud?', content: 'Sales Cloud is Salesforce\'s core CRM for managing your entire sales process. Leads, opportunities, quotes, activity tracking, forecasting, and reporting all sit in one place, replacing spreadsheets and disconnected tools with a single platform your whole sales team works from.' },
+  { title: 'How long does a Sales Cloud implementation take?', content: 'A focused Sales Cloud quick start typically takes around four weeks. More complex setups with integrations, custom objects, or large data migrations take longer, and scope and timeline are agreed clearly before we start.' },
+  { title: 'What does a Sales Cloud implementation include?', content: 'Discovery and process review, design documentation, sandbox build, testing, data migration where needed, and go-live. We use AI to help produce documentation and to take the burden out of User Acceptance Testing (UAT) so there is less demand on your team.' },
+  { title: 'Is Sales Cloud right for my business?', content: 'Sales Cloud suits any business with a pipeline to manage, including B2B services, SaaS, manufacturing, and professional services. If you have a sales team and a multi-stage sales cycle, it is almost certainly the right fit.' },
+  { title: 'What is the difference between Sales Cloud and Service Cloud?', content: 'Sales Cloud manages winning new business, including leads, opportunities, and forecasting. Service Cloud manages customer support after the sale, including cases, SLAs, and multi-channel communication. They share a common data platform and many businesses use both.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
 };
 
 // Contextual icons for Sales Cloud features
@@ -86,10 +101,13 @@ const howWeHelp = [
 export default function SalesCloud() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <PageHero
         badge="Sales Cloud"
-        title="The World's Number One"
-        highlight="CRM"
+        title="Salesforce Sales Cloud Consultants"
         description="Salesforce is the backbone of modern sales teams. Sales Cloud brings structure, visibility and consistency to your sales process. It replaces spreadsheets and scattered tools with a single platform to manage leads, opportunities, quotes, tasks, emails and performance."
         image="/images/salesforce/sales-cloud.jpg"
         imageAlt="Sales Cloud CRM dashboard"
@@ -145,6 +163,10 @@ export default function SalesCloud() {
         background="white"
       >
         <FeatureGrid features={howWeHelp} columns={3} variant="card" />
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">

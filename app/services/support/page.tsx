@@ -4,6 +4,7 @@ import FeatureGrid from '@/components/sections/FeatureGrid';
 import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlowCard from '@/components/ui/GlowCard';
+import Accordion from '@/components/ui/Accordion';
 
 export const metadata = {
   title: 'Salesforce Support Services',
@@ -71,6 +72,19 @@ const icons = {
   ),
 };
 
+const faqItems = [
+  { title: 'What does Salesforce managed support include?', content: 'Day-to-day our support covers monitoring error reports, system and user administration, security and permission management, and keeping you up to date on Salesforce announcements and releases. We also proactively recommend where to invest your hours for maximum impact rather than waiting for you to raise tickets.' },
+  { title: 'Can you take over support from another consultant or outgoing admin?', content: 'Yes, we do this regularly. We start with a review of your org to understand what is there, flag anything that needs attention, and then take over ongoing management.' },
+  { title: 'How is support different from a new implementation?', content: 'Support covers ongoing administration, changes, and improvements to an existing org. If you need a significant new cloud, a major process redesign, or a new integration, that is scoped as a separate project.' },
+  { title: 'Do you keep us informed on Salesforce releases and security changes?', content: 'Yes, that is a core part of what we do. Salesforce releases three major updates a year, each with security and feature changes that can affect your org. We monitor these and advise on what is relevant to your setup.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(item => ({ '@type': 'Question', name: item.title, acceptedAnswer: { '@type': 'Answer', text: item.content } })),
+};
+
 const supportCapabilities = [
   { icon: icons.usage, title: 'System Usage Review', description: 'Review system usage and spot underused features.' },
   { icon: icons.security, title: 'Security Settings', description: 'Adjust user permissions or security settings.' },
@@ -86,6 +100,10 @@ export default function Support() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <PageHero
         badge="Support"
@@ -162,6 +180,10 @@ export default function Support() {
             </footer>
           </blockquote>
         </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection title="Frequently asked questions" background="gray">
+        <Accordion items={faqItems} />
       </ContentSection>
 
       <ContentSection background="white">
