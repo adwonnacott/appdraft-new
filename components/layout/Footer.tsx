@@ -26,7 +26,7 @@ export default function Footer() {
             <div className="text-sm text-gray-500">
               <p>128 City Road</p>
               <p>London EC1V 2NX</p>
-              <p className="mt-3 text-[#56FFDD]">020 3858 0040</p>
+              <p className="mt-3 text-[#56FFDD]">020 4572 0707</p>
             </div>
           </div>
 

@@ -281,10 +281,10 @@ export default function Header() {
         <div className="pt-8 border-t border-gray-100 mt-8">
           <p className="text-sm text-gray-500 mb-2">Get in touch</p>
           <a
-            href="tel:+442038580040"
+            href="tel:+442045720707"
             className="block text-gray-900 font-medium mb-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] rounded"
           >
-            +44 20 3858 0040
+            020 4572 0707
           </a>
           <a
             href="mailto:info@appdraft.com"

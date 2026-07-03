@@ -131,7 +131,7 @@ export default function PrivacyPolicy() {
             United Kingdom<br />
             <br />
             Email: info@appdraft.com<br />
-            Phone: 020 3858 0040
+            Phone: 020 4572 0707
           </p>
         </div>
       </section>

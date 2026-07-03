@@ -93,7 +93,7 @@ const organizationSchema = {
     postalCode: 'EC1V 2NX',
     addressCountry: 'GB',
   },
-  telephone: '+442038580040',
+  telephone: '+442045720707',
   email: 'info@appdraft.com',
 };
 
@@ -103,7 +103,7 @@ const localBusinessSchema = {
   name: 'Appdraft',
   image: 'https://appdraft.com/appdraft-wordmark/appdraft-wordmark-colour.svg',
   url: 'https://appdraft.com',
-  telephone: '+442038580040',
+  telephone: '+442045720707',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '128 City Road',
@@ -162,6 +162,16 @@ export default function RootLayout({
           src="https://cdn.c360a.salesforce.com/beacon/c360a/64be8023-2651-460b-8b38-5f6610cad577/scripts/c360a.min.js?wtcp_id=1NDS60000000E1NOAU"
           strategy="lazyOnload"
         />
+
+        {/* Apollo.io website tracker */}
+        <Script id="apollo-tracker" strategy="afterInteractive">
+          {`
+            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+            o.onload=function(){window.trackingFunctions.onLoad({appId:"6633a35ec5cac10438852978"})},
+            document.head.appendChild(o)}initApollo();
+          `}
+        </Script>
 
         {/* Google Analytics */}
         <Script

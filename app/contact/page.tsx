@@ -7,7 +7,7 @@ import ContactForm from '@/components/ui/ContactForm';
 
 export const metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Appdraft for Salesforce consulting, implementation, and support. Call 020 3858 0040 or visit us at 128 City Road, London.',
+  description: 'Get in touch with Appdraft for Salesforce consulting, implementation, and support. Call 020 4572 0707 or visit us at 128 City Road, London.',
   keywords: ['contact Appdraft', 'Salesforce consultant London', 'CRM consulting contact'],
   openGraph: {
     title: 'Contact Appdraft | Salesforce Consulting',
@@ -37,8 +37,8 @@ const contactMethods = [
       </svg>
     ),
     title: 'Phone',
-    content: '020 3858 0040',
-    href: 'tel:+442038580040',
+    content: '020 4572 0707',
+    href: 'tel:+442045720707',
   },
   {
     icon: (
@@ -183,7 +183,7 @@ export default function Contact() {
       <ContentSection background="gray">
         <CTABanner
           title="Prefer to Talk First?"
-          description="Call us on 020 3858 0040 or email info@appdraft.com"
+          description="Call us on 020 4572 0707 or email info@appdraft.com"
           primaryButton={{ label: 'View Our Services', href: '/services/implementation' }}
           variant="gradient"
         />
