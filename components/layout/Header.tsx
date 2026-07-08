@@ -175,6 +175,10 @@ export default function Header() {
               </div>
             </div>
 
+            <Link href="/case-studies" className="text-gray-600 hover:text-gray-900 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+              Case Studies
+            </Link>
+
             <Link href="/insights" className="text-gray-600 hover:text-gray-900 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
               Insights
             </Link>
@@ -246,6 +250,16 @@ export default function Header() {
         />
 
         {/* Direct Links */}
+        <div className="border-b border-gray-100">
+          <Link
+            href="/case-studies"
+            onClick={closeMobileMenu}
+            className="block py-4 text-gray-900 font-medium text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg"
+          >
+            Case Studies
+          </Link>
+        </div>
+
         <div className="border-b border-gray-100">
           <Link
             href="/insights"
