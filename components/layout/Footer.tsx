@@ -99,6 +99,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/case-studies" className="text-gray-400 hover:text-[#56FFDD] transition-colors">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
                 <Link href="/insights" className="text-gray-400 hover:text-[#56FFDD] transition-colors">
                   Insights
                 </Link>
