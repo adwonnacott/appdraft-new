@@ -34,8 +34,11 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 async function main() {
   console.log('[sync-blog-posts] Fetching published blog posts from Supabase...');
 
-  // Fetch published blog posts that haven't been deployed yet
-  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&blog_deployed=eq.false&select=id,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
+  // Fetch ALL published blog posts (not just un-deployed ones). Supabase is the
+  // source of truth: we merge in any post that is missing from posts.json, deduping
+  // by slug below. This makes the sync self-healing, so a stale or reset posts.json
+  // can never permanently drop a published post the way the old blog_deployed filter did.
+  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&select=id,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
 
   const res = await fetch(url, {
     headers: {
@@ -52,11 +55,11 @@ async function main() {
   const newPosts = await res.json();
 
   if (newPosts.length === 0) {
-    console.log('[sync-blog-posts] No new posts to sync. posts.json is up to date.');
+    console.log('[sync-blog-posts] No published posts in Supabase. posts.json unchanged.');
     return;
   }
 
-  console.log(`[sync-blog-posts] Found ${newPosts.length} new post(s) to add.`);
+  console.log(`[sync-blog-posts] Fetched ${newPosts.length} published post(s) from Supabase; adding any missing from posts.json.`);
 
   // Read existing posts.json
   const existingPosts = JSON.parse(readFileSync(POSTS_JSON_PATH, 'utf-8'));
