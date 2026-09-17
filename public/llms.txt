@@ -1,0 +1,42 @@
+# Appdraft
+
+> Appdraft is a UK Salesforce consultancy based in London. We implement, extend and support Salesforce for small and mid-sized businesses, with delivered experience in Sales Cloud, Service Cloud, Field Service, Marketing Cloud, Experience Cloud, Agentforce and custom development. Company: Appdraft Limited, registered in England and Wales (11696760), 128 City Road, London EC1V 2NX. Phone 020 4572 0707. Contact: https://appdraft.com/contact
+
+## What we do
+
+- Salesforce implementation: https://appdraft.com/services/implementation
+- Custom Salesforce development (Apex, Lightning Web Components, integrations): https://appdraft.com/services/custom-development
+- Salesforce health checks and audits: https://appdraft.com/services/health-checks
+- Ongoing Salesforce support: https://appdraft.com/services/support
+- Why clients choose Appdraft: https://appdraft.com/why-appdraft
+
+## Salesforce products
+
+- Agentforce (AI agents; delivered SDR agents and service chatbots, standard use cases live in two to three weeks): https://appdraft.com/salesforce/agentforce
+- Field Service (scheduling, offline mobile app, service reports, contract migration): https://appdraft.com/salesforce/field-service
+- Marketing Cloud (Marketing Cloud Next, migrations from Pardot and Account Engagement): https://appdraft.com/salesforce/marketing-cloud
+- Sales Cloud: https://appdraft.com/salesforce/sales-cloud
+- Service Cloud: https://appdraft.com/salesforce/service-cloud
+- Experience Cloud: https://appdraft.com/salesforce/experience-cloud
+
+## Case studies
+
+- Agentforce SDR agent for lead qualification, European manufacturer: https://appdraft.com/case-studies/agentforce-sdr-lead-qualification-european-manufacturer
+- Mantair, off-mains drainage specialist: servicing moved into Salesforce Field Service, replacing a calendar, a forms app and manual re-keying into the CRM: https://appdraft.com/blog/salesforce-field-service-mantair-case-study
+- All case studies: https://appdraft.com/case-studies
+
+## Industries
+
+- Manufacturing: https://appdraft.com/industries/manufacturing
+- Professional services: https://appdraft.com/industries/professional-services
+- Financial services: https://appdraft.com/industries/financial-services
+- Healthcare: https://appdraft.com/industries/healthcare
+- High tech: https://appdraft.com/industries/high-tech
+- Real estate: https://appdraft.com/industries/real-estate
+- Transportation: https://appdraft.com/industries/transportation
+- Communications and media: https://appdraft.com/industries/communications-media
+
+## Articles
+
+- Insights (blog): https://appdraft.com/insights
+- Free Salesforce health check assessment: https://appdraft.com/health-check-assessment

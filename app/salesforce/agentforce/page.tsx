@@ -9,12 +9,12 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlowCard from '@/components/ui/GlowCard';
 
 export const metadata = {
-  title: 'Salesforce Agentforce Consultants | London, UK',
-  description: 'Salesforce Agentforce consultants helping businesses deploy AI agents that work directly inside their CRM. Case summaries, intelligent automation, and AI-powered customer service.',
+  title: 'Agentforce Consultants, London | Live in 2 to 3 Weeks',
+  description: 'We have shipped Agentforce SDR agents and service chatbots for UK clients. A standard use case goes live in two to three weeks. Read the case study first.',
   keywords: ['Salesforce Agentforce consultants', 'Agentforce implementation', 'Agentforce London', 'Salesforce AI', 'AI agents Salesforce', 'intelligent automation'],
   openGraph: {
-    title: 'Salesforce Agentforce Consultants | Appdraft',
-    description: 'Deploy Salesforce Agentforce AI to accelerate your teams and serve customers faster.',
+    title: 'Agentforce Consultants, London | Appdraft',
+    description: 'Agentforce SDR agents and service chatbots delivered for UK clients. A standard use case goes live in two to three weeks.',
     url: 'https://appdraft.com/salesforce/agentforce',
   },
   alternates: {

@@ -6,12 +6,12 @@ import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Marketing Cloud Consultants | London, UK',
-  description: 'Salesforce Marketing Cloud consultants turning marketing activity into real pipeline. Campaign automation, lead scoring, and connected customer journeys from marketing to sales.',
+  title: 'Marketing Cloud Consultants, London | Campaigns to Pipeline',
+  description: 'Salesforce Marketing Cloud Next, set up so every campaign traces to pipeline in Sales Cloud. Migrations from Pardot and Account Engagement too. London based.',
   keywords: ['Salesforce Marketing Cloud consultants', 'Marketing Cloud implementation', 'Account Engagement', 'Pardot', 'marketing automation London', 'lead nurturing'],
   openGraph: {
-    title: 'Salesforce Marketing Cloud Consultants | Appdraft',
-    description: 'Turn marketing into pipeline with Salesforce Marketing Cloud.',
+    title: 'Marketing Cloud Consultants, London | Appdraft',
+    description: 'Marketing Cloud Next set up so every campaign traces to pipeline in Sales Cloud.',
     url: 'https://appdraft.com/salesforce/marketing-cloud',
   },
   alternates: {
