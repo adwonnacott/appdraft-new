@@ -38,7 +38,7 @@ async function main() {
   // source of truth: we merge in any post that is missing from posts.json, deduping
   // by slug below. This makes the sync self-healing, so a stale or reset posts.json
   // can never permanently drop a published post the way the old blog_deployed filter did.
-  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&select=id,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
+  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&blog_unlisted=eq.false&select=id,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
 
   const res = await fetch(url, {
     headers: {
