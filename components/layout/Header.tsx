@@ -114,9 +114,9 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-6 2xl:space-x-8">
             <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
                 Salesforce Know How
                 <svg className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -136,7 +136,7 @@ export default function Header() {
             </div>
 
             <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
                 What We Do
                 <svg className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -156,7 +156,7 @@ export default function Header() {
             </div>
 
             <div className="relative group">
-              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+              <button className="text-gray-600 hover:text-gray-900 font-medium flex items-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
                 Who We Help
                 <svg className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -175,24 +175,24 @@ export default function Header() {
               </div>
             </div>
 
-            <Link href="/case-studies" className="text-gray-600 hover:text-gray-900 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+            <Link href="/case-studies" className="text-gray-600 hover:text-gray-900 font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
               Case Studies
             </Link>
 
-            <Link href="/insights" className="text-gray-600 hover:text-gray-900 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+            <Link href="/insights" className="text-gray-600 hover:text-gray-900 font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
               Insights
             </Link>
 
-            <Link href="/why-appdraft" className="text-gray-600 hover:text-gray-900 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
+            <Link href="/why-appdraft" className="text-gray-600 hover:text-gray-900 font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg px-2 py-1">
               Why Appdraft
             </Link>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Link
               href="/contact"
-              className="relative bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-medium hover:shadow-glow transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2"
+              className="relative bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-medium whitespace-nowrap hover:shadow-glow transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2"
             >
               Get in Touch
             </Link>
@@ -200,7 +200,7 @@ export default function Header() {
 
           {/* Mobile menu button - improved touch target */}
           <button
-            className="lg:hidden p-3 -mr-2 text-gray-700 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] active:bg-gray-100 transition-colors"
+            className="xl:hidden p-3 -mr-2 text-gray-700 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] active:bg-gray-100 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
@@ -219,7 +219,7 @@ export default function Header() {
 
     {/* Mobile Menu - Full Screen Overlay (outside header to avoid clipping) */}
     <div
-      className={`lg:hidden fixed inset-0 top-20 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
+      className={`xl:hidden fixed inset-0 top-20 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
         mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
