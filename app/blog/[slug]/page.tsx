@@ -26,8 +26,6 @@ const postImages: Record<string, string> = {
   'salesforce-einstein-trust-layer': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80',
   'transform-customer-interactions-with-agentforce': 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&q=80',
   'what-is-a-salesforce-health-check-and-what-can-it-do-for-users': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80',
-  'sfx-seamless-integration-for-salesforce-xero': 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1200&q=80',
-  'salesforce-showcase-salesforce-xero-integration': 'https://images.unsplash.com/photo-1635236269199-3c71295855b3?w=1200&q=80',
   'streamlining-sales-with-salesforce-the-ultimate-guide-to-lead-management': 'https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=1200&q=80',
   'salesforce-sales-engagement-automate-outbound-sales': 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80',
   'sustainability-in-consultancy-guiding-change-from-within': 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1200&q=80',
