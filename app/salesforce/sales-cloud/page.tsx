@@ -163,6 +163,15 @@ export default function SalesCloud() {
         background="white"
       >
         <FeatureGrid features={howWeHelp} columns={3} variant="card" />
+        <ScrollReveal className="mt-10">
+          <p className="text-lg text-gray-700 text-center">
+            Quoting in Sales Cloud?{' '}
+            <Link href="/accelerators/deal-builder" className="text-[#19779b] font-semibold hover:underline">
+              Watch our Deal Builder accelerator in action
+            </Link>
+            .
+          </p>
+        </ScrollReveal>
       </ContentSection>
 
       <ContentSection title="Frequently asked questions" background="gray">

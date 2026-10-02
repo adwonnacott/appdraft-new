@@ -5,7 +5,8 @@ import caseStudies from '../case-studies.json';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export async function generateStaticParams() {
-  return caseStudies.map((cs) => ({ slug: cs.slug }));
+  // Case studies with an href live elsewhere (e.g. on the blog) and get no page here.
+  return caseStudies.filter((cs) => !cs.href).map((cs) => ({ slug: cs.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {

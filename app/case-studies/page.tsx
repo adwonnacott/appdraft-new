@@ -52,7 +52,7 @@ export default function CaseStudies() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((cs, i) => (
               <ScrollReveal key={cs.slug} delay={i * 0.05}>
-                <Link href={`/case-studies/${cs.slug}`} className="group block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+                <Link href={cs.href || `/case-studies/${cs.slug}`} className="group block bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image

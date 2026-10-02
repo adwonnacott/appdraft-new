@@ -54,6 +54,11 @@ export default function Footer() {
                   Custom Development
                 </Link>
               </li>
+              <li>
+                <Link href="/accelerators" className="text-gray-400 hover:text-[#56FFDD] transition-colors">
+                  Accelerators
+                </Link>
+              </li>
             </ul>
           </div>
 
