@@ -104,6 +104,7 @@ const organizationSchema = {
     'https://www.linkedin.com/company/appdraft/',
     'https://clutch.co/profile/appdraft',
     'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT',
+    'https://www.google.com/search?kgmid=/g/11fktqw77_',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -140,6 +141,7 @@ const localBusinessSchema = {
     'https://www.linkedin.com/company/appdraft/',
     'https://clutch.co/profile/appdraft',
     'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT',
+    'https://www.google.com/search?kgmid=/g/11fktqw77_',
   ],
   areaServed: {
     '@type': 'Country',
