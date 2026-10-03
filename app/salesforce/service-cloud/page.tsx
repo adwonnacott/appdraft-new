@@ -112,7 +112,7 @@ export default function ServiceCloud() {
       />
       <PageHero
         badge="Service Cloud"
-        title="Salesforce Service Cloud Consultants"
+        title="Salesforce Service Cloud consultants"
         description="Salesforce Service Cloud gives you a proper system for managing customer service. It replaces shared inboxes and lightweight tools with a structured platform for logging, assigning and resolving support requests."
         image="/images/salesforce/service-cloud.jpg"
         imageAlt="Service Cloud dashboard"

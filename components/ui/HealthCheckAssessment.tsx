@@ -506,7 +506,7 @@ export default function HealthCheckAssessment() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">You&apos;re On Your Way!</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">You&apos;re on your way!</h2>
         <p className="text-lg text-gray-600 mb-6">
           We&apos;ve received your assessment. One of our Salesforce consultants will review your results and reach out within 24 hours with a personalised improvement roadmap.
         </p>
@@ -548,7 +548,7 @@ export default function HealthCheckAssessment() {
                 <div className="text-sm text-gray-500">Potential</div>
               </div>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your Personalised Roadmap</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Get your personalised roadmap</h2>
             <p className="text-gray-600">
               Our Salesforce experts will review your results and send you a detailed improvement plan - completely free.
             </p>

@@ -26,8 +26,8 @@ export default function HealthCheckAssessmentPage() {
               Free Assessment
             </span>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              How Healthy Is Your{' '}
-              <span className="text-[#3cd6bf]">Salesforce Org?</span>
+              How healthy is your{' '}
+              <span className="text-[#3cd6bf]">Salesforce org?</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
               Answer 16 quick questions to get an instant health score across 6 key areas.

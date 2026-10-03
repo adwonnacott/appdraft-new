@@ -107,7 +107,7 @@ export default function SalesCloud() {
       />
       <PageHero
         badge="Sales Cloud"
-        title="Salesforce Sales Cloud Consultants"
+        title="Salesforce Sales Cloud consultants"
         description="Salesforce is the backbone of modern sales teams. Sales Cloud brings structure, visibility and consistency to your sales process. It replaces spreadsheets and scattered tools with a single platform to manage leads, opportunities, quotes, tasks, emails and performance."
         image="/images/salesforce/sales-cloud.jpg"
         imageAlt="Sales Cloud CRM dashboard"

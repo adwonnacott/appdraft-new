@@ -84,8 +84,8 @@ export default function CommunicationsMedia() {
     <>
       <PageHero
         badge="Communications & Media"
-        title="Salesforce For Firms Who Grow Through"
-        highlight="Elevated Service & Recurring Revenue"
+        title="Salesforce for firms who grow through"
+        highlight="elevated service & recurring revenue"
         description="Whether you're in telecom, broadband, digital media or a related service business, your growth depends on recurring revenue, strong customer care and visibility across accounts. From selling plans and managing upgrades to handling support and renewals, your teams need a clear view of customer activity to drive satisfaction and retention."
         image="/images/industries/communications-media.jpg"
         imageAlt="Communications and media Salesforce dashboard"

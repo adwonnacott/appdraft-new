@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
       <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Privacy Policy
+            Privacy policy
           </h1>
           <p className="text-lg text-gray-600">
             Last updated: February 2026
@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
             Appdraft Limited ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
           </p>
 
-          <h2>Information We Collect</h2>
+          <h2>Information we collect</h2>
           <h3>Personal Information</h3>
           <p>We may collect personal information that you voluntarily provide to us when you:</p>
           <ul>
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
             <li>Time and date of visits</li>
           </ul>
 
-          <h2>How We Use Your Information</h2>
+          <h2>How we use your information</h2>
           <p>We use the information we collect to:</p>
           <ul>
             <li>Respond to your inquiries and provide customer support</li>
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
             <li>Protect against fraudulent or illegal activity</li>
           </ul>
 
-          <h2>Legal Basis for Processing (GDPR)</h2>
+          <h2>Legal basis for processing (GDPR)</h2>
           <p>If you are from the European Economic Area (EEA), our legal basis for collecting and using your personal information depends on the data concerned and the context in which we collect it:</p>
           <ul>
             <li><strong>Consent:</strong> We have your consent to process your data</li>
@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
             <li><strong>Legitimate interests:</strong> Processing is in our legitimate interests and not overridden by your rights</li>
           </ul>
 
-          <h2>Sharing Your Information</h2>
+          <h2>Sharing your information</h2>
           <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with:</p>
           <ul>
             <li><strong>Service providers:</strong> Third parties who perform services on our behalf (e.g., email service providers, analytics providers)</li>
@@ -83,12 +83,12 @@ export default function PrivacyPolicy() {
             <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
           </ul>
 
-          <h2>Data Security</h2>
+          <h2>Data security</h2>
           <p>
             We implement appropriate technical and organizational security measures to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
           </p>
 
-          <h2>Your Rights</h2>
+          <h2>Your rights</h2>
           <p>Under data protection laws, you have rights including:</p>
           <ul>
             <li><strong>Access:</strong> Request a copy of your personal data</li>
@@ -105,22 +105,22 @@ export default function PrivacyPolicy() {
             We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookies through your browser settings. Please note that disabling cookies may affect the functionality of our website.
           </p>
 
-          <h2>Data Retention</h2>
+          <h2>Data retention</h2>
           <p>
             We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law.
           </p>
 
-          <h2>Children's Privacy</h2>
+          <h2>Children's privacy</h2>
           <p>
             Our services are not directed to individuals under the age of 16. We do not knowingly collect personal information from children under 16.
           </p>
 
-          <h2>Changes to This Privacy Policy</h2>
+          <h2>Changes to this privacy policy</h2>
           <p>
             We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
           </p>
 
-          <h2>Contact Us</h2>
+          <h2>Contact us</h2>
           <p>
             If you have questions about this Privacy Policy or wish to exercise your data protection rights, please contact us:
           </p>

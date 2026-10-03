@@ -80,8 +80,8 @@ export default function HighTech() {
     <>
       <PageHero
         badge="High Tech"
-        title="Salesforce For Firms Built on"
-        highlight="Recurring Revenue & Account Expansion"
+        title="Salesforce for firms built on"
+        highlight="recurring revenue & account expansion"
         description="High-tech companies rely on subscriptions and long-term customer engagement. Whether you're offering a software product or platform, growth depends on more than just new sales. You need visibility from trial to renewal, structure across handovers and access to real usage data from your product platform."
         image="/images/industries/high-tech.jpg"
         imageAlt="High tech Salesforce dashboard"

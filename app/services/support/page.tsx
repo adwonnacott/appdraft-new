@@ -107,8 +107,8 @@ export default function Support() {
       />
       <PageHero
         badge="Support"
-        title="Help When You Need it."
-        highlight="Guidance When it Counts"
+        title="Help when you need it."
+        highlight="Guidance when it counts"
         description="As your business evolves, your Salesforce setup should evolve with it. Our support services help you fix issues, make improvements, and keep moving forward, whether you need help now and then or ongoing assistance each month."
         image="/images/services/support.jpg"
         imageAlt="Salesforce support team"

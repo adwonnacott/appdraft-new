@@ -84,8 +84,8 @@ export default function ProfessionalServices() {
     <>
       <PageHero
         badge="Professional Services"
-        title="Salesforce For Firms Built on"
-        highlight="People, Processes & Performance"
+        title="Salesforce for firms built on"
+        highlight="people, processes & performance"
         description="Professional service firms rely on expertise, reputation, and strong delivery. Whether you provide advice, manage client work, or deliver ongoing services, your business depends on clear handovers, consistent communication, and visibility across the client lifecycle."
         image="/images/industries/professional-services.jpg"
         imageAlt="Professional services Salesforce dashboard"

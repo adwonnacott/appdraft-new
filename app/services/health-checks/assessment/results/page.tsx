@@ -35,7 +35,7 @@ function ResultsContent() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Your Salesforce Health Report
+            Your Salesforce health report
           </h1>
           <p className="text-xl text-gray-600">
             Hi {state.leadInfo.firstName}! Here's what we found based on your responses.

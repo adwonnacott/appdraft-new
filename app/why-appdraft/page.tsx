@@ -24,8 +24,8 @@ export default function WhyAppdraft() {
     <>
       <PageHero
         badge="Why Appdraft"
-        title="Practical Salesforce Expertise for"
-        highlight="Real Business Results"
+        title="Practical Salesforce expertise for"
+        highlight="real business results"
         description="We are official Salesforce Consulting Partners with hands-on experience across Sales, Service, Marketing and Operations. From quick fixes to strategic projects, we help businesses get more from Salesforce by focusing on the outcomes that matter."
         image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
         imageAlt="Team collaboration and consulting"
@@ -35,7 +35,7 @@ export default function WhyAppdraft() {
       />
 
       <ContentSection
-        title="Who We Are"
+        title="Who we are"
         background="white"
         centered={false}
       >
@@ -52,7 +52,7 @@ export default function WhyAppdraft() {
       </ContentSection>
 
       <ContentSection
-        title="Our Approach"
+        title="Our approach"
         background="gray"
         centered={false}
       >
@@ -75,7 +75,7 @@ export default function WhyAppdraft() {
       </ContentSection>
 
       <ContentSection
-        title="Proudly Part of Pledge 1%"
+        title="Proudly part of Pledge 1%"
         background="white"
         centered={false}
       >
@@ -95,7 +95,7 @@ export default function WhyAppdraft() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Recognised by Salesforce... Trusted by Clients</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Recognised by Salesforce... Trusted by clients</h2>
             </div>
           </ScrollReveal>
 

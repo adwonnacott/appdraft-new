@@ -38,7 +38,7 @@ export default function CaseStudies() {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-sm text-slate-600 font-medium">Client Work</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Salesforce Case Studies</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Salesforce case studies</h1>
             <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
               Real projects. Real outcomes. How we have helped businesses get more from Salesforce.
             </p>

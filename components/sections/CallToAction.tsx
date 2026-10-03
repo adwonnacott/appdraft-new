@@ -7,11 +7,11 @@ export default function CallToAction() {
   return (
     <section className="py-28 bg-white">
       <ScrollReveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-[#3cd6bf] font-semibold tracking-wide uppercase text-sm mb-6">Get Started</p>
+        <p className="text-[#19779b] font-semibold tracking-wide uppercase text-sm mb-6">Get Started</p>
 
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
           Ready to transform your{' '}
-          <span className="text-[#3cd6bf]">Salesforce?</span>
+          <span className="text-[#19779b]">Salesforce?</span>
         </h2>
 
         <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -21,7 +21,7 @@ export default function CallToAction() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/contact"
-            className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-full transition-all duration-200 hover:shadow-lg"
+            className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#19779b] hover:bg-[#146280] rounded-full transition-all duration-200 hover:shadow-lg"
           >
             Book A Call
             <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

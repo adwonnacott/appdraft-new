@@ -20,7 +20,7 @@ export default function RecommendationList({ recommendations }: RecommendationLi
 
   return (
     <div className="space-y-8 mb-8">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Personalized Recommendations</h2>
+      <h2 className="text-3xl font-bold text-gray-900 mb-6">Your personalized recommendations</h2>
       {recommendations.map((rec, index) => (
         <div key={rec.problemArea} className="bg-white rounded-xl shadow-lg p-8 border-l-4" style={{ borderLeftColor: getSeverityColor(rec.severity).split(' ')[0].replace('bg-', '#') }}>
           <div className="flex items-start justify-between mb-4">

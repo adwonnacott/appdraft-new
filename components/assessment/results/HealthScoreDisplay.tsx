@@ -13,7 +13,7 @@ export default function HealthScoreDisplay({ scores }: HealthScoreDisplayProps) 
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Health Scores</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Your health scores</h2>
       <div className="space-y-4">
         {scoreEntries.map((score) => (
           <div key={score.problemArea}>

@@ -39,7 +39,7 @@ export default function WelcomeStep() {
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Let's Get Started
+            Let's get started
           </h2>
           <p className="text-gray-600">
             We'll email your personalized results

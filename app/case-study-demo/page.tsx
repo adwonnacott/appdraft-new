@@ -91,7 +91,7 @@ export default function CaseStudyDemoPage() {
             Component Demo
           </p>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Animated Case Study Timeline
+            Animated case study timeline
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Scroll down to see the timeline animate in. Each milestone reveals as you scroll,

@@ -119,7 +119,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">01</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Hero Animations</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Hero animations</h2>
             <p className="text-gray-400">Animated gradient mesh background + word-by-word text reveal</p>
           </div>
 
@@ -162,7 +162,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">02</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Scroll Reveal</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Scroll reveal</h2>
             <p className="text-gray-400">Elements animate in as they enter the viewport</p>
           </div>
 
@@ -219,7 +219,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">03</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Interactive Glow Cards</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Interactive glow cards</h2>
             <p className="text-gray-400">Mouse-tracking glow effect that follows cursor movement</p>
           </div>
 
@@ -286,7 +286,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">04</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Text Effects</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Text effects</h2>
             <p className="text-gray-400">Animated text reveals and typing effects</p>
           </div>
 
@@ -350,7 +350,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">05</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Counter Animations</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Counter animations</h2>
             <p className="text-gray-400">Numbers that count up when scrolled into view</p>
           </div>
 
@@ -409,7 +409,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">06</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Lottie Animations</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Lottie animations</h2>
             <p className="text-gray-400">Vector animations from After Effects / LottieFiles</p>
           </div>
 
@@ -492,7 +492,7 @@ export default function AnimationDemoPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-12">
             <span className="text-appdraft-accent text-sm font-mono mb-2 block">07</span>
-            <h2 className="text-3xl font-bold text-white mb-2">Background Effects</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Background effects</h2>
             <p className="text-gray-400">Parallax scrolling and interactive canvas backgrounds</p>
           </div>
 

@@ -10,7 +10,7 @@ export default function ContactDemoPage() {
             Component Demo
           </p>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Multi-Step Contact Form
+            Multi-Step contact form
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             A wizard-style form that qualifies leads by capturing industry, budget,

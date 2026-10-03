@@ -90,8 +90,8 @@ export default function FinancialServices() {
     <>
       <PageHero
         badge="Financial Services"
-        title="Salesforce For Firms Managing"
-        highlight="Clients In Regulated Settings"
+        title="Salesforce for firms managing"
+        highlight="clients in regulated settings"
         description="We help financial services organisations streamline client management, track opportunities from enquiry to completion, and maintain a clear compliance trail."
         image="/images/industries/financial-services.jpg"
         imageAlt="Financial services Salesforce dashboard"

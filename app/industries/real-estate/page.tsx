@@ -92,8 +92,8 @@ export default function RealEstate() {
     <>
       <PageHero
         badge="Real Estate"
-        title="Salesforce For Firms Managing"
-        highlight="Properties, Buyers & Sellers"
+        title="Salesforce for firms managing"
+        highlight="properties, buyers & sellers"
         description="Whether you are selling, leasing or developing property, success depends on staying on top of every viewing, offer and client conversation. From tracking marketing activity to managing negotiations, we help real estate businesses use Salesforce to keep deals moving and relationships strong."
         image="/images/industries/real-estate.jpg"
         imageAlt="Real estate Salesforce dashboard"

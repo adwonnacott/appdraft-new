@@ -124,7 +124,7 @@ export default function Agentforce() {
       />
       <PageHero
         badge="Agentforce"
-        title="Salesforce Agentforce Consultants"
+        title="Salesforce Agentforce consultants"
         description="Salesforce Agentforce helps your teams move faster and your customers get what they need. It works directly on the data you already hold in Salesforce, guiding internal users through their day-to-day work or supporting customers with instant answers and next steps."
         image="/images/salesforce/agentforce.jpg"
         imageAlt="Agentforce AI assistant"
@@ -167,7 +167,7 @@ export default function Agentforce() {
       </ContentSection>
 
       <ContentSection
-        title="Get started faster with Salesforce-built Agents"
+        title="Get started faster with Salesforce-built agents"
         subtitle="Salesforce offers a growing library of ready-to-use Agentforce templates."
         background="white"
       >

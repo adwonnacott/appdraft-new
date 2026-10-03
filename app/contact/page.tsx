@@ -106,8 +106,8 @@ export default function Contact() {
                 Get in Touch
               </span>
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Let&apos;s Talk About Your{' '}
-                <span className="text-[#19779b]">Salesforce Project</span>
+                Let&apos;s talk about your{' '}
+                <span className="text-[#19779b]">Salesforce project</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Tell us about your business and requirements, and we&apos;ll get back to you within 24 hours with tailored recommendations.
@@ -153,7 +153,7 @@ export default function Contact() {
 
       {/* Quick Links */}
       <ContentSection
-        title="Explore Our Services"
+        title="Explore our services"
         subtitle="Learn more about how we can help transform your business with Salesforce"
         background="white"
       >

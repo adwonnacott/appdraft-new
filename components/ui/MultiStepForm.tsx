@@ -198,7 +198,7 @@ export default function MultiStepForm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank you!</h2>
           <p className="text-lg text-gray-600 mb-6">
             We&apos;ve received your enquiry and will be in touch within 24 hours.
           </p>

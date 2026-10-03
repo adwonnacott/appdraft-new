@@ -108,8 +108,8 @@ export default function HealthChecks() {
       />
       <PageHero
         badge="Health Checks"
-        title="You've Invested in Salesforce."
-        highlight="Let's Make Sure it's Working"
+        title="You've invested in Salesforce."
+        highlight="Let's make sure it's working"
         description="If Salesforce isn't delivering, there's usually a reason. In our experience, some organisations start with an implementation that never quite fits how the business operates. For others, what was originally a good match has drifted out of sync as the business has evolved."
         image="/images/services/health-checks.jpg"
         imageAlt="Salesforce health check analysis"

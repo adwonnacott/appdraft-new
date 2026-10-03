@@ -97,8 +97,8 @@ export default function Transportation() {
     <>
       <PageHero
         badge="Transportation & Logistics"
-        title="Salesforce For Firms Managing"
-        highlight="Jobs, Resources & Customer Requests"
+        title="Salesforce for firms managing"
+        highlight="jobs, resources & customer requests"
         description="In transportation and logistics, every job matters. From the moment a customer makes a request to the final confirmation of delivery, success depends on visibility, coordination and clear communication."
         image="/images/industries/transportation.jpg"
         imageAlt="Transportation Salesforce dashboard"

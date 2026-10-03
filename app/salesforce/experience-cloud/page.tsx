@@ -132,7 +132,7 @@ export default function ExperienceCloud() {
       />
       <PageHero
         badge="Experience Cloud"
-        title="Salesforce Experience Cloud Consultants"
+        title="Salesforce Experience Cloud consultants"
         description="Experience Cloud lets you create secure portals, help centres and branded digital spaces that connect directly to your Salesforce data. Whether you need to enable partner collaboration, customer self-service or internal sharing, it helps you give people access to the information that matters."
         image="/images/salesforce/experience-cloud.jpg"
         imageAlt="Experience Cloud portal"

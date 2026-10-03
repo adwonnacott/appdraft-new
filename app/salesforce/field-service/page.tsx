@@ -113,7 +113,7 @@ export default function FieldService() {
       />
       <PageHero
         badge="Field Service"
-        title="Salesforce Field Service Consultants"
+        title="Salesforce Field Service consultants"
         description="Salesforce Field Service helps businesses plan, deliver and track work carried out in the field. Whether you manage installations, maintenance, inspections or repairs, Field Service brings scheduling, job information, and field updates into a single platform."
         image="/images/salesforce/field-service.jpg"
         imageAlt="Field service technician"

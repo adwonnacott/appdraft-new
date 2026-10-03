@@ -86,8 +86,8 @@ export default function Manufacturing() {
     <>
       <PageHero
         badge="Manufacturing"
-        title="Salesforce For Firms Who Sell"
-        highlight="Through Partners & Track Complex Products"
+        title="Salesforce for firms who sell"
+        highlight="through partners & track complex products"
         description="Manufacturers don't just sell. They quote, sample, negotiate, deliver and support. Whether you go to market through distributors, partners or direct sales, you need a structured way to handle product enquiries, track opportunities and support customers after the deal is done."
         image="/images/industries/manufacturing.jpg"
         imageAlt="Manufacturing Salesforce dashboard"

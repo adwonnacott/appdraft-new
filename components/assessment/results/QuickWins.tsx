@@ -9,7 +9,7 @@ interface QuickWinsProps {
 export default function QuickWins({ recommendations }: QuickWinsProps) {
   return (
     <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-8 mb-8 border-2 border-green-200">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">⚡ Quick Wins You Can Do Now</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">⚡ Quick wins you can do now</h2>
       <p className="text-gray-600 mb-6">
         Start seeing improvements today with these immediate actions:
       </p>

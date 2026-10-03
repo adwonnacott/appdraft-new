@@ -62,7 +62,7 @@ export default function FontsShowcase() {
           <Link href="/" className="text-appdraft-primary hover:underline text-sm mb-4 inline-block">
             ← Back to Home
           </Link>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Font Showcase</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Font showcase</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Compare different font options for the Appdraft website. See how each font looks with actual site content.
           </p>
@@ -167,7 +167,7 @@ export default function FontsShowcase() {
 
         {/* Summary */}
         <div className="mt-16 bg-white rounded-2xl p-8 border border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Comparison</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick comparison</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left">
               <thead>

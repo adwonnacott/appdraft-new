@@ -80,7 +80,7 @@ export default function ShowcasePage() {
         <Link href="/" className="text-appdraft-accent hover:underline mb-4 inline-block">
           &larr; Back to Homepage
         </Link>
-        <h1 className="text-5xl font-bold text-white mb-4">Effects Showcase</h1>
+        <h1 className="text-5xl font-bold text-white mb-4">Effects showcase</h1>
         <p className="text-xl text-gray-400">
           Popular web effects and interactions. Scroll to explore everything available.
         </p>
@@ -121,7 +121,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">02</span>
-            <h2 className="text-3xl font-bold text-white">Gradient Effects</h2>
+            <h2 className="text-3xl font-bold text-white">Gradient effects</h2>
             <p className="text-gray-400 mt-2">Text and border gradients - used by Stripe, Linear, Vercel</p>
           </div>
 
@@ -152,7 +152,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">03</span>
-            <h2 className="text-3xl font-bold text-white">Typing Effect</h2>
+            <h2 className="text-3xl font-bold text-white">Typing effect</h2>
             <p className="text-gray-400 mt-2">Text that types itself - popular on landing pages</p>
           </div>
 
@@ -172,7 +172,7 @@ export default function ShowcasePage() {
       <section className="py-16 bg-dark-secondary relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 mb-8">
           <span className="text-appdraft-accent text-sm font-mono">04</span>
-          <h2 className="text-3xl font-bold text-white">Marquee / Logo Ticker</h2>
+          <h2 className="text-3xl font-bold text-white">Marquee / logo ticker</h2>
           <p className="text-gray-400 mt-2">Auto-scrolling content - used for client logos, testimonials</p>
         </div>
 
@@ -290,7 +290,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">07</span>
-            <h2 className="text-3xl font-bold text-white">Progress Bars</h2>
+            <h2 className="text-3xl font-bold text-white">Progress bars</h2>
             <p className="text-gray-400 mt-2">Animated fill bars - skills, stats, loading states</p>
           </div>
 
@@ -324,7 +324,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">08</span>
-            <h2 className="text-3xl font-bold text-white">Scroll Reveal Animations</h2>
+            <h2 className="text-3xl font-bold text-white">Scroll reveal animations</h2>
             <p className="text-gray-400 mt-2">Elements animate in when scrolling - used everywhere</p>
           </div>
 
@@ -365,7 +365,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">09</span>
-            <h2 className="text-3xl font-bold text-white">Counter Animations</h2>
+            <h2 className="text-3xl font-bold text-white">Counter animations</h2>
             <p className="text-gray-400 mt-2">Numbers count up when visible - great for stats</p>
           </div>
 
@@ -417,7 +417,7 @@ export default function ShowcasePage() {
         <div className="relative max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">10</span>
-            <h2 className="text-3xl font-bold text-white">Parallax Scrolling</h2>
+            <h2 className="text-3xl font-bold text-white">Parallax scrolling</h2>
             <p className="text-gray-400 mt-2">Background moves at different speed - creates depth</p>
           </div>
 
@@ -434,7 +434,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">11</span>
-            <h2 className="text-3xl font-bold text-white">Magnetic Button</h2>
+            <h2 className="text-3xl font-bold text-white">Magnetic button</h2>
             <p className="text-gray-400 mt-2">Button follows cursor - subtle interactive delight</p>
           </div>
 
@@ -460,7 +460,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">12</span>
-            <h2 className="text-3xl font-bold text-white">Custom Cursor</h2>
+            <h2 className="text-3xl font-bold text-white">Custom cursor</h2>
             <p className="text-gray-400 mt-2">The white circle following your mouse - trendy on creative sites</p>
           </div>
 
@@ -482,7 +482,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">13</span>
-            <h2 className="text-3xl font-bold text-white">Hover Effects</h2>
+            <h2 className="text-3xl font-bold text-white">Hover effects</h2>
             <p className="text-gray-400 mt-2">Various interactive card states</p>
           </div>
 
@@ -526,7 +526,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">14</span>
-            <h2 className="text-3xl font-bold text-white">3D Tilt Effect</h2>
+            <h2 className="text-3xl font-bold text-white">3D tilt effect</h2>
             <p className="text-gray-400 mt-2">Cards that rotate in 3D space on hover</p>
           </div>
 
@@ -558,7 +558,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">15</span>
-            <h2 className="text-3xl font-bold text-white">Background Patterns</h2>
+            <h2 className="text-3xl font-bold text-white">Background patterns</h2>
             <p className="text-gray-400 mt-2">Subtle patterns created with code (no images)</p>
           </div>
 
@@ -634,7 +634,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">17</span>
-            <h2 className="text-3xl font-bold text-white">Floating / Bobbing</h2>
+            <h2 className="text-3xl font-bold text-white">Floating / bobbing</h2>
             <p className="text-gray-400 mt-2">Continuous gentle animation - adds life to static elements</p>
           </div>
 
@@ -662,7 +662,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">18</span>
-            <h2 className="text-3xl font-bold text-white">Loading Skeletons</h2>
+            <h2 className="text-3xl font-bold text-white">Loading skeletons</h2>
             <p className="text-gray-400 mt-2">Placeholder animations while content loads</p>
           </div>
 
@@ -696,7 +696,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">19</span>
-            <h2 className="text-3xl font-bold text-white">Image Effects</h2>
+            <h2 className="text-3xl font-bold text-white">Image effects</h2>
             <p className="text-gray-400 mt-2">Various treatments for images - hover, filters, overlays</p>
           </div>
 
@@ -921,7 +921,7 @@ export default function ShowcasePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8">
             <span className="text-appdraft-accent text-sm font-mono">20</span>
-            <h2 className="text-3xl font-bold text-white">Image Card Layouts</h2>
+            <h2 className="text-3xl font-bold text-white">Image card layouts</h2>
             <p className="text-gray-400 mt-2">Common patterns for image + text combinations</p>
           </div>
 

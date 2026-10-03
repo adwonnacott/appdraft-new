@@ -100,7 +100,7 @@ export default function Implementation() {
       />
       <PageHero
         badge="Implementation"
-        title="Getting Started With"
+        title="Getting started with"
         highlight="Salesforce"
         description="We help you implement Salesforce in a way that fits your business today and scales with you tomorrow, keeping it simple where it should be and powerful where it counts."
         image="/images/services/implementation.jpg"

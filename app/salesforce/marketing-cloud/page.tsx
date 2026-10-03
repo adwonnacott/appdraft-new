@@ -119,7 +119,7 @@ export default function MarketingCloud() {
       />
       <PageHero
         badge="Marketing Cloud"
-        title="Salesforce Marketing Cloud Consultants"
+        title="Salesforce Marketing Cloud consultants"
         description="Salesforce Marketing Cloud helps businesses turn marketing activity into real pipeline. Whether you're running lead nurture programmes, personalising outreach at scale, or fixing handover gaps between marketing and sales, we help you make it work."
         image="/images/salesforce/marketing-cloud.jpg"
         imageAlt="Marketing Cloud campaigns"

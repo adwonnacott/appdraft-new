@@ -30,7 +30,7 @@ function AssessmentContent() {
                 Free Interactive Assessment
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Is Your Salesforce Investment Working as Hard as You Are?
+                Is your Salesforce investment working as hard as you are?
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
                 Most Salesforce orgs drift over time. What worked well two years ago might be costing you thousands today.
@@ -58,7 +58,7 @@ function AssessmentContent() {
             <div className="max-w-5xl mx-auto mb-16">
               <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                  What You'll Discover
+                  What you'll discover
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-start gap-4">
@@ -128,7 +128,7 @@ function AssessmentContent() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-                How It Works
+                How it works
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="text-center">

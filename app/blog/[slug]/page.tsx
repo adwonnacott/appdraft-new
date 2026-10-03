@@ -241,7 +241,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Articles</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related articles</h2>
             </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost, index) => (
@@ -311,7 +311,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="text-4xl font-bold text-white mb-6">
-              Need Expert Salesforce Advice?
+              Need expert Salesforce advice?
             </h2>
             <p className="text-xl text-white/80 mb-8">
               Our team is here to help you make the most of your Salesforce investment

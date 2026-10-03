@@ -234,7 +234,7 @@ export default function ApolloEffectsPage() {
           <FadeIn>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Staggered Reveal Cards
+                Staggered reveal cards
               </h2>
               <p className="text-xl text-gray-600">
                 Cards animate in sequence as you scroll
@@ -275,7 +275,7 @@ export default function ApolloEffectsPage() {
           <FadeIn>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Directional Animations
+                Directional animations
               </h2>
               <p className="text-xl text-gray-600">
                 Elements can animate from any direction

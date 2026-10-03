@@ -17,7 +17,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-mono);
 
   /* Appdraft brand colors */
@@ -34,10 +34,26 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headlines use a serif display face so the site reads as ours, not as a template */
+/* Small capital labels use the logo's Eurostile Extended, light and spaced */
+.uppercase {
+  font-family: var(--font-logo), var(--font-body), sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+}
+
+/* Headlines: EB Garamond at regular weight, beside the Eurostile logo */
+h1,
+h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }
 
 /* Light theme glass cards */

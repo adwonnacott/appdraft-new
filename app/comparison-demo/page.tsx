@@ -145,7 +145,7 @@ export default function ComparisonDemoPage() {
             Component Demo
           </p>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Animated Comparison Tables
+            Animated comparison tables
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Interactive feature matrices that animate on scroll. Hover over columns

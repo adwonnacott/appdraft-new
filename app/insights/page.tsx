@@ -65,7 +65,7 @@ export default function Insights() {
                 Knowledge Hub
               </span>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Insights & <span className="text-[#3cd6bf]">Perspectives</span>
+                Insights & <span className="text-[#3cd6bf]">perspectives</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Expert insights on Salesforce implementation, CRM strategy, and digital transformation.
@@ -164,7 +164,7 @@ export default function Insights() {
               </div>
 
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Stay Updated
+                Stay updated
               </h2>
               <p className="text-lg text-gray-600 mb-8">
                 Get the latest Salesforce insights and best practices delivered to your inbox
@@ -193,7 +193,7 @@ export default function Insights() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
             <h2 className="text-4xl font-bold text-white mb-6">
-              Need Expert Salesforce Advice?
+              Need expert Salesforce advice?
             </h2>
             <p className="text-xl text-white/80 mb-8">
               Our team is here to help you make the most of your Salesforce investment

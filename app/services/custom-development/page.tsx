@@ -137,8 +137,8 @@ export default function CustomDevelopment() {
       />
       <PageHero
         badge="Custom Development"
-        title="Use Salesforce to Run"
-        highlight="More of Your Business"
+        title="Use Salesforce to run"
+        highlight="more of your business"
         description="Salesforce is often seen as just a sales tool. But it's a flexible platform that can support far more, including finance, operations, and specialist processes. We help clients extend Salesforce to cover the day-to-day tools they need."
         image="/images/services/custom-development.jpg"
         imageAlt="Custom Salesforce development"

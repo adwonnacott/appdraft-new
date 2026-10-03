@@ -1,14 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Nunito_Sans, JetBrains_Mono, EB_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/ui/PageTransition";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Body text. Stand-in for Avenir Next until its web licence is bought
+const body = Nunito_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
+});
+
+// Headlines and figures
+const garamond = EB_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+});
+
+// Eurostile Extended, the logo's typeface (Berthold, web licence held)
+const eurostile = localFont({
+  variable: "--font-logo",
+  src: [
+    { path: "./fonts/eurostile-extended.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/eurostile-bold-extended.woff2", weight: "700", style: "normal" },
+  ],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -149,7 +166,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-appdraft-background text-appdraft-text min-h-screen`}
+        className={`${body.variable} ${garamond.variable} ${eurostile.variable} ${jetbrainsMono.variable} font-sans antialiased bg-appdraft-background text-appdraft-text min-h-screen`}
       >
         <Header />
         <main>

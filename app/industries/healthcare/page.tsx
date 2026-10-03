@@ -107,8 +107,8 @@ export default function Healthcare() {
     <>
       <PageHero
         badge="Healthcare & Life Sciences"
-        title="Salesforce For Firms Delivering"
-        highlight="Care or Supplying Medical Products"
+        title="Salesforce for firms delivering"
+        highlight="care or supplying medical products"
         description="We help organisations across the healthcare and life sciences sector, from those delivering direct patient care to those supplying regulated equipment and pharmaceutical products."
         image="/images/industries/healthcare.jpg"
         imageAlt="Healthcare Salesforce dashboard"
