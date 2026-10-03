@@ -1,6 +1,7 @@
 export const metadata = {
   title: 'Privacy Policy',
   description: 'Appdraft privacy policy - how we collect, use, and protect your personal information.',
+  alternates: { canonical: 'https://appdraft.com/privacy-policy' },
 };
 
 export default function PrivacyPolicy() {

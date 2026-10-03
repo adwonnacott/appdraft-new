@@ -6,7 +6,7 @@
     "dev": "next dev",
     "sync-posts": "node scripts/sync-blog-posts.mjs",
     "build": "next build",
-    "deploy": "node scripts/sync-blog-posts.mjs && next build && npx wrangler pages deploy out --project-name=appdraft",
+    "deploy": "node scripts/sync-blog-posts.mjs && next build && node scripts/build-sitemap.mjs && npx wrangler pages deploy out --project-name=appdraft",
     "start": "next start",
     "lint": "eslint"
   },
