@@ -32,7 +32,7 @@ const postImages: Record<string, string> = {
   'whats-wrong-with-a-spreadsheet': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
   'an-exact-science-forecasts-in-salesforce': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80',
   'understanding-salesforce-forecasts': 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80',
-  'email-integration-salesforce': 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80',
+  'email-integration-salesforce': 'https://images.unsplash.com/photo-1678227547330-7b17f29fd1ff?w=800&q=80',
   'go-with-the-flow-a-guide-to-salesforce-flows': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
   'seamless-prospecting-with-salesforce-linkedin': 'https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=800&q=80',
   'one-less-thing-to-worry-about-a-robot-apocalypse': 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
