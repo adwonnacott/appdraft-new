@@ -103,14 +103,14 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg">
+          <Link href="/" className="flex items-center flex-shrink-0 mr-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3cd6bf] focus-visible:ring-offset-2 rounded-lg">
             <Image
-              src="/appdraft-wordmark/appdraft-wordmark-colour.svg"
+              src="/appdraft-wordmark/appdraft-wordmark-colour-tight.svg"
               alt="Appdraft"
-              width={200}
-              height={50}
+              width={290}
+              height={29}
               priority
-              className="h-10 w-auto"
+              className="h-[18px] xl:h-4 w-auto"
             />
           </Link>
 

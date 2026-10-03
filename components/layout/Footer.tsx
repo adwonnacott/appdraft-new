@@ -13,11 +13,11 @@ export default function Footer() {
           <div className="col-span-1">
             <Link href="/" className="inline-block mb-6">
               <Image
-                src="/appdraft-wordmark/appdraft-wordmark-white.svg"
+                src="/appdraft-wordmark/appdraft-wordmark-white-tight.svg"
                 alt="Appdraft"
-                width={200}
-                height={50}
-                className="h-10 w-auto"
+                width={290}
+                height={29}
+                className="h-4 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
