@@ -6,12 +6,12 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlowCard from '@/components/ui/GlowCard';
 
 export const metadata = {
-  title: 'Why Choose Appdraft',
-  description: 'Official Salesforce Consulting Partners with 130+ projects delivered. Practical expertise across Sales Cloud, Service Cloud, and Marketing Cloud. 5.0 AppExchange rating.',
+  title: 'Why Choose Us',
+  description: 'Official Salesforce Consulting Partners with 130+ projects delivered. Practical expertise across Sales Cloud, Service Cloud, and Marketing Cloud. 4.9 AppExchange rating.',
   keywords: ['why Appdraft', 'Salesforce partner UK', 'Salesforce consulting partner', 'certified Salesforce consultants'],
   openGraph: {
     title: 'Why Choose Appdraft | Salesforce Consulting Partner',
-    description: 'Official Salesforce Consulting Partners with 130+ projects delivered. 5.0 AppExchange rating.',
+    description: 'Official Salesforce Consulting Partners with 130+ projects delivered. 4.9 AppExchange rating.',
     url: 'https://appdraft.com/why-appdraft',
   },
   alternates: {
@@ -116,7 +116,7 @@ export default function WhyAppdraft() {
                   <p className="text-lg font-medium">Reviews on the</p>
                   <p className="text-2xl font-bold">Salesforce</p>
                   <Link
-                    href="https://appexchange.salesforce.com/"
+                    href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT"
                     target="_blank"
                     className="text-blue-200 hover:text-white underline"
                   >
@@ -157,7 +157,7 @@ export default function WhyAppdraft() {
             <p className="text-xl text-white mb-6">Trusted by UK-based sales, ops and customer service teams</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
               <Link
-                href="https://appexchange.salesforce.com/"
+                href="https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT"
                 target="_blank"
                 className="inline-block bg-white text-[#3cd6bf] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all"
               >

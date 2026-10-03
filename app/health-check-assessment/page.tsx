@@ -75,7 +75,7 @@ export default function HealthCheckAssessmentPage() {
               <div className="text-gray-600">Years of experience</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-[#3cd6bf] mb-2">5.0</div>
+              <div className="text-4xl font-bold text-[#3cd6bf] mb-2">4.9</div>
               <div className="text-gray-600">AppExchange rating</div>
             </div>
           </div>

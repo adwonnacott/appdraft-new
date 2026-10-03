@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     default: 'Appdraft - Salesforce Implementation Experts',
     template: '%s | Appdraft'
   },
-  description: 'Expert Salesforce implementation, support, and custom development for growing businesses. 130+ projects delivered with 100% client satisfaction.',
+  description: 'Expert Salesforce implementation, support, and custom development for growing businesses. 130+ projects delivered and a 4.9 AppExchange rating.',
   keywords: ['Salesforce implementation', 'Salesforce consulting', 'Salesforce partner', 'CRM implementation', 'Sales Cloud', 'Service Cloud', 'Salesforce support', 'London Salesforce consultant'],
   authors: [{ name: 'Appdraft' }],
   creator: 'Appdraft',
@@ -64,10 +64,10 @@ export const metadata: Metadata = {
     url: 'https://appdraft.com',
     siteName: 'Appdraft',
     title: 'Appdraft - Salesforce Implementation Experts',
-    description: 'Expert Salesforce implementation, support, and custom development for growing businesses. 130+ projects delivered with 100% client satisfaction.',
+    description: 'Expert Salesforce implementation, support, and custom development for growing businesses. 130+ projects delivered and a 4.9 AppExchange rating.',
     images: [
       {
-        url: '/og-image.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Appdraft - Salesforce Implementation Experts',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Appdraft - Salesforce Implementation Experts',
     description: 'Expert Salesforce implementation, support, and custom development for growing businesses.',
-    images: ['/og-image.svg'],
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://appdraft.com',
@@ -102,6 +102,8 @@ const organizationSchema = {
   description: 'Expert Salesforce implementation, support, and custom development for growing businesses.',
   sameAs: [
     'https://www.linkedin.com/company/appdraft/',
+    'https://clutch.co/profile/appdraft',
+    'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -134,13 +136,11 @@ const localBusinessSchema = {
     longitude: -0.0888,
   },
   priceRange: '$$',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '15',
-    bestRating: '5',
-    worstRating: '1',
-  },
+  sameAs: [
+    'https://www.linkedin.com/company/appdraft/',
+    'https://clutch.co/profile/appdraft',
+    'https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000FR4oVUAT',
+  ],
   areaServed: {
     '@type': 'Country',
     name: 'United Kingdom',

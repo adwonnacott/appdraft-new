@@ -12,10 +12,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const cs = caseStudies.find((c) => c.slug === slug);
-  if (!cs) return { title: 'Case Study Not Found | Appdraft' };
+  if (!cs) return { title: 'Case Study Not Found' };
 
   return {
-    title: `${cs.title} | Salesforce Case Study | Appdraft`,
+    title: cs.title,
     description: cs.excerpt,
     openGraph: {
       title: cs.title,

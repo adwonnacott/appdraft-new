@@ -7,11 +7,11 @@ import PageTransition from '@/components/layout/PageTransition';
 
 export const metadata = {
   title: 'Appdraft: Salesforce Consultants | Select Partner, London UK',
-  description: 'Expert Salesforce consultants based in London. 130+ projects delivered, 5.0 AppExchange rating. Implementation, support and custom development for growing businesses.',
+  description: 'Expert Salesforce consultants based in London. 130+ projects delivered, 4.9 AppExchange rating. Implementation, support and custom development for growing businesses.',
   keywords: ['Salesforce consultants', 'Salesforce consultants London', 'Salesforce consulting London', 'Salesforce partner UK', 'CRM implementation', 'Sales Cloud', 'Service Cloud'],
   openGraph: {
     title: 'Appdraft - Salesforce Implementation Experts',
-    description: 'Expert Salesforce implementation, support, and custom development. 130+ projects delivered with 100% client satisfaction.',
+    description: 'Expert Salesforce implementation, support, and custom development. 130+ projects delivered and a 4.9 AppExchange rating.',
     url: 'https://appdraft.com',
   },
   alternates: {

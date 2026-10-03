@@ -10,7 +10,7 @@ import StreamVideo from '@/components/ui/StreamVideo';
 const VIDEO_ID = '88d3f4b47699e151bbbd65faa7eb1174';
 
 export const metadata = {
-  title: 'Deal Builder: Salesforce Quoting Accelerator | Appdraft',
+  title: 'Deal Builder: Salesforce Quoting Accelerator',
   description: 'Build deals on the Salesforce opportunity with bundles, product rules, margin on every line, tax worked out per line, payment schedules and branded PDF quotes.',
   keywords: ['Salesforce quoting', 'Salesforce quote builder', 'Salesforce CPQ alternative', 'Salesforce bundles', 'Salesforce quote PDF', 'Salesforce margin'],
   openGraph: {

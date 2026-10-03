@@ -5,7 +5,7 @@ import CTABanner from '@/components/sections/CTABanner';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Accelerators | Appdraft',
+  title: 'Salesforce Accelerators',
   description: 'Proven Salesforce building blocks for quoting, billing and more. Built on standard Salesforce objects and adapted to how your business works.',
   keywords: ['Salesforce accelerators', 'Salesforce quoting', 'Salesforce Xero integration', 'Salesforce add-ons', 'Salesforce partner UK'],
   openGraph: {

@@ -48,7 +48,7 @@ function AssessmentContent() {
                   <div className="text-sm text-gray-600">Implementations</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-appdraft-primary">5.0</div>
+                  <div className="text-3xl font-bold text-appdraft-primary">4.9</div>
                   <div className="text-sm text-gray-600">AppExchange Rating</div>
                 </div>
               </div>
@@ -178,7 +178,7 @@ function AssessmentContent() {
               </p>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="bg-gray-50 p-6 rounded-xl">
-                  <div className="text-4xl font-bold text-appdraft-primary mb-2">5.0</div>
+                  <div className="text-4xl font-bold text-appdraft-primary mb-2">4.9</div>
                   <div className="text-sm text-gray-600">AppExchange Rating</div>
                   <div className="flex justify-center gap-1 mt-2">
                     {[...Array(5)].map((_, i) => (

@@ -75,7 +75,7 @@ export default function Testimonials() {
 
         <ScrollReveal delay={300} className="mt-14 flex items-center gap-4">
           <Stars />
-          <span className="font-[family-name:var(--font-display)] text-xl text-slate-900">5.0</span>
+          <span className="font-[family-name:var(--font-display)] text-xl text-slate-900">4.9</span>
           <span className="text-slate-600">Verified on AppExchange</span>
         </ScrollReveal>
       </div>

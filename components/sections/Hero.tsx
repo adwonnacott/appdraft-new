@@ -60,7 +60,7 @@ export default function Hero() {
               </div>
               <div className="text-center sm:text-left">
                 <div className="font-[family-name:var(--font-display)] text-2xl text-slate-900">
-                  5.0
+                  4.9
                 </div>
                 <div className="text-slate-500 text-sm">Rating</div>
               </div>
@@ -84,7 +84,7 @@ export default function Hero() {
                 <dd className="text-slate-500 text-right">Admin, Developer, Consultant &amp; Architect</dd>
               </div>
               <div className="py-6 border-b border-slate-200 flex items-baseline justify-between gap-6">
-                <dt className="text-lg font-semibold text-slate-900">5.0 on AppExchange</dt>
+                <dt className="text-lg font-semibold text-slate-900">4.9 on AppExchange</dt>
                 <dd className="text-slate-500 text-right">Verified client reviews</dd>
               </div>
             </dl>

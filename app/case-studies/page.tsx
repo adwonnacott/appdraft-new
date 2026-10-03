@@ -4,7 +4,7 @@ import caseStudies from './case-studies.json';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce Case Studies | Appdraft',
+  title: 'Salesforce Case Studies',
   description: 'Real Salesforce project case studies from Appdraft. See how we have helped UK and European businesses implement Salesforce, deploy Agentforce, and transform their sales and service operations.',
   keywords: ['Salesforce case studies', 'Agentforce case study', 'Salesforce implementation examples', 'CRM project results UK'],
   openGraph: {

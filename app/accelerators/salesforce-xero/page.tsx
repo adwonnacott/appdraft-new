@@ -7,7 +7,7 @@ import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Salesforce and Xero Integration Accelerator | Appdraft',
+  title: 'Salesforce and Xero Integration Accelerator',
   description: 'Connect Salesforce and Xero so you can see what each customer was invoiced and paid alongside what they were sold, with an audit trail from order to payment.',
   keywords: ['Salesforce Xero integration', 'Xero Salesforce', 'Salesforce invoicing', 'Salesforce credit control', 'Salesforce billing'],
   openGraph: {
