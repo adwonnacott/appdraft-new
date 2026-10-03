@@ -19,6 +19,8 @@ export const metadata = {
 
 // Map posts to include featured images
 const postImages: Record<string, string> = {
+  'the-part-of-the-job-we-were-worried-about-losing': 'https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?w=800&q=80',
+  'your-sales-emails-are-about-to-become-the-most-valuable-data-in-your-crm': 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80',
   'death-of-a-spreadsheet': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   'training-issue-user-error-bad-system-design': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
   'why-your-sales-team-doesnt-use-crm': 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
