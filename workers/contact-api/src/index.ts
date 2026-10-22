@@ -16,6 +16,9 @@ export interface Env {
 
   // Turnstile secret for bot protection
   TURNSTILE_SECRET_KEY: string;
+
+  // Shared with appdraft-chat-api, which asks this worker to create leads on its behalf
+  CONTACT_API_SECRET?: string;
 }
 
 interface ContactFormData {
@@ -26,6 +29,10 @@ interface ContactFormData {
   phone?: string;
   message: string;
   marketingConsent: boolean;
+  // Only from the chat worker: how they qualified themselves, and the end of the conversation
+  qualification?: { onSalesforceAlready?: string; userCount?: number; timeframe?: string };
+  chatSummary?: string;
+  source?: 'form' | 'website_chat';
 }
 
 interface SalesforceTokenResponse {
@@ -115,16 +122,17 @@ async function createSalesforceLead(
 ): Promise<SalesforceLeadResponse> {
   const leadUrl = `${token.instance_url}/services/data/v59.0/sobjects/Lead`;
 
-  const leadData = {
+  const leadData: Record<string, unknown> = {
     FirstName: formData.firstName,
     LastName: formData.lastName,
     Company: formData.company,
     Email: formData.email,
     Phone: formData.phone || null,
-    Description: formData.message,
+    Description: describeLead(formData),
     LeadSource: 'Website',
     HasOptedOutOfEmail: !formData.marketingConsent,
   };
+  if (formData.qualification?.userCount) leadData.NumberOfEmployees = formData.qualification.userCount;
 
   const response = await fetch(leadUrl, {
     method: 'POST',
@@ -141,6 +149,30 @@ async function createSalesforceLead(
   }
 
   return response.json();
+}
+
+// The Lead description: the message, then (from the chat) the qualifying answers and the
+// tail of the conversation, so sales opens the lead knowing what was said.
+function describeLead(f: ContactFormData): string {
+  const lines = [f.message];
+  const q = f.qualification;
+  if (q && (q.onSalesforceAlready || q.userCount || q.timeframe)) {
+    lines.push('', 'Qualification:');
+    if (q.onSalesforceAlready) lines.push(`- Already on Salesforce: ${q.onSalesforceAlready}`);
+    if (q.userCount) lines.push(`- Users: ${q.userCount}`);
+    if (q.timeframe) lines.push(`- Timeframe: ${q.timeframe}`);
+  }
+  if (f.chatSummary) lines.push('', 'End of the chat:', f.chatSummary);
+  if (f.source === 'website_chat') lines.push('', 'Via website chat');
+  return lines.join('\n').slice(0, 32000);
+}
+
+// Constant-time comparison for the shared secret.
+function secretEquals(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
 }
 
 // Validate form data
@@ -173,6 +205,8 @@ function validateFormData(data: unknown): ContactFormData {
     throw new Error('Invalid email address');
   }
 
+  const q = form.qualification && typeof form.qualification === 'object' ? form.qualification as Record<string, unknown> : null;
+  const n = q && Number(q.userCount);
   return {
     firstName: form.firstName.trim(),
     lastName: form.lastName.trim(),
@@ -181,6 +215,13 @@ function validateFormData(data: unknown): ContactFormData {
     phone: form.phone ? String(form.phone).trim() : undefined,
     message: form.message.trim(),
     marketingConsent: Boolean(form.marketingConsent),
+    source: form.source === 'website_chat' ? 'website_chat' : 'form',
+    qualification: q ? {
+      onSalesforceAlready: q.onSalesforceAlready ? String(q.onSalesforceAlready).slice(0, 200) : undefined,
+      userCount: n && Number.isFinite(n) && n > 0 ? Math.round(n) : undefined,
+      timeframe: q.timeframe ? String(q.timeframe).slice(0, 200) : undefined,
+    } : undefined,
+    chatSummary: form.chatSummary ? String(form.chatSummary).slice(0, 4000) : undefined,
   };
 }
 
@@ -195,6 +236,28 @@ export default {
         status: 204,
         headers: corsHeaders(origin, env.ALLOWED_ORIGIN),
       });
+    }
+
+    // Internal path for the website chat worker: no Turnstile (the chat verified the visitor
+    // when the session started), authenticated by a shared secret instead. It can only do
+    // what the public form can do, create a Lead, so a leaked secret buys junk leads at most.
+    if (request.method === 'POST' && url.pathname === '/api/contact/internal') {
+      const presented = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+      if (!env.CONTACT_API_SECRET || !presented || !secretEquals(presented, env.CONTACT_API_SECRET)) {
+        return new Response(JSON.stringify({ success: false, error: 'Unauthorised' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
+      }
+      try {
+        const formData = validateFormData(await request.json());
+        formData.source = 'website_chat';
+        const token = await getSalesforceToken(env);
+        const lead = await createSalesforceLead(token, formData);
+        console.log(`Lead created from website chat: ${lead.id}`);
+        return new Response(JSON.stringify({ success: true, leadId: lead.id }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+      } catch (error) {
+        console.error('Error creating lead from website chat:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        return new Response(JSON.stringify({ success: false, error: errorMessage }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+      }
     }
 
     // Only allow POST to /api/contact

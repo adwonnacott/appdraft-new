@@ -1,0 +1,65 @@
+# appdraft-chat-api: the public website chat assistant.
+#
+# Deliberately separate from psa-copilot-api (the Hub and Jeeves worker). This worker holds
+# its own Anthropic key, no database key, no Salesforce credentials and no Jeeves key. The
+# only things it can reach are the Anthropic API, Turnstile verification, Cal.com's public
+# slot and booking endpoints, and the contact worker's lead endpoint over a shared secret.
+name = "appdraft-chat-api"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "54f68f19cf88a829edd97fa51bbbfbf1"
+
+# The chat endpoints sit on the site's own origin. The contact worker owns appdraft.com/api/*;
+# this longer pattern wins for /api/chat* and the contact form keeps /api/contact.
+routes = [
+  { pattern = "appdraft.com/api/chat*", zone_name = "appdraft.com" },
+  { pattern = "www.appdraft.com/api/chat*", zone_name = "appdraft.com" }
+]
+
+[vars]
+# Cal.com event type the chat books into (Adam's Discovery call, 45 minutes), and the public
+# booking page offered as a link if slots cannot be read.
+CAL_EVENT_TYPE_ID = "6208698"
+BOOKING_URL = "https://cal.com/adam-wonnacott/discovery-call"
+SITE_URL = "https://appdraft.com"
+
+# Sessions, rate limits and a 30 day transcript log. Created with:
+#   npx wrangler kv namespace create CHAT_KV
+[[kv_namespaces]]
+binding = "CHAT_KV"
+id = "1bf2e06418e5431ea4b1d30722c17d0f"
+
+# Lead creation goes through the contact worker, which already holds the Salesforce
+# credentials. A service binding keeps the call off the public internet; the shared secret
+# (CONTACT_API_SECRET on both workers) is what the contact worker checks.
+[[services]]
+binding = "CONTACT_API"
+service = "appdraft-contact-api"
+
+# The widget is plain JavaScript served as text.
+[[rules]]
+type = "Text"
+globs = ["**/widget.js"]
+fallthrough = true
+
+# Secrets, set with `npx wrangler secret put <name>`:
+#   ANTHROPIC_API_KEY     a key from its own Console workspace with a monthly spend limit
+#   TURNSTILE_SECRET_KEY  the same Turnstile widget the contact form uses
+#   CONTACT_API_SECRET    shared with appdraft-contact-api
+
+# Preview: a workers.dev address with no appdraft.com route, for testing before go-live.
+# Set its secrets with `npx wrangler secret put <name> --env preview`.
+[env.preview]
+workers_dev = true
+routes = []
+[env.preview.vars]
+CAL_EVENT_TYPE_ID = "6208698"
+BOOKING_URL = "https://cal.com/adam-wonnacott/discovery-call"
+SITE_URL = "https://appdraft.com"
+[[env.preview.kv_namespaces]]
+binding = "CHAT_KV"
+id = "1bf2e06418e5431ea4b1d30722c17d0f"
+[[env.preview.services]]
+binding = "CONTACT_API"
+service = "appdraft-contact-api"

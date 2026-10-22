@@ -18,3 +18,5 @@ ALLOWED_ORIGIN = "https://appdraft.com"
 
 # Turnstile (bot protection) - set as secret via wrangler
 # wrangler secret put TURNSTILE_SECRET_KEY
+# Shared with appdraft-chat-api for /api/contact/internal
+# wrangler secret put CONTACT_API_SECRET

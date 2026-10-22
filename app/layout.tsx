@@ -176,6 +176,17 @@ export default function RootLayout({
         </main>
         <Footer />
 
+        {/* Website chat assistant (workers/chat-api). The blog and insights pages, served by
+            the Hub worker, carry the same tag in psa-copilot-api/src/routes/blog.ts.
+            A preview build can point it at a preview worker with NEXT_PUBLIC_CHAT_API and
+            NEXT_PUBLIC_CHAT_SITEKEY; production leaves both unset. */}
+        <Script
+          src={`${process.env.NEXT_PUBLIC_CHAT_API ?? '/api/chat'}/widget.js`}
+          data-api={process.env.NEXT_PUBLIC_CHAT_API ?? '/api/chat'}
+          data-sitekey={process.env.NEXT_PUBLIC_CHAT_SITEKEY}
+          strategy="lazyOnload"
+        />
+
         {/* Salesforce Marketing Cloud - delayed load for performance */}
         <Script
           src="https://cdn.c360a.salesforce.com/beacon/c360a/64be8023-2651-460b-8b38-5f6610cad577/scripts/c360a.min.js?wtcp_id=1NDS60000000E1NOAU"
