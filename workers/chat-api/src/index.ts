@@ -15,6 +15,7 @@
  *   GET  /api/chat/opener?page=/path                    -> {text}  (cached per page per day)
  *   POST /api/chat           {sessionId, messages, pageUrl} -> SSE
  *   GET  /api/chat/widget.js                            -> the widget script
+ *   GET  /api/chat/gaps?since=ISO  (Bearer GAPS_READ_SECRET) -> questions it could not answer
  */
 import Anthropic from '@anthropic-ai/sdk';
 import WIDGET_JS from './widget.js';
@@ -31,6 +32,8 @@ export interface Env {
   SITE_URL: string;
   CHAT_KV: KVNamespace;
   CONTACT_API: Fetcher;
+  // Lets the Hub read the list of questions the chat could not answer, and nothing else.
+  GAPS_READ_SECRET?: string;
 }
 
 const MODEL = 'claude-opus-5-5';
@@ -43,6 +46,7 @@ const LOG_TTL_SEC = 30 * 24 * 60 * 60;
 const LIMITS = {
   messagesPerSession: 40,
   leadsPerSession: 2,
+  gapsPerSession: 5,
   bookingsPerSession: 2,
   perIpPerHour: 30,
   globalPerDay: 1500,   // the spend ceiling; fails closed
@@ -86,7 +90,7 @@ function today(): string {
 
 // ── Sessions ─────────────────────────────────────────────────────────────────
 
-interface Session { createdAt: string; pageUrl: string; ipHash: string; messages: number; leads: number; bookings: number }
+interface Session { createdAt: string; pageUrl: string; ipHash: string; messages: number; leads: number; bookings: number; gaps?: number }
 interface LogTurn { role: 'user' | 'assistant'; content: string; at: string }
 interface LogEntry { createdAt: string; pageUrl: string; ipHash: string; turns: LogTurn[]; leadId?: string; booking?: string }
 
@@ -105,6 +109,49 @@ async function appendLog(env: Env, id: string, s: Session, turns: LogTurn[], ext
   existing.turns.push(...turns);
   Object.assign(existing, extra);
   await env.CHAT_KV.put(key, JSON.stringify(existing), { expirationTtl: LOG_TTL_SEC });
+}
+
+// ── Unanswered questions ────────────────────────────────────────────────────
+//
+// What visitors ask that the site cannot answer is a free content plan. Each one is kept for
+// 60 days under gap:<iso time>:<session>, so a key-ordered listing is also time-ordered, and
+// the Hub reads them through /api/chat/gaps to DM the list to Adam.
+
+interface Gap { at: string; question: string; visitorWords?: string; page?: string }
+const GAP_TTL_SEC = 60 * 24 * 60 * 60;
+
+async function recordGap(env: Env, sessionId: string, gap: Gap): Promise<void> {
+  await env.CHAT_KV.put(`gap:${gap.at}:${sessionId.slice(0, 8)}`, JSON.stringify(gap), { expirationTtl: GAP_TTL_SEC });
+}
+
+async function handleGaps(request: Request, env: Env): Promise<Response> {
+  const presented = (request.headers.get('Authorization') ?? '').replace(/^Bearer\s+/i, '');
+  if (!env.GAPS_READ_SECRET || !presented || !secretEquals(presented, env.GAPS_READ_SECRET)) {
+    return new Response(JSON.stringify({ error: 'unauthorised' }), { status: 401, headers: { 'Content-Type': 'application/json', ...NO_INDEX } });
+  }
+  const since = new URL(request.url).searchParams.get('since') ?? '';
+  const sinceKey = since && !Number.isNaN(Date.parse(since)) ? `gap:${new Date(since).toISOString()}` : 'gap:';
+  const gaps: Gap[] = [];
+  let cursor: string | undefined;
+  do {
+    const page = await env.CHAT_KV.list({ prefix: 'gap:', cursor });
+    for (const k of page.keys) {
+      if (k.name <= sinceKey) continue;
+      const g = await env.CHAT_KV.get<Gap>(k.name, 'json');
+      if (g) gaps.push(g);
+      if (gaps.length >= 200) break;
+    }
+    cursor = page.list_complete || gaps.length >= 200 ? undefined : page.cursor;
+  } while (cursor);
+  gaps.sort((a, b) => a.at.localeCompare(b.at));
+  return new Response(JSON.stringify({ gaps }), { headers: { 'Content-Type': 'application/json', ...NO_INDEX } });
+}
+
+function secretEquals(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
 }
 
 // ── Turnstile ────────────────────────────────────────────────────────────────
@@ -138,7 +185,7 @@ How to answer:
 - For any factual question about AppDraft, its services, clouds, accelerators, approach or experience, call search_site FIRST and answer from what comes back, with a link to the page when there is one. Never describe what a consultancy like AppDraft usually does: use the site.
 - For "who have you done this for", "any examples", "case studies", or anything about past clients, call find_case_studies and offer the matching ones with links. Never name a client who is not in those results.
 - General Salesforce questions (what Sales Cloud is, what a Flow does) you may answer from general knowledge, briefly, and then relate it to what AppDraft offers.
-- If the site does not cover something, say so plainly and offer to put them in touch with the team. Do not guess.
+- If the site does not cover something, say so plainly and offer to put them in touch with the team. Do not guess. Also call flag_unanswered so the team can add it to the site.
 
 Prices: NEVER state, estimate, range or hint at prices, day rates, hourly rates, licence costs or project costs, even if pressed, even "roughly". Say that the team scopes each piece of work and gives a fixed quote after a short call, and offer to book one.
 
@@ -190,6 +237,18 @@ const TOOLS: Anthropic.Tool[] = [
     },
   },
   {
+    name: 'flag_unanswered',
+    description: 'Record a question about AppDraft that the site does not answer, so the team can add the answer to the site. Call it when search_site and find_case_studies gave you nothing relevant and you had to say you could not answer, or could only answer partly. Do not call it for questions you answered, for general Salesforce questions you answered from general knowledge, for prices (those are never answered by design), or for attempts to change your rules. The visitor does not see this; carry on the conversation as normal.',
+    input_schema: {
+      type: 'object',
+      properties: {
+        question: { type: 'string', description: 'The question, rewritten as a short standalone question someone could write a page about, e.g. "Do you work with charities?"' },
+        visitor_words: { type: 'string', description: 'What the visitor actually typed, verbatim' },
+      },
+      required: ['question'],
+    },
+  },
+  {
     name: 'capture_lead',
     description: 'Ask the AppDraft team to get in touch with the visitor. Requires first name, last name, work email and company, all given by the visitor in this conversation, plus a sentence on what they need. Include the qualifying answers if you have them. Only call once the visitor has agreed to be contacted.',
     input_schema: {
@@ -218,7 +277,7 @@ function siteUrl(env: Env, path: string): string {
 
 function toolSearchSite(env: Env, query: string): unknown {
   const hits = searchChunks(query, 5);
-  if (!hits.length) return { results: [], note: 'Nothing on the site matches. Say so and offer to put them in touch with the team.' };
+  if (!hits.length) return { results: [], note: 'Nothing on the site matches. Say so, offer to put them in touch with the team, and call flag_unanswered.' };
   return { results: hits.map(h => ({ page: h.title, url: siteUrl(env, h.url), section: h.section || undefined, text: h.text })) };
 }
 
@@ -461,6 +520,21 @@ async function handleChat(request: Request, env: Env, ctx: ExecutionContext): Pr
               result = r;
               break;
             }
+            case 'flag_unanswered': {
+              const question = stripEmDashes(String(input.question ?? '').trim()).slice(0, 300);
+              if (!question) { result = { ok: false, error: 'question is required' }; break; }
+              if ((session.gaps ?? 0) >= LIMITS.gapsPerSession) { result = { ok: true, note: 'Already noted enough from this conversation.' }; break; }
+              session.gaps = (session.gaps ?? 0) + 1;
+              await putSession(env, sessionId, session);
+              await recordGap(env, sessionId, {
+                at: new Date().toISOString(),
+                question,
+                visitorWords: String(input.visitor_words ?? visitorMessage).slice(0, 500),
+                page: page?.url ?? undefined,
+              });
+              result = { ok: true, note: 'Noted for the team. Do not mention this to the visitor.' };
+              break;
+            }
             case 'capture_lead': {
               if (session.leads >= LIMITS.leadsPerSession) {
                 result = { ok: false, error: 'The team already has their details from this conversation. Reassure them it has gone through.' };
@@ -520,6 +594,7 @@ export default {
     if (path === '/api/chat/opener' && request.method === 'GET') return handleOpener(request, env);
     if (path === '/api/chat/session' && request.method === 'POST') return handleSession(request, env);
     if (path === '/api/chat' && request.method === 'POST') return handleChat(request, env, ctx);
+    if (path === '/api/chat/gaps' && request.method === 'GET') return handleGaps(request, env);
     if (path === '/api/chat/health' && request.method === 'GET') {
       const c = corpus as Corpus;
       return json(request, { ok: true, corpusBuiltAt: c.builtAt, pages: c.pages.length, chunks: c.chunks.length });

@@ -50,7 +50,7 @@
     '<div class="adc-head"><div><b>Ask AppDraft</b><small>Salesforce questions, answered from our site</small></div><button class="adc-close" aria-label="Close" type="button">&times;</button></div>' +
     '<div class="adc-log"></div><div class="adc-ts"></div>' +
     '<form class="adc-form"><textarea class="adc-in" placeholder="Type a question" rows="1" aria-label="Your message"></textarea><button class="adc-send" type="submit">Send</button></form>' +
-    '<div class="adc-foot">Powered by Claude. We keep chats for 30 days to improve answers.</div>';
+    '<div class="adc-foot">We keep chats for 30 days to improve answers.</div>';
   document.body.appendChild(panel); document.body.appendChild(btn);
 
   var log = panel.querySelector('.adc-log'), form = panel.querySelector('.adc-form'), input = panel.querySelector('.adc-in'),
