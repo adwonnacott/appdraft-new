@@ -76,12 +76,6 @@ const features = [
   { icon: icons.assistant, title: 'Milo, an optional Agentforce agent', description: 'Ask how a month compares or what sits behind a number. Milo answers from the same figures, with each user’s own permissions, and links to the records.' },
 ];
 
-const comparison = [
-  { title: 'Reports and dashboards', content: 'Standard reports and dashboards are great for everyday questions and exports, and we teach clients to use them. A dashboard is refreshed when someone runs it, has a limited set of filters and tends to be built around one object, and there is no real home for targets or pacing.' },
-  { title: 'Forecasts', content: 'This works alongside Salesforce Forecasts, not instead of it. Forecasts is where the team reviews and commits; the dashboard shows the picture.' },
-  { title: 'Tableau Next', content: 'Included with several Salesforce editions, Tableau Next comes into its own when you bring in data from outside Salesforce. This is the page the team runs the week from.' },
-];
-
 const faqItems = [
   { title: 'Is there a licence or subscription?', content: 'No. It is a one-off setup with no subscription, built inside your Salesforce on your own data.' },
   { title: 'Do we need Agentforce?', content: 'Only for Milo, which is optional. It runs on the Agentforce credits that come with most Salesforce editions, which many businesses are not using yet.' },
@@ -123,14 +117,6 @@ export default function PerformanceDashboard() {
 
       <ContentSection title="What it does" background="white">
         <FeatureGrid features={features} columns={3} variant="card" />
-      </ContentSection>
-
-      <ContentSection
-        title="Building on the standard setup"
-        subtitle="Salesforce's standard reporting does a lot well. This is how the dashboard fits alongside it."
-        background="gray"
-      >
-        <Accordion items={comparison} />
       </ContentSection>
 
       <ContentSection title="Frequently asked questions" background="white">
