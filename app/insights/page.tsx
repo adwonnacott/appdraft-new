@@ -49,7 +49,7 @@ const defaultImage = 'https://images.unsplash.com/photo-1460925895917-afdab827c5
 
 export default function Insights() {
   // Sort posts by date (newest first)
-  const blogPosts = [...posts].sort((a, b) => {
+  const blogPosts = posts.filter((p) => !(p as { unlisted?: boolean }).unlisted).sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
