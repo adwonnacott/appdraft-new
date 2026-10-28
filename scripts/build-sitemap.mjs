@@ -43,10 +43,13 @@ function postDates() {
 
 const dates = postDates();
 const urls = new Map();
+// Unlisted posts are shared by direct link only, so they stay out of the sitemap too.
+const unlisted = new Set(JSON.parse(readFileSync(join(ROOT, 'app/blog/posts.json'), 'utf8')).filter((p) => p.unlisted).map((p) => `blog/${p.slug}`));
 
 for (const file of htmlFiles(OUT)) {
   const rel = relative(OUT, file).replace(/\.html$/, '');
   if (SKIP_PREFIXES.some((p) => rel === p || rel.startsWith(`${p}/`))) continue;
+  if (unlisted.has(rel)) continue;
 
   const html = readFileSync(file, 'utf8');
   if (/<meta name="robots" content="[^"]*noindex/.test(html)) continue;

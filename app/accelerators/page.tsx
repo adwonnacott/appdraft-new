@@ -29,6 +29,15 @@ const accelerators = [
     video: true,
   },
   {
+    href: '/accelerators/performance-dashboard',
+    image: '/images/accelerators/performance-dashboard.jpg',
+    imageAlt: 'The performance dashboard inside Salesforce, showing revenue, jobs and calls within the hour against target',
+    tag: 'Reporting',
+    title: 'Performance Dashboard',
+    description: 'An app-style dashboard inside Salesforce around the numbers that run your business, with an optional Agentforce assistant.',
+    video: true,
+  },
+  {
     href: '/accelerators/salesforce-xero',
     image: '/images/accelerators/salesforce-xero.png',
     imageAlt: 'A Salesforce invoice record marked as paid, synced from Xero',

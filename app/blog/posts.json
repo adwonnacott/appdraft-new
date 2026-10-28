@@ -1,5 +1,18 @@
 [
   {
+    "slug": "create-a-salesforce-user-for-your-implementation-partner",
+    "title": "How to create a Salesforce user for your implementation partner",
+    "date": "18 September 2026",
+    "excerpt": "It takes about three minutes. The only part that catches people out is the order you do it in.",
+    "category": "Salesforce",
+    "author": {
+      "name": "Adam Wonnacott",
+      "role": "Founder, AppDraft"
+    },
+    "content": "<p>If you have just bought Salesforce, or you are bringing in a partner to work on an org you already have, the first thing they will ask for is a user account. It takes about three minutes, and the only part that catches people out is the order you do it in.</p>\n\n<h2>Do this first: log in yourself</h2>\n\n<p>When Salesforce activates your licences you will get a <strong>Welcome to Salesforce</strong> email, and the link in it expires. Use it as soon as it arrives, set your password and get into the org, because until you have done that nobody can do anything, including you.</p>\n\n<p>It is the most common delay we see. The email lands on a Friday, sits over the weekend, and by Monday the link is dead. It is recoverable, but that is half a day gone on something that took ten seconds to avoid.</p>\n\n<h2>Then create the user</h2>\n\n<p>In <strong>Setup</strong>, use <strong>Quick Find</strong> to open <strong>Users</strong>, click <strong>New User</strong>, and fill in the details your partner has given you. Ours are set up like this:</p>\n\n<ul>\n<li><strong>First Name:</strong> Appdraft</li>\n<li><strong>Last Name:</strong> Support</li>\n<li><strong>Username:</strong> appdraftsupport@yourdomain</li>\n<li><strong>Email:</strong> support@appdraft.com</li>\n</ul>\n\n<p>The username has to look like an email address but does not have to be one, and it must be unique across every Salesforce org in the world, which is why we ask you to put your own domain on the end. Nothing is ever sent to it. The <strong>Email</strong> field is real, and that is where this user's welcome email goes.</p>\n\n<p>Set <strong>User Licence</strong> to <strong>Salesforce</strong> and <strong>Profile</strong> to <strong>System Administrator</strong>, tick <strong>Generate new password and notify user immediately</strong>, and save.</p>\n\n<h2>If Salesforce is not an option in the licence list</h2>\n\n<p>Every licence you own is already assigned. Your account executive can add one, though some partners, ourselves included, are given a courtesy licence as part of the deal, so it is worth asking before you pay.</p>\n\n<p>Otherwise free one up. Edit a user who has left and untick <strong>Active</strong>. Nothing is deleted, their records and history stay where they are, and you can reactivate at any time.</p>\n\n<h2>A sensible habit</h2>\n\n<p>Check your user list every few months. Licences quietly stay assigned to people who have left, and you pay for them until somebody notices. It is the most common piece of waste we find when we look at an org for the first time.</p>\n\n<p>Appdraft are a Salesforce implementation partner. If you are setting up a new org, or inherited one nobody has looked at in a while, we are happy to take a look.</p>",
+    "unlisted": true
+  },
+  {
     "slug": "salesforce-xero-integration",
     "title": "Your CRM says what will happen. Xero says what did.",
     "date": "2 October 2026",

@@ -38,7 +38,7 @@ async function main() {
   // source of truth: we merge in any post that is missing from posts.json, deduping
   // by slug below. This makes the sync self-healing, so a stale or reset posts.json
   // can never permanently drop a published post the way the old blog_deployed filter did.
-  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&blog_unlisted=eq.false&select=id,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
+  const url = `${SUPABASE_URL}/rest/v1/marketing_posts?post_type=eq.blog&status=eq.published&select=id,blog_unlisted,title,content,excerpt,category,blog_slug,featured_image_url,author_name,author_role,published_at`;
 
   const res = await fetch(url, {
     headers: {
@@ -65,6 +65,18 @@ async function main() {
   const existingPosts = JSON.parse(readFileSync(POSTS_JSON_PATH, 'utf-8'));
   const existingSlugs = new Set(existingPosts.map((p) => p.slug));
 
+  // Unlisted posts (guidance shared by direct link) keep their page but stay off the
+  // Insights list and the sitemap. Bring each existing entry's flag in line with Supabase.
+  const unlistedSlugs = new Set(newPosts.filter((p) => p.blog_unlisted).map((p) => p.blog_slug));
+  let flagged = 0;
+  for (const entry of existingPosts) {
+    const want = unlistedSlugs.has(entry.slug);
+    if (Boolean(entry.unlisted) !== want) {
+      if (want) entry.unlisted = true; else delete entry.unlisted;
+      flagged++;
+    }
+  }
+
   let added = 0;
 
   for (const post of newPosts) {
@@ -88,6 +100,7 @@ async function main() {
         role: post.author_role || 'Salesforce Experts',
       },
       content: post.content,
+      ...(post.blog_unlisted ? { unlisted: true } : {}),
     };
 
     // Add to beginning (newest first)
@@ -96,7 +109,7 @@ async function main() {
     console.log(`  + Added "${post.title}" (/${post.blog_slug})`);
   }
 
-  if (added > 0) {
+  if (added > 0 || flagged > 0) {
     // Write updated posts.json
     writeFileSync(POSTS_JSON_PATH, JSON.stringify(existingPosts, null, 2) + '\n');
     console.log(`[sync-blog-posts] Updated posts.json with ${added} new post(s).`);
