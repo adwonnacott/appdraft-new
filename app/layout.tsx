@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/ui/PageTransition";
+import DataCloudPageViews from "@/components/ui/DataCloudPageViews";
 
 // Body text. Stand-in for Avenir Next until its web licence is bought
 const body = Nunito_Sans({
@@ -187,11 +188,14 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
 
-        {/* Salesforce Marketing Cloud - delayed load for performance */}
+        {/* Salesforce Data Cloud beacon: consent banner, then page views. Loaded straight
+            away, not last, so short visits are counted. The blog and insights pages,
+            served by the Hub worker, carry the same tag in psa-copilot-api/src/routes/blog.ts. */}
         <Script
           src="https://cdn.c360a.salesforce.com/beacon/c360a/64be8023-2651-460b-8b38-5f6610cad577/scripts/c360a.min.js?wtcp_id=1NDS60000000E1NOAU"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
+        <DataCloudPageViews />
 
         {/* Apollo.io website tracker */}
         <Script id="apollo-tracker" strategy="afterInteractive">
