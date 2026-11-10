@@ -1,6 +1,6 @@
 # Appdraft Contact API
 
-Cloudflare Worker that handles contact form submissions and creates Leads in Salesforce.
+Cloudflare Worker that handles contact form submissions. Since 10 Nov 2026 each enquiry is recorded as a prospect in the AppDraft Hub through the Hub worker's /website-enquiry route (secret WEBSITE_ENQUIRY_SECRET); the Salesforce setup below is no longer used.
 
 ## Setup
 
