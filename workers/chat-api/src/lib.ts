@@ -108,3 +108,41 @@ export async function sha256(s: string): Promise<string> {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 24);
 }
+
+// ── Email typo check (TSK-506961) ────────────────────────────────────────────
+// A misspelt domain means the invite or reply never arrives (a test on 10 Nov 2026 booked
+// "appraft.com"). Domains one or two letters away from a common one are queried with the
+// visitor before anything is booked or sent.
+const COMMON_DOMAINS = [
+  'gmail.com', 'googlemail.com', 'outlook.com', 'hotmail.com', 'hotmail.co.uk', 'live.co.uk', 'live.com',
+  'yahoo.com', 'yahoo.co.uk', 'icloud.com', 'me.com', 'btinternet.com', 'sky.com', 'aol.com', 'protonmail.com',
+  'appdraft.com', 'salesforce.com',
+];
+
+function editDistance(a: string, b: string): number {
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+  }
+  return d[a.length][b.length];
+}
+
+/** The common domain this email's domain is probably a typo of, or null if it looks fine. */
+export function likelyEmailTypo(email: string): string | null {
+  const domain = email.split('@')[1]?.toLowerCase().trim();
+  if (!domain || COMMON_DOMAINS.includes(domain)) return null;
+  let best: { d: string; n: number } | null = null;
+  for (const c of COMMON_DOMAINS) {
+    const n = editDistance(domain, c);
+    if (n > 0 && n <= 2 && (!best || n < best.n)) best = { d: c, n };
+  }
+  return best?.d ?? null;
+}
+
+/** The whole conversation as plain text, for the person's record in the Hub. */
+export function transcriptText(history: Array<{ role: string; content: string }>, max = 30000): string {
+  return history.map(m => `${m.role === 'user' ? 'Visitor' : 'Assistant'}: ${m.content}`).join('\n\n').slice(-max);
+}

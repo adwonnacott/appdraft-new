@@ -363,6 +363,12 @@ export default function ContactForm() {
           </label>
         </div>
 
+        {/* Privacy notice, shown where details are collected (TSK-506961) */}
+        <p className="text-xs text-gray-500">
+          We use your details to reply to your enquiry, as set out in our{' '}
+          <a href="/privacy-policy" className="underline hover:text-[#19779b]">privacy policy</a>.
+        </p>
+
         {/* Turnstile Widget */}
         <div ref={turnstileContainerRef} className="flex justify-center" />
 
