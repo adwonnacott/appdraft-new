@@ -1,18 +1,19 @@
 /**
  * Appdraft Contact Form API
  *
- * Cloudflare Worker that handles contact form submissions and creates
- * Leads in Salesforce using Client Credentials Flow (same as psa-copilot-api apex.ts).
+ * Cloudflare Worker that handles contact form submissions. Since 10 Nov 2026 (TSK-506961)
+ * each enquiry is recorded as a prospect in the AppDraft Hub, through the Hub worker's
+ * /website-enquiry route and its own shared secret; Salesforce no longer accepts leads.
+ * This worker holds no Hub database key or Salesforce credentials.
  */
 
 export interface Env {
   // Environment variables
   ALLOWED_ORIGIN: string;
 
-  // Secrets (same as psa-copilot-api)
-  SF_CLIENT_ID: string;
-  SF_CLIENT_SECRET: string;
-  SF_INSTANCE_URL: string;
+  // The Hub worker's enquiry route, and the secret it shares with this worker only
+  HUB_ENQUIRY_URL: string;
+  WEBSITE_ENQUIRY_SECRET: string;
 
   // Turnstile secret for bot protection
   TURNSTILE_SECRET_KEY: string;
@@ -35,16 +36,11 @@ interface ContactFormData {
   source?: 'form' | 'website_chat';
 }
 
-interface SalesforceTokenResponse {
-  access_token: string;
-  instance_url: string;
-  token_type: string;
-}
-
-interface SalesforceLeadResponse {
-  id: string;
+interface HubEnquiryResponse {
   success: boolean;
-  errors: Array<{ message: string; statusCode: string }>;
+  personId?: string;
+  created?: boolean;
+  error?: string;
 }
 
 interface TurnstileVerifyResponse {
@@ -89,66 +85,27 @@ const corsHeaders = (origin: string, allowedOrigin: string) => {
   };
 };
 
-/**
- * Get Salesforce access token using Client Credentials Flow
- */
-async function getSalesforceToken(env: Env): Promise<SalesforceTokenResponse> {
-  const tokenUrl = `${env.SF_INSTANCE_URL}/services/oauth2/token`;
-
-  const response = await fetch(tokenUrl, {
+// Record the enquiry in the Hub as a prospect (or on the person already there).
+async function recordInHub(env: Env, formData: ContactFormData): Promise<HubEnquiryResponse> {
+  const response = await fetch(env.HUB_ENQUIRY_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: env.SF_CLIENT_ID,
-      client_secret: env.SF_CLIENT_SECRET,
+    headers: { 'Authorization': `Bearer ${env.WEBSITE_ENQUIRY_SECRET}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      company: formData.company,
+      phone: formData.phone || null,
+      description: describeLead(formData),
+      marketingConsent: formData.marketingConsent,
+      source: formData.source === 'website_chat' ? 'website_chat' : 'form',
     }),
   });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Salesforce auth failed: ${error}`);
+  const body = (await response.json().catch(() => ({}))) as HubEnquiryResponse;
+  if (!response.ok || !body.success || !body.personId) {
+    throw new Error(`The Hub did not record the enquiry (${response.status}): ${body.error ?? 'no detail'}`);
   }
-
-  return response.json();
-}
-
-// Create a Lead in Salesforce
-async function createSalesforceLead(
-  token: SalesforceTokenResponse,
-  formData: ContactFormData
-): Promise<SalesforceLeadResponse> {
-  const leadUrl = `${token.instance_url}/services/data/v59.0/sobjects/Lead`;
-
-  const leadData: Record<string, unknown> = {
-    FirstName: formData.firstName,
-    LastName: formData.lastName,
-    Company: formData.company,
-    Email: formData.email,
-    Phone: formData.phone || null,
-    Description: describeLead(formData),
-    LeadSource: 'Website',
-    HasOptedOutOfEmail: !formData.marketingConsent,
-  };
-  if (formData.qualification?.userCount) leadData.NumberOfEmployees = formData.qualification.userCount;
-
-  const response = await fetch(leadUrl, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${token.access_token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(leadData),
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Failed to create Lead: ${error}`);
-  }
-
-  return response.json();
+  return body;
 }
 
 // The Lead description: the message, then (from the chat) the qualifying answers and the
@@ -249,10 +206,9 @@ export default {
       try {
         const formData = validateFormData(await request.json());
         formData.source = 'website_chat';
-        const token = await getSalesforceToken(env);
-        const lead = await createSalesforceLead(token, formData);
-        console.log(`Lead created from website chat: ${lead.id}`);
-        return new Response(JSON.stringify({ success: true, leadId: lead.id }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+        const saved = await recordInHub(env, formData);
+        console.log(`Enquiry from website chat recorded in the Hub: ${saved.personId}`);
+        return new Response(JSON.stringify({ success: true, leadId: saved.personId }), { status: 200, headers: { 'Content-Type': 'application/json' } });
       } catch (error) {
         console.error('Error creating lead from website chat:', error);
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -313,19 +269,16 @@ export default {
       // Validate form data
       const formData = validateFormData(formFields);
 
-      // Get Salesforce token using Client Credentials flow
-      const token = await getSalesforceToken(env);
+      // Record the enquiry in the Hub
+      const saved = await recordInHub(env, formData);
 
-      // Create Lead in Salesforce
-      const lead = await createSalesforceLead(token, formData);
-
-      console.log(`Lead created successfully: ${lead.id}`);
+      console.log(`Enquiry recorded in the Hub: ${saved.personId}`);
 
       return new Response(
         JSON.stringify({
           success: true,
           message: 'Thank you for your enquiry. We will be in touch shortly.',
-          leadId: lead.id,
+          leadId: saved.personId,
         }),
         {
           status: 200,
