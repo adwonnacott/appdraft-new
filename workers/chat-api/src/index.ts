@@ -21,7 +21,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import WIDGET_JS from './widget.js';
 import corpus from './corpus.json';
 import { searchChunks, findCaseStudies, pageFor, type Corpus } from './search';
-import { stripEmDashes, cleanReply, validateLead, rateLimited, pickSlots, formatSlot, sha256, type Slot } from './lib';
+import { stripEmDashes, cleanReply, validateLead, rateLimited, pickSlots, formatSlot, sha256, likelyEmailTypo, transcriptText, type Slot } from './lib';
 
 export interface Env {
   ANTHROPIC_API_KEY: string;
@@ -191,7 +191,9 @@ Prices: NEVER state, estimate, range or hint at prices, day rates, hourly rates,
 
 Next steps, when the visitor shows interest in working with AppDraft (asks how to get started, wants a quote, wants to talk to someone, asks whether AppDraft can help with their situation):
 - Offer two routes in one short line: book a discovery call now, or have the team get in touch.
-- To book: call get_call_slots, which shows the visitor a set of times to tap. When they pick one (their message will say so, or they will give a time), ask for their name and email if you do not have them, then call book_call. Confirm the time in words.
+- To book: call get_call_slots, which shows the visitor a set of times to tap. When they pick one (their message will say so, or they will give a time), ask for their name, email and company if you do not have them, one question at a time (if they would rather not say the company, book without it), then call book_call. Confirm the time in words.
+- If book_call or capture_lead says the email may be misspelt, ask the visitor whether they meant the suggested address, and call again with the address they confirm (set email_confirmed to true if they say their original was right).
+- The first time you ask for contact details, add one short sentence: we only use them to arrange this and reply, as set out in our privacy policy (https://appdraft.com/privacy-policy).
 - To have the team get in touch: you need first name, last name, work email and company. Ask for what is missing, one question at a time. Before filing, ask up to three qualifying questions ONE AT A TIME and only if the visitor has not already told you: are they on Salesforce already, roughly how many people would use it, and when they want it in place. If they decline or seem in a hurry, skip the rest and file with what you have. Then call capture_lead and tell them the team will reply within a working day.
 - Never invent or assume a name, email, company or answer. Only pass what the visitor actually typed.
 - Do not push. Offer once; if they just want answers, give answers.
@@ -231,7 +233,8 @@ const TOOLS: Anthropic.Tool[] = [
         start: { type: 'string', description: 'The slot start time, exactly as returned by get_call_slots (ISO 8601)' },
         name: { type: 'string' },
         email: { type: 'string' },
-        company: { type: 'string' },
+        company: { type: 'string', description: 'Their organisation, if they gave it' },
+        email_confirmed: { type: 'boolean', description: 'True only when the visitor has confirmed an address the tool queried as a possible typo' },
       },
       required: ['start', 'name', 'email'],
     },
@@ -254,6 +257,7 @@ const TOOLS: Anthropic.Tool[] = [
     input_schema: {
       type: 'object',
       properties: {
+        email_confirmed: { type: 'boolean', description: 'True only when the visitor has confirmed an address the tool queried as a possible typo' },
         first_name: { type: 'string' },
         last_name: { type: 'string' },
         email: { type: 'string' },
@@ -307,13 +311,15 @@ async function toolGetCallSlots(env: Env): Promise<{ result: unknown; slots: Slo
   }
 }
 
-async function toolBookCall(env: Env, input: { start?: string; name?: string; email?: string; company?: string }): Promise<{ ok: boolean; when?: string; error?: string }> {
+async function toolBookCall(env: Env, input: { start?: string; name?: string; email?: string; company?: string; email_confirmed?: boolean }): Promise<{ ok: boolean; when?: string; error?: string }> {
   const start = String(input.start ?? '').trim();
   const name = stripEmDashes(String(input.name ?? '').trim()).slice(0, 120);
   const email = String(input.email ?? '').trim().toLowerCase();
   if (!start || Number.isNaN(Date.parse(start))) return { ok: false, error: 'start must be a slot from get_call_slots' };
   if (!name) return { ok: false, error: 'name is required: ask the visitor for their name' };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: 'a valid email is required: ask the visitor for the address for the invite' };
+  const typo = input.email_confirmed ? null : likelyEmailTypo(email);
+  if (typo) return { ok: false, error: `The email may be misspelt: did they mean ${email.split('@')[0]}@${typo}? Ask them before booking.` };
   const res = await fetch('https://api.cal.com/v2/bookings', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'cal-api-version': '2024-08-13' },
@@ -332,10 +338,14 @@ async function toolBookCall(env: Env, input: { start?: string; name?: string; em
   return { ok: true, when: formatSlot(body.data?.start ?? start) };
 }
 
-async function toolCaptureLead(env: Env, input: Parameters<typeof validateLead>[0], summary: string): Promise<{ ok: boolean; leadId?: string; error?: string }> {
+async function toolCaptureLead(
+  env: Env, input: Parameters<typeof validateLead>[0] & { email_confirmed?: boolean }, summary: string, transcript: string, sessionId: string,
+): Promise<{ ok: boolean; leadId?: string; error?: string }> {
   const v = validateLead(input);
   if (!v.ok) return { ok: false, error: v.error };
   const l = v.lead;
+  const typo = input.email_confirmed ? null : likelyEmailTypo(l.email);
+  if (typo) return { ok: false, error: `The email may be misspelt: did they mean ${l.email.split('@')[0]}@${typo}? Ask them before sending.` };
   const res = await env.CONTACT_API.fetch('https://appdraft-contact-api/api/contact/internal', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.CONTACT_API_SECRET}` },
@@ -345,6 +355,7 @@ async function toolCaptureLead(env: Env, input: Parameters<typeof validateLead>[
       source: 'website_chat',
       qualification: { onSalesforceAlready: l.onSalesforceAlready, userCount: l.userCount, timeframe: l.timeframe },
       chatSummary: summary,
+      transcript, sessionId, kind: 'enquiry', privacyNoticeShown: true,
     }),
   });
   const body = (await res.json().catch(() => ({}))) as { success?: boolean; leadId?: string; error?: string };
@@ -353,6 +364,30 @@ async function toolCaptureLead(env: Env, input: Parameters<typeof validateLead>[
     return { ok: false, error: 'The request could not be sent. Apologise, and give them info@appdraft.com and +44 20 4572 0707 instead.' };
   }
   return { ok: true, leadId: body.leadId };
+}
+
+// After a booking, the person and the conversation go to the Hub through the contact worker,
+// as an enquiry of kind 'booking' (TSK-506961). Best effort: the booking itself has been made.
+async function fileBooking(
+  env: Env, input: { name?: string; email?: string; company?: string }, when: string, summary: string, transcript: string, sessionId: string,
+): Promise<void> {
+  const name = stripEmDashes(String(input.name ?? '').trim());
+  const parts = name.split(/\s+/);
+  try {
+    const res = await env.CONTACT_API.fetch('https://appdraft-contact-api/api/contact/internal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.CONTACT_API_SECRET}` },
+      body: JSON.stringify({
+        firstName: parts.length > 1 ? parts.slice(0, -1).join(' ') : '', lastName: parts.at(-1) || name,
+        company: String(input.company ?? '').trim(), email: String(input.email ?? '').trim().toLowerCase(),
+        message: `Booked a discovery call for ${when}.`, marketingConsent: false, source: 'website_chat',
+        chatSummary: summary, transcript, sessionId, kind: 'booking', privacyNoticeShown: true,
+      }),
+    });
+    if (!res.ok) console.error('[chat] filing the booking failed', res.status, await res.text().catch(() => ''));
+  } catch (err) {
+    console.error('[chat] filing the booking failed', err);
+  }
 }
 
 // ── Opener ───────────────────────────────────────────────────────────────────
@@ -516,6 +551,8 @@ async function handleChat(request: Request, env: Env, ctx: ExecutionContext): Pr
                 await putSession(env, sessionId, session);
                 extra.booking = r.when;
                 await send({ type: 'booked', when: r.when });
+                const summary = history.slice(-6).map(m => `${m.role === 'user' ? 'Visitor' : 'Assistant'}: ${m.content.slice(0, 300)}`).join('\n');
+                await fileBooking(env, input, r.when ?? '', summary, transcriptText(history), sessionId);
               }
               result = r;
               break;
@@ -541,7 +578,7 @@ async function handleChat(request: Request, env: Env, ctx: ExecutionContext): Pr
                 break;
               }
               const summary = history.slice(-6).map(m => `${m.role === 'user' ? 'Visitor' : 'Assistant'}: ${m.content.slice(0, 300)}`).join('\n');
-              const r = await toolCaptureLead(env, input, summary);
+              const r = await toolCaptureLead(env, input, summary, transcriptText(history), sessionId);
               if (r.ok) {
                 session.leads += 1;
                 await putSession(env, sessionId, session);

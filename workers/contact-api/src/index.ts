@@ -34,6 +34,12 @@ interface ContactFormData {
   qualification?: { onSalesforceAlready?: string; userCount?: number; timeframe?: string };
   chatSummary?: string;
   source?: 'form' | 'website_chat';
+  // From the chat (TSK-506961): the whole conversation, its session, whether it was an enquiry
+  // or a booked call. The privacy notice is shown on the form and in the chat window.
+  transcript?: string;
+  sessionId?: string;
+  kind?: 'enquiry' | 'booking';
+  privacyNoticeShown?: boolean;
 }
 
 interface HubEnquiryResponse {
@@ -99,6 +105,8 @@ async function recordInHub(env: Env, formData: ContactFormData): Promise<HubEnqu
       description: describeLead(formData),
       marketingConsent: formData.marketingConsent,
       source: formData.source === 'website_chat' ? 'website_chat' : 'form',
+      transcript: formData.transcript, sessionId: formData.sessionId, kind: formData.kind,
+      privacyNoticeShown: formData.privacyNoticeShown,
     }),
   });
   const body = (await response.json().catch(() => ({}))) as HubEnquiryResponse;
@@ -133,20 +141,22 @@ function secretEquals(a: string, b: string): boolean {
 }
 
 // Validate form data
-function validateFormData(data: unknown): ContactFormData {
+function validateFormData(data: unknown, internal = false): ContactFormData {
   if (!data || typeof data !== 'object') {
     throw new Error('Invalid request body');
   }
 
   const form = data as Record<string, unknown>;
 
-  if (!form.firstName || typeof form.firstName !== 'string') {
+  // A call booked in the chat may carry a single name and no company.
+  const booking = internal && form.kind === 'booking';
+  if (typeof form.firstName !== 'string' || (!form.firstName && !booking)) {
     throw new Error('First name is required');
   }
   if (!form.lastName || typeof form.lastName !== 'string') {
     throw new Error('Last name is required');
   }
-  if (!form.company || typeof form.company !== 'string') {
+  if (typeof form.company !== 'string' || (!form.company && !booking)) {
     throw new Error('Company is required');
   }
   if (!form.email || typeof form.email !== 'string') {
@@ -179,6 +189,10 @@ function validateFormData(data: unknown): ContactFormData {
       timeframe: q.timeframe ? String(q.timeframe).slice(0, 200) : undefined,
     } : undefined,
     chatSummary: form.chatSummary ? String(form.chatSummary).slice(0, 4000) : undefined,
+    transcript: internal && form.transcript ? String(form.transcript).slice(0, 30000) : undefined,
+    sessionId: internal && form.sessionId ? String(form.sessionId).slice(0, 100) : undefined,
+    kind: booking ? 'booking' : 'enquiry',
+    privacyNoticeShown: internal ? form.privacyNoticeShown === true : true,
   };
 }
 
@@ -204,7 +218,7 @@ export default {
         return new Response(JSON.stringify({ success: false, error: 'Unauthorised' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
       }
       try {
-        const formData = validateFormData(await request.json());
+        const formData = validateFormData(await request.json(), true);
         formData.source = 'website_chat';
         const saved = await recordInHub(env, formData);
         console.log(`Enquiry from website chat recorded in the Hub: ${saved.personId}`);

@@ -87,3 +87,21 @@ describe('stripInternalMarkup', () => {
     expect(stripInternalMarkup(t)).toBe(t);
   });
 });
+
+import { likelyEmailTypo, transcriptText } from '../src/lib';
+
+describe('email typo check (TSK-506961)', () => {
+  it('queries domains close to a common one', () => {
+    expect(likelyEmailTypo('test@appraft.com')).toBe('appdraft.com');
+    expect(likelyEmailTypo('jo@gmial.com')).toBe('gmail.com');
+    expect(likelyEmailTypo('jo@hotmial.co.uk')).toBe('hotmail.co.uk');
+  });
+  it('leaves correct and unrelated domains alone', () => {
+    expect(likelyEmailTypo('jo@gmail.com')).toBeNull();
+    expect(likelyEmailTypo('jo@steadmanbrown.com')).toBeNull();
+    expect(likelyEmailTypo('jo@acme.co.uk')).toBeNull();
+  });
+  it('turns a conversation into text', () => {
+    expect(transcriptText([{ role: 'user', content: 'hi' }, { role: 'assistant', content: 'hello' }])).toBe('Visitor: hi\n\nAssistant: hello');
+  });
+});
