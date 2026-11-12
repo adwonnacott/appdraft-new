@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
             Privacy policy
           </h1>
           <p className="text-lg text-gray-600">
-            Last updated: February 2026
+            Last updated: November 2026
           </p>
         </div>
       </section>
@@ -55,11 +55,21 @@ export default function PrivacyPolicy() {
             <li>Time and date of visits</li>
           </ul>
 
+          <h3>If we have written to you without you contacting us first</h3>
+          <p>We sometimes write to directors and senior people at UK companies whose work we think we can help with, by post, by email to a work address, or on LinkedIn.</p>
+          <p><strong>Where your details come from.</strong> The public register at Companies House, your company&apos;s own website, and Apollo.io, a business contact database.</p>
+          <p><strong>What we hold.</strong> Your name, job title, company, work email address, work phone number, the company&apos;s address, and a record of what we have sent you and any reply.</p>
+          <p><strong>Why, and our lawful basis.</strong> To introduce our services to businesses that may need them, under legitimate interests. We only contact people in their work role, about work.</p>
+          <p><strong>Your page.</strong> A letter or email from us may include a link or QR code to a short page made for you. It sets no cookies. We record that the page was opened, and whether its video was watched, so we know whether to follow up.</p>
+          <p><strong>Who else sees it.</strong> Stannp, who print and post our letters, and the providers of our email and database systems. We never sell your details or share them for anyone else&apos;s marketing.</p>
+          <p><strong>How long.</strong> If you do not reply, we delete your details within 12 months of our last contact. If you ask us to stop, we keep only your name and address on a do-not-contact list so that we never contact you again.</p>
+          <p><strong>Stopping us.</strong> Reply to any letter or email, use the unsubscribe link in any email, or write to <a href="mailto:info@appdraft.com">info@appdraft.com</a>. You can also complain to the Information Commissioner&apos;s Office (<a href="https://ico.org.uk">ico.org.uk</a>).</p>
+
           <h2>How we use your information</h2>
           <p>We use the information we collect to:</p>
           <ul>
             <li>Respond to your inquiries and provide customer support</li>
-            <li>Deliver our Salesforce consulting services</li>
+            <li>Deliver our consulting services</li>
             <li>Send you marketing communications (with your consent)</li>
             <li>Improve our website and services</li>
             <li>Analyse usage patterns and trends</li>
