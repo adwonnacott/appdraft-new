@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
       </section>
 
       <section className="py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 blog-content text-gray-700 [&_h2]:text-3xl [&_h3]:text-xl [&_h3]:text-gray-900 [&_a]:text-blue-700 [&_a]:underline">
           <h2>Introduction</h2>
           <p>
             Appdraft Limited ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
