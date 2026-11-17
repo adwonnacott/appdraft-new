@@ -13,18 +13,6 @@ declare global {
       action: string,
       params?: Record<string, unknown>
     ) => void;
-    // The Data Cloud beacon (c360a) registers itself under this name
-    DataCloudInteractions?: {
-      sendEvent: (event: {
-        interaction: { name: string };
-        user?: {
-          attributes?: Record<string, string>;
-        };
-      }) => void;
-      reinit?: () => void;
-      getConsents?: () => { status: string }[];
-      ConsentStatus?: { OptIn: string; OptOut: string };
-    };
     turnstile?: {
       render: (container: string | HTMLElement, options: {
         sitekey: string;
@@ -67,37 +55,6 @@ function sendGAConversionEvent(): void {
       event_category: 'Contact',
       event_label: 'Contact Form Submission',
     });
-  }
-}
-
-// Send identity event to the Data Cloud beacon
-// This links the anonymous browsing session to the known user profile
-function sendIdentityEvent(data: FormData): void {
-  if (typeof window === 'undefined' || !window.DataCloudInteractions) {
-    console.log('Data Cloud beacon not available');
-    return;
-  }
-
-  try {
-    window.DataCloudInteractions.sendEvent({
-      interaction: {
-        name: 'Form Submission',
-      },
-      user: {
-        attributes: {
-          eventType: 'identity',
-          isAnonymous: '0',
-          email: data.email.toLowerCase(),
-          firstName: data.firstName,
-          lastName: data.lastName,
-          company: data.company,
-          ...(data.phone && { phone: data.phone }),
-        },
-      },
-    });
-    console.log('Identity event sent to Data Cloud');
-  } catch (error) {
-    console.error('Failed to send identity event:', error);
   }
 }
 
@@ -177,10 +134,6 @@ export default function ContactForm() {
     setSubmitError(null);
 
     try {
-      // Send identity event to Data Cloud to link anonymous session to known user
-      // This is the official Salesforce method for identity resolution
-      sendIdentityEvent(formData);
-
       // Verify Turnstile token is present
       if (!turnstileToken) {
         setSubmitError('Please complete the verification check.');

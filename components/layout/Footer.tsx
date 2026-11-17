@@ -123,6 +123,11 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <a href="#" data-cookie-settings className="text-gray-400 hover:text-[#56FFDD] transition-colors">
+                  Cookie settings
+                </a>
+              </li>
             </ul>
           </div>
         </div>

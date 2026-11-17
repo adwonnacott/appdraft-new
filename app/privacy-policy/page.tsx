@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
 
           <h2>Cookies</h2>
           <p>
-            We use cookies and similar tracking technologies to enhance your experience on our website. You can control cookies through your browser settings. Please note that disabling cookies may affect the functionality of our website.
+            We use two tools that set cookies: Google Analytics, to see which pages people read, and the Apollo.io website tracker, to see which companies visit. Neither loads unless you choose Accept in the cookie banner. You can change your choice at any time with Cookie settings at the foot of every page. The site itself works the same either way.
           </p>
 
           <h2>Data retention</h2>

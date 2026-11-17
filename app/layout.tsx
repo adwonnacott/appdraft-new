@@ -6,7 +6,6 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/ui/PageTransition";
-import DataCloudPageViews from "@/components/ui/DataCloudPageViews";
 
 // Body text. Stand-in for Avenir Next until its web licence is bought
 const body = Nunito_Sans({
@@ -188,38 +187,10 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
 
-        {/* Salesforce Data Cloud beacon: consent banner, then page views. Loaded straight
-            away, not last, so short visits are counted. The blog and insights pages,
-            served by the Hub worker, carry the same tag in psa-copilot-api/src/routes/blog.ts. */}
-        <Script
-          src="https://cdn.c360a.salesforce.com/beacon/c360a/64be8023-2651-460b-8b38-5f6610cad577/scripts/c360a.min.js?wtcp_id=1NDS60000000E1NOAU"
-          strategy="afterInteractive"
-        />
-        <DataCloudPageViews />
-
-        {/* Apollo.io website tracker */}
-        <Script id="apollo-tracker" strategy="afterInteractive">
-          {`
-            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-            o.onload=function(){window.trackingFunctions.onLoad({appId:"6633a35ec5cac10438852978"})},
-            document.head.appendChild(o)}initApollo();
-          `}
-        </Script>
-
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1M91EVG6ZR"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1M91EVG6ZR');
-          `}
-        </Script>
+        {/* Cookie consent: Google Analytics and the Apollo.io tracker load only after the
+            visitor accepts. The blog and insights pages, served by the Hub worker, load the same
+            /consent.js from psa-copilot-api/src/routes/blog.ts. */}
+        <Script src="/consent.js" strategy="afterInteractive" />
       </body>
     </html>
   );
