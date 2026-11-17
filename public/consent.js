@@ -88,8 +88,8 @@
       'font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif'
     ].join(';');
     box.innerHTML =
-      '<p style="margin:0 0 12px">We would like to use Google Analytics and Apollo.io to see how people use this site. ' +
-      'They set cookies, so we only turn them on if you say yes. ' +
+      '<p style="margin:0 0 12px">We would like to use analytics cookies to see how people use this site. ' +
+      'We only turn them on if you say yes. ' +
       '<a href="/privacy-policy" style="color:#56FFDD;text-decoration:underline">Privacy policy</a></p>' +
       '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
       '<button type="button" data-choice="accepted" style="cursor:pointer;border:0;border-radius:8px;padding:9px 18px;font:inherit;font-weight:600;background:#56FFDD;color:#0f2235">Accept</button>' +
