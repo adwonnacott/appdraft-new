@@ -7,8 +7,8 @@ import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import StreamVideo from '@/components/ui/StreamVideo';
 
-// Cloudflare Stream id of the walkthrough video. Set once the video is uploaded.
-const VIDEO_ID = 'XERO_VIDEO_ID';
+// Cloudflare Stream id of the walkthrough video.
+const VIDEO_ID = 'a2ab213d03beb01bb07627ff05dfb80e';
 
 export const metadata = {
   title: 'Salesforce and Xero Integration Accelerator',
