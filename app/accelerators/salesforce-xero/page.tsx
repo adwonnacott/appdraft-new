@@ -5,6 +5,10 @@ import FeatureGrid from '@/components/sections/FeatureGrid';
 import CTABanner from '@/components/sections/CTABanner';
 import Accordion from '@/components/ui/Accordion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import StreamVideo from '@/components/ui/StreamVideo';
+
+// Cloudflare Stream id of the walkthrough video. Set once the video is uploaded.
+const VIDEO_ID = 'XERO_VIDEO_ID';
 
 export const metadata = {
   title: 'Salesforce and Xero Integration Accelerator',
@@ -18,6 +22,17 @@ export const metadata = {
   alternates: {
     canonical: 'https://appdraft.com/accelerators/salesforce-xero',
   },
+};
+
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Salesforce and Xero walkthrough',
+  description: 'A walkthrough of Salesforce and Xero joined up by Appdraft: invoices raised from the deal and posted to Xero, branded documents, payments coming back, statements, credit notes, purchase orders and supplier bills, a finance dashboard and an Agentforce assistant.',
+  thumbnailUrl: `https://customer-ookdqw71wymhxobi.cloudflarestream.com/${VIDEO_ID}/thumbnails/thumbnail.jpg?time=4s`,
+  uploadDate: '2026-11-17',
+  duration: 'PT3M38S',
+  embedUrl: `https://customer-ookdqw71wymhxobi.cloudflarestream.com/${VIDEO_ID}/iframe`,
 };
 
 const icons = {
@@ -71,6 +86,7 @@ const steps = [
 export default function SalesforceXero() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }} />
       <PageHero
         badge="Accelerator: Billing"
         title="Salesforce knows what was sold."
@@ -84,11 +100,21 @@ export default function SalesforceXero() {
         ]}
       />
 
-      <ContentSection title="What changes when they are connected" background="gray">
+      <ContentSection
+        title="Watch the walkthrough"
+        subtitle="Adam walks through the whole billing cycle in a demo org: an invoice raised from the deal and posted to Xero, the payment coming back, credit notes, purchase orders and supplier bills, then a finance dashboard you can ask questions of."
+        background="gray"
+      >
+        <ScrollReveal>
+          <StreamVideo videoId={VIDEO_ID} title="Salesforce and Xero walkthrough" posterTime="4s" />
+        </ScrollReveal>
+      </ContentSection>
+
+      <ContentSection title="What changes when they are connected" background="white">
         <FeatureGrid features={features} columns={3} variant="card" />
       </ContentSection>
 
-      <ContentSection title="Why an accelerator" background="white" centered={false}>
+      <ContentSection title="Why an accelerator" background="gray" centered={false}>
         <ScrollReveal>
           <div className="max-w-4xl space-y-4 text-lg text-gray-700 leading-relaxed">
             <p>
@@ -107,7 +133,7 @@ export default function SalesforceXero() {
         </ScrollReveal>
       </ContentSection>
 
-      <ContentSection title="What installing it involves" background="gray">
+      <ContentSection title="What installing it involves" background="white">
         <Accordion items={steps} />
         <ScrollReveal className="mt-8">
           <p className="text-center text-gray-600">

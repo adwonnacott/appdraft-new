@@ -44,7 +44,7 @@ const accelerators = [
     tag: 'Billing',
     title: 'Salesforce and Xero',
     description: 'See what each customer was invoiced and paid alongside what they were sold, with an audit trail from order to payment.',
-    video: false,
+    video: true,
   },
 ];
 
